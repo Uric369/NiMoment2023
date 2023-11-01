@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+    background: rgba(0, 0, 0, .2);
+}
+
+body {
+    background: #f9f9f9;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header_demo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo_demo {
+    font-size: 2em;
+    color: #359381;
+    pointer-events: none;
+    margin-right: 270px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #359381;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background: #359381;
+    color: #fff;
+}
+
+.parallax {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#text {
+    position: absolute;
+    font-size: 5em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+}
+
+.parallax img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.sec {
+    position: relative;
+    /* background: #003329; */
+    background: url('../img/paraScroll_demo/2background.jpg');
+    padding: 100px;
+    height: 100vh;
+}
+
+.sec h2 {
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.sec p {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+}
+
+.fixed-box1 {
+    position: absolute;
+    top: 20vh; /* 相对于容器顶部的距离 */
+    left: 5vw; /* 相对于容器左侧的距离 */
+    width: 33.7vw; /* 设置方块的宽度 */
+    height: 33vh; /* 设置方块的高度 */
+  }
+
+.fixed-box2 {
+    position: absolute;
+    top: 50vh; /* 相对于容器顶部的距离 */
+    left: 15vw; /* 相对于容器左侧的距离 */
+    width: 45vw; /* 设置方块的宽度 */
+    height: 33vh; /* 设置方块的高度 */
+  }
+
+  .fixed-box3 {
+    position: absolute;
+    top: 30vh; /* 相对于容器顶部的距离 */
+    left: 60vw; /* 相对于容器左侧的距离 */
+    width: 33vw; /* 设置方块的宽度 */
+    height: 33vh; /* 设置方块的高度 */
+  }
+
+  .message-box {
+    position: absolute;
+    top: 10vh; /* 相对于容器顶部的距离 */
+    left: 100vw; /* 相对于容器左侧的距离 */
+  }
+  
+  .cat {
+    position: absolute;
+    top: 10vh;
+    left: 60vw;
+    height: 1vh;
+    width: 1vh;
+    visibility: hidden;
+  }
+  
+  .box-1 {
+    z-index: 1; /* 设置方块的层级，较高的层级会覆盖较低的层级 */
+  }
+  
+  .box-2 {
+    z-index: 3;
+  }
+  
+  .box-3 {
+    z-index: 2;
+  }
+
+  .icon-div1 {
+    display: flex;
+    position: absolute;
+    top: 30%; /* 相对于容器顶部的距离 */
+    aspect-ratio: 1/1; /* 设置宽高比为1:2 */
+    justify-content: flex-start;
+    left: 10% ;
+    width:30% ;
+    text-align: end;
+    align-items: flex-end;
+  }
+
+  .icon-div2 {
+    display: flex;
+    position: absolute;
+    aspect-ratio: 1/1; /* 设置宽高比为1:2 */
+    left: 60%;
+    width:15% ;
+  }
+
+  .text-div2-2 {
+    display: flex;
+    position: absolute;
+    left: 80%;
+  }
+
+  .text-div1 {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 40%; /* 相对于容器顶部的距离 */
+    right: 5%; /* 相对于容器左侧的距离 */
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: end;
+    align-items: flex-end;
+  }
+  
+  .text-div2 {
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    top: 60%; /* 相对于容器顶部的距离 */
+    left: 5%; /* 相对于容器左侧的距离 */
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: start;
+    align-items: flex-start;
+  }
+  
+
+
+  
