@@ -176,7 +176,7 @@ header_demo {
     justify-content: flex-end;
     position: absolute;
     top: 40%; /* 相对于容器顶部的距离 */
-    right: 5%; /* 相对于容器左侧的距离 */
+    right: 10%; /* 相对于容器左侧的距离 */
     letter-spacing: 2px;
     color: #fff;
     text-align: end;

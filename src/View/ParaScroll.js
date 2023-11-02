@@ -39,7 +39,7 @@ const ParallaxComponent = () => {
       }
       
 
-      if (!isPopUpOpen && messageRef && messageRef.current ){
+      if (!isPopUpOpen && messageRef && messageRef.current && messageRef.current.style){
         console.log(isPopUpOpen);
       const messageTop = messageRef.current.offsetTop;
       const windowHeight = window.innerHeight;
@@ -133,17 +133,6 @@ const ParallaxComponent = () => {
             </div>
         </div>
 
-        {/* <div className='message-box'>
-            <img
-                style={{ zIndex: 3 }}
-                ref={messageRef}
-                src={message}
-                onClick={() => setIsPopUpOpen(true)}
-            />
-            {isPopUpOpen && (
-                <h style={{ zIndex: 3 }}>别让用户的等待成为遗憾</h>
-            )}
-        </div> */}
         <div className='message-box'>
          {isPopUpOpen ? (
         <img style={{ zIndex: 3 }} src={cat} />

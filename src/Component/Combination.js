@@ -1,14 +1,17 @@
 import React from 'react';
+import Counter from './Counter';
 
-const Combination = ({ icon, text1, text2, count }) => {
+const Combination = ({ icon, text1, text2, count , sequence}) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-end', marginBottom: '10px' }}>
-      {icon && <img src={icon} alt="Icon" style={{ marginRight: '10px', width: '40%' }} />}
-      {text1 && <span style={{ fontSize: '40px', verticalAlign: 'bottom', color: '#fff' }}>{text1}</span>}
-      {count && <strong style={{ fontSize: '40px', verticalAlign: 'bottom', color: '#fff' }}>{count}</strong>}
-      {text2 && <span style={{ fontSize: '40px', verticalAlign: 'bottom', color: '#fff' }}>{text2}</span>}
+    <div style={{ display: 'flex', alignItems: 'flex-end', marginBottom: '1vh' }}>
+      {sequence == "left" && icon && <img src={icon} alt="Icon" style={{ marginRight: '10px', width: '4vw' }} />}
+      {text1 && <span style={{ fontSize: '1.5rem', verticalAlign: 'bottom', color: '#fff' }}> &nbsp;{text1}</span>}
+      {count && <strong style={{ fontSize: '2rem', verticalAlign: 'bottom', color: '#fff' }}>&nbsp;<Counter counts={count} time={1000}/>&nbsp;</strong>}
+      {text2 && <span style={{ fontSize: '1.5rem', verticalAlign: 'bottom', color: '#fff' }}>{text2} &nbsp;</span>}
+      {sequence == "right" && icon && <img src={icon} alt="Icon" style={{ marginRight: '10px', width: '4vw' }} />}
     </div>
   );
 };
+
 
 export default Combination;
