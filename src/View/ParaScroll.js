@@ -18,6 +18,13 @@ import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css"
 import Counter from '../Component/Counter';
 import { history } from "../utils/history";
+import IconCount from '../Component/IconCount';
+
+const consumables = [
+  { icon: icon, count: 500 },
+  { icon: icon, count: 300 },
+  { icon: icon, count: 200 }
+];
 
 
 const ParallaxComponent = () => {
@@ -159,18 +166,9 @@ const ParallaxComponent = () => {
                 height: '30%'
             }}>
                 <div>
-                <div style={{ display: 'flex', alignItems: 'flex-end', marginBottom:"10px" }}>
-                    <img src={icon} alt="Icon" style={{ marginRight: '10px', width:"40%" }} />
-                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> × 500</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-end' , marginBottom:"10px" }}>
-                    <img src={icon} alt="Icon" style={{ marginRight: '10px', width:"40%" }} />
-                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> × 500</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-end' , marginBottom:"10px" }}>
-                    <img src={icon} alt="Icon" style={{ marginRight: '10px', width:"40%" }} />
-                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> × 500</span>
-                </div>
+                  {consumables.map((data, index) => (
+                  <IconCount key={index} icon={data.icon} count={data.count} height={10}/>
+                  ))}
                 </div>
             </div>
             <div className="text-div2">

@@ -1,0 +1,15 @@
+.squish {
+    animation: squish 1s ease-in infinite;
+  }
+  
+  @keyframes squish {
+    5% {
+      transform: scale(1.2, 0.9);
+    }
+    10% {
+      transform: scale(0.9, 1.2) translate(0, -4px);
+    }
+    15% {
+      transform: scale(1);
+    }
+  }

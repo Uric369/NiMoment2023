@@ -8,8 +8,12 @@ import "../css/Personal1.css";
 import Rotator from '../Component/Rotator';
 import Glitter from '../Component/Glitter';
 import DashedLines from '../Component/DashedLines';
-import DashedLine from '../Component/DashedLine';
 import wifi from "../img/personal1/Wifi.png"
+import cat1 from "../img/testGradient/Meow1.png";
+import cat2 from "../img/testGradient/Meow2.png";
+import ImageTransition from '../Component/ImageTransition';
+import { history } from '../utils/history';
+
 
 const content1 = [
     {icon: icon, text1: "值班", text2 : "次", count: 30},
@@ -52,18 +56,26 @@ const dashedLine = [
 
 const Divider = () => <hr style={{ borderColor: 'blue' }} />;
 
+
+const handleClick = () => {
+  history.push('/Personal2'); // 当组件被点击时，跳转到/Personal2路径
+  window.location.reload();
+};
+
+
+
 const Personal1 = () => {
   return (
     <div className='personal1_container'>
       
       <DashedLines points={dashedLine} color="yellow" />
-<div className='title_container'>
-  <div className="header">
-    <img style={{width:"150px"}} src={logo}/>
-    <h1>工作情况统计</h1>
-  </div>
-  <div className="divider"></div>
-</div>
+      <div className='title_container'>
+        <div className="header">
+          <img style={{width:"150px"}} src={logo}/>
+          <h1>工作情况统计</h1>
+        </div>
+        <div className="divider"/>
+      </div>
         <div className="text_container">
             <h2>Nimoer # {user.id+ " " +user.username}， 在2023年度， 你....... </h2>
         {content1.map((item, index) => 
@@ -119,7 +131,12 @@ const Personal1 = () => {
             />
           )}
         </div>
-
+        <div onClick={handleClick}>
+        <ImageTransition 
+        cat1={cat1}
+        cat2={cat2}
+      />
+      </div>
     </div>
   );
 };

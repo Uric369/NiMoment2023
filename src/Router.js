@@ -8,8 +8,9 @@ import {
 } from "react-router-dom";
 import { history } from "./utils/history";
 import ParallaxComponent from "./View/ParaScroll";
-import Personal1 from "./View/Personal_1";
+import Personal1 from "./View/Personal1";
 import { createBrowserHistory } from 'history';
+import Personal2 from "./View/Personal2";
 
 class MyRouter extends React.Component{
   
@@ -31,6 +32,7 @@ class MyRouter extends React.Component{
         <Route path="/" element={<ParallaxComponent />} />
         <Route path="/Department" element={<ParallaxComponent/>} />
         <Route path="/Personal1" element={<Personal1/>} />
+        <Route path="/Personal2" element={<Personal2/>} />
         <Route path="/*" element={<Navigate to="/Department" />} />
       </Routes>
     </Router>
