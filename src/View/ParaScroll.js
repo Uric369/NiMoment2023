@@ -17,6 +17,7 @@ import icon from "../img/paraScroll_demo/ICON.png"
 import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css"
 import Counter from '../Component/Counter';
+import { history } from "../utils/history";
 
 
 const ParallaxComponent = () => {
@@ -85,8 +86,15 @@ const ParallaxComponent = () => {
   const messageRef = React.useRef(null);
   const catRef = React.useRef(null);
 
-  const handleClick = ()=>{
-    if (isSlideEnd) setIsPopUpOpen(true);
+  const handleClick = () => {
+    if (isSlideEnd) {
+      setIsPopUpOpen(true);
+  
+      setTimeout(() => {
+        history.push("/Personal1");
+        window.location.reload();
+      }, 2000); // 2000 milliseconds = 2 seconds
+    }
   }
 
 
@@ -153,15 +161,15 @@ const ParallaxComponent = () => {
                 <div>
                 <div style={{ display: 'flex', alignItems: 'flex-end', marginBottom:"10px" }}>
                     <img src={icon} alt="Icon" style={{ marginRight: '10px', width:"40%" }} />
-                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> * 500</span>
+                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> × 500</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end' , marginBottom:"10px" }}>
                     <img src={icon} alt="Icon" style={{ marginRight: '10px', width:"40%" }} />
-                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> * 500</span>
+                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> × 500</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end' , marginBottom:"10px" }}>
                     <img src={icon} alt="Icon" style={{ marginRight: '10px', width:"40%" }} />
-                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> * 500</span>
+                    <span style={{ fontSize: '40px', verticalAlign: 'bottom',color:"#fff" }}> × 500</span>
                 </div>
                 </div>
             </div>

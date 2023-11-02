@@ -1,11 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import ParallaxComponent from './View/ParaScroll';
-import Personal1 from './View/Personal_1';
+import MyRouter from './Router';
 function App() {
   return (
-    // <ParallaxComponent/>
-    <Personal1/>
+    <MyRouter/>
   );
 }
 
