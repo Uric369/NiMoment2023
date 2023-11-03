@@ -1,5 +1,4 @@
 import React from 'react';
-import Counter from './Counter';
 
 const Combination2 = ({ text, time}) => {
   return (

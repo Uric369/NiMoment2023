@@ -114,23 +114,23 @@ const Department = () => {
       </header> */}
 
       <section className="parallax">
-        <img src={hill1} id="hill1" ref={hill1Ref} />
-        <img src={hill2} id="hill2" />
-        <img src={hill3} id="hill3" />
-        <img src={hill4} id="hill4" ref={hill4Ref} />
-        <img src={hill5} id="hill5" ref={hill5Ref} />
-        <img src={tree} id="tree" />
-        <img src={ufo} id="spaceShip" ref={spaceShipRef}/>
+        <img src={hill1} id="hill1" ref={hill1Ref} alt="hill1"/>
+        <img src={hill2} id="hill2" alt="hill2"/>
+        <img src={hill3} id="hill3" alt="hill3"/>
+        <img src={hill4} id="hill4" ref={hill4Ref} alt="hill4"/>
+        <img src={hill5} id="hill5" ref={hill5Ref} alt="hill5"/>
+        <img src={tree} id="tree" alt="tree"/>
+        <img src={ufo} id="spaceShip" ref={spaceShipRef}alt="ufo"/>
         <h2 id="text" ref={textRef}>NiMoment</h2>
-        <img src={leaf} id="leaf" ref={leafRef} />
-        <img src={plant} id="plant" />
+        <img src={leaf} id="leaf" ref={leafRef} alt="leaf"/>
+        <img src={plant} id="plant" alt="plant"/>
       </section>
 
       <section class="sec">
         <h2>2023年度，NIMO......</h2>
-        <img className="cat box-2" ref={catRef} src={cat}/>
+        <img className="cat box-2" ref={catRef} src={cat} alt="cat"/>
         <div className='fixed-box1'>
-            <img className="icon-div1" style={{zIndex: 2}} src={icon}/>
+            <img className="icon-div1" style={{zIndex: 2}} src={icon} alt="icon"/>
             <div className="text-div1">
             <Combination3 text1="处理请求" count={1000} text2="个" />
             </div>
@@ -138,9 +138,9 @@ const Department = () => {
 
         <div >
          {isPopUpOpen ? (
-        <img className='message-box' style={{ zIndex: 3 }} src={cat} />
+        <img className='message-box' style={{ zIndex: 3 }} src={cat} alt="cat"/>
       ) : (
-        <img  className='message-box' style={{ zIndex: 3 }} ref={messageRef} src={message} onClick={handleClick}/>
+        <img  className='message-box' style={{ zIndex: 3 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
       )}
       </div>
         
@@ -165,7 +165,7 @@ const Department = () => {
             </div>
         </div>
         <div className="fixed-box3">
-            <img className="icon-div1" style={{zIndex: 2}} src={icon}/>
+            <img className="icon-div1" style={{zIndex: 2}} src={icon} alt="icon"/>
             <div className="text-div1">
                 <div>
                 <Combination3 text1="通过新开网审批" count={1000} text2="个" />

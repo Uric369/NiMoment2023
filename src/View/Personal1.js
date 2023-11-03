@@ -54,9 +54,6 @@ const dashedLine = [
 ]
 
 
-const Divider = () => <hr style={{ borderColor: 'blue' }} />;
-
-
 const handleClick = () => {
   history.push('/Personal2'); // 当组件被点击时，跳转到/Personal2路径
   window.location.reload();
@@ -71,7 +68,7 @@ const Personal1 = () => {
       <DashedLines points={dashedLine} color="yellow" />
       <div className='title_container'>
         <div className="header">
-          <img style={{width:"6vw"}} src={logo}/>
+          <img style={{width:"6vw"}} src={logo} alt="logo"/>
           <h1>工作情况统计</h1>
         </div>
         <div className="divider"/>

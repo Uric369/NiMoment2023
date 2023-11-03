@@ -67,7 +67,7 @@ const Personal2 = () => {
       >
       <div className='title_container'>
         <div className="header">
-          <img style={{width:"6vw"}} src={logo}/>
+          <img style={{width:"6vw"}} src={logo} alt="logo"/>
           <h1>工作情况统计</h1>
           <DayNightToggleButton
                     size={1.2}
@@ -115,10 +115,10 @@ const Personal2 = () => {
         </div>
       </div>
       <div className="cat_container">
-      {catMode == 0 && <img style={{width:"20vw"}} src={cat2}/>}
-      {catMode == 1 && <ImageTransition cat1={cat2} cat2={cat1} size={20}/>}
-      {catMode == 2 && <img style={{width:"20vw"}} src={cat1}/>}
-      {catMode == 3 && <ImageTransition cat1={cat1} cat2={cat2} size={20}/>}
+      {catMode === 0 && <img style={{width:"20vw"}} src={cat2} alt="cat2"/>}
+      {catMode === 1 && <ImageTransition cat1={cat2} cat2={cat1} size={20}/>}
+      {catMode === 2 && <img style={{width:"20vw"}} src={cat1} alt="cat1"/>}
+      {catMode === 3 && <ImageTransition cat1={cat1} cat2={cat2} size={20}/>}
       </div>
       </div>
     );

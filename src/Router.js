@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Redirect,
   BrowserRouter as Router,
   Navigate,
   Route,
@@ -9,7 +8,6 @@ import {
 import { history } from "./utils/history";
 import Department from "./View/Department";
 import Personal1 from "./View/Personal1";
-import { createBrowserHistory } from 'history';
 import Personal2 from "./View/Personal2";
 
 class MyRouter extends React.Component{

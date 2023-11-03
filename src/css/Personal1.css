@@ -52,7 +52,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    align-items: end;
+    align-items: flex-end;
     text-align: right; /* 新增：使文本和行内(块)元素向右对齐 */
     display: flex; /* 新增：使 content2 成为一个 flex 容器 */
     flex-direction: column; /* 新增：将主轴方向设置为垂直 */

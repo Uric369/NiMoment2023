@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
  
 const Counter = ({counts, time = 300}) => {  //counts：传入的数字，time: 默认500毫秒之内整个动画完成
     const [count, setCount] = useState(0);
@@ -9,7 +9,7 @@ const Counter = ({counts, time = 300}) => {  //counts：传入的数字，time: 
  
         }, 10);
         return () => clearInterval(timer);
-    }, [counts]);
+    }, [counts, time]);
     return count;
  
 }
