@@ -9,7 +9,7 @@
 
 .personal1_container .text_container {
     position: absolute;
-    top: 35vh; /* 相对于容器顶部的距离 */
+    top: 30vh; /* 相对于容器顶部的距离 */
     left: 20vw; /* 相对于容器左侧的距离 */
     width: 55vw; /* 设置方块的宽度 */
     height: 60vh; /* 设置方块的高度 */
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 1.4rem;
+  font-size: 2.5vh;
   color: white;
 }
 
@@ -43,7 +43,7 @@
 
 
 .personal1_container h2 {
-    font-size: 2rem;
+    font-size: 3.5vh;
     color: white;
     margin-bottom: 1vh;
 }

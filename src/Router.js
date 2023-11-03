@@ -7,7 +7,7 @@ import {
   Routes
 } from "react-router-dom";
 import { history } from "./utils/history";
-import ParallaxComponent from "./View/ParaScroll";
+import Department from "./View/Department";
 import Personal1 from "./View/Personal1";
 import { createBrowserHistory } from 'history';
 import Personal2 from "./View/Personal2";
@@ -29,8 +29,8 @@ class MyRouter extends React.Component{
     return(
     <Router history={history}>
       <Routes>
-        <Route path="/" element={<ParallaxComponent />} />
-        <Route path="/Department" element={<ParallaxComponent/>} />
+        <Route path="/" element={<Department />} />
+        <Route path="/Department" element={<Department/>} />
         <Route path="/Personal1" element={<Personal1/>} />
         <Route path="/Personal2" element={<Personal2/>} />
         <Route path="/*" element={<Navigate to="/Department" />} />

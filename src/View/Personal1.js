@@ -35,15 +35,15 @@ const user = {
 }
 
 const rotatingObjects = [
-  {img: star_mid, width: 250, height: 250, x: 60, y:15, speed:10},
-  {img: star_big, width: 300, height: 300, x: 80, y:60, speed:20},
+  {img: star_mid, width: 10, x: 60, y:15, speed:10},
+  {img: star_big, width: 15, x: 80, y:60, speed:20},
 ]
 
 const glitteringObjects = [
-  {img: star_mid, width: 100, height: 100, x: 50, y:10, speed:3},
-  {img: star_mid, width: 100, height: 100, x: 40, y:15, speed:5},
-  {img: star_mid, width: 100, height: 100, x: 90, y:50, speed:2},
-  {img: wifi, width: 100, height: 100, x: 78, y:70, speed:1},
+  {img: star_mid, width: 5, x: 50, y:10, speed:3},
+  {img: star_mid, width: 5, x: 40, y:15, speed:5},
+  {img: star_mid, width: 3, x: 90, y:50, speed:2},
+  {img: wifi, width: 7, x: 78, y:70, speed:1},
 ]
 
 const dashedLine = [
@@ -71,7 +71,7 @@ const Personal1 = () => {
       <DashedLines points={dashedLine} color="yellow" />
       <div className='title_container'>
         <div className="header">
-          <img style={{width:"150px"}} src={logo}/>
+          <img style={{width:"6vw"}} src={logo}/>
           <h1>工作情况统计</h1>
         </div>
         <div className="divider"/>

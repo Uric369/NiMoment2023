@@ -78,12 +78,13 @@ header_demo {
     position: relative;
     /* background: #003329; */
     background: url('../img/paraScroll_demo/2background.jpg');
-    padding: 100px;
+    background-size: cover;
+    padding: 7vh;
     height: 100vh;
 }
 
 .sec h2 {
-    font-size: 3em;
+    font-size: 6vh;
     color: #fff;
     margin-bottom: 10px;
 }
@@ -99,15 +100,19 @@ header_demo {
     top: 20vh; /* 相对于容器顶部的距离 */
     left: 5vw; /* 相对于容器左侧的距离 */
     width: 33.7vw; /* 设置方块的宽度 */
-    height: 33vh; /* 设置方块的高度 */
+    height: 36vh; /* 设置方块的高度 */
+    background: url('../img/paraScroll_demo/mission1.png');
+    background-size: cover;
   }
 
 .fixed-box2 {
     position: absolute;
     top: 50vh; /* 相对于容器顶部的距离 */
-    left: 15vw; /* 相对于容器左侧的距离 */
+    left: 20vw; /* 相对于容器左侧的距离 */
     width: 45vw; /* 设置方块的宽度 */
-    height: 33vh; /* 设置方块的高度 */
+    height: 43vh; /* 设置方块的高度 */
+    background: url('../img/paraScroll_demo/mission2.png');
+    background-size: cover;
   }
 
   .fixed-box3 {
@@ -115,13 +120,17 @@ header_demo {
     top: 30vh; /* 相对于容器顶部的距离 */
     left: 60vw; /* 相对于容器左侧的距离 */
     width: 33vw; /* 设置方块的宽度 */
-    height: 33vh; /* 设置方块的高度 */
+    height: 36vh; /* 设置方块的高度 */
+    background: url('../img/paraScroll_demo/mission3.png');
+    background-size: cover;
   }
 
   .message-box {
     position: absolute;
     top: 10vh; /* 相对于容器顶部的距离 */
     left: 100vw; /* 相对于容器左侧的距离 */
+    height: 14vh;
+    width: 40vw;
   }
   
   .cat {

@@ -11,8 +11,8 @@ const Glitter = ({ img, width, height, x, y, speed }) => {
         position: 'absolute',
         top: `${y}vh`,
         left: `${x}vw`,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `${width}vw`,
+        height: `${height}vh`,
         animation: `glitter ${speed}s infinite alternate`
       }}
     />

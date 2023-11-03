@@ -67,7 +67,7 @@ const Personal2 = () => {
       >
       <div className='title_container'>
         <div className="header">
-          <img style={{width:"150px"}} src={logo}/>
+          <img style={{width:"6vw"}} src={logo}/>
           <h1>工作情况统计</h1>
           <DayNightToggleButton
                     size={1.2}
@@ -80,7 +80,7 @@ const Personal2 = () => {
       <div className="outer_container">
       <div className="inner_container" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
-                <IconTitle icon={titleIcon} text={"最早/最晚更新进展（猜猜怎么触发”最晚“呢）"}/>
+                <IconTitle icon={titleIcon} text={"最早/最晚更新进展（猜猜怎么触发“最晚”呢）"}/>
             </div>
             
             <div style={{textAlign: 'center'}}>
@@ -115,10 +115,10 @@ const Personal2 = () => {
         </div>
       </div>
       <div className="cat_container">
-      {catMode == 0 && <img src={cat2}/>}
-      {catMode == 1 && <ImageTransition cat1={cat2} cat2={cat1}/>}
-      {catMode == 2 && <img src={cat1}/>}
-      {catMode == 3 && <ImageTransition cat1={cat1} cat2={cat2}/>}
+      {catMode == 0 && <img style={{width:"20vw"}} src={cat2}/>}
+      {catMode == 1 && <ImageTransition cat1={cat2} cat2={cat1} size={20}/>}
+      {catMode == 2 && <img style={{width:"20vw"}} src={cat1}/>}
+      {catMode == 3 && <ImageTransition cat1={cat1} cat2={cat2} size={20}/>}
       </div>
       </div>
     );

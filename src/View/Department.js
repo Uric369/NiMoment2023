@@ -7,18 +7,14 @@ import hill5 from "../img/paraScroll_demo/hill5.png";
 import leaf from "../img/paraScroll_demo/leaf.png";
 import tree from "../img/paraScroll_demo/tree.png";
 import plant from "../img/paraScroll_demo/plant.png";
-import spaceShip from "../img/paraScroll_demo/spaceship.png";
-import mission1 from "../img/paraScroll_demo/mission1.png";
-import mission2 from "../img/paraScroll_demo/mission2.png";
-import mission3 from "../img/paraScroll_demo/mission3.png";
 import message from "../img/paraScroll_demo/message.png";
 import cat from "../img/paraScroll_demo/cat.png";
 import icon from "../img/paraScroll_demo/ICON.png"
 import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css"
-import Counter from '../Component/Counter';
 import { history } from "../utils/history";
 import IconCount from '../Component/IconCount';
+import Combination3 from '../Component/Combination3';
 
 const consumables = [
   { icon: icon, count: 500 },
@@ -27,7 +23,7 @@ const consumables = [
 ];
 
 
-const ParallaxComponent = () => {
+const Department = () => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
     const [isSlideEnd, setIsSlideEnd] = useState(false);
   useEffect(() => {
@@ -134,30 +130,21 @@ const ParallaxComponent = () => {
         <h2>2023年度，NIMO......</h2>
         <img className="cat box-2" ref={catRef} src={cat}/>
         <div className='fixed-box1'>
-            <img style={{zIndex: 1}} src={mission1}/>
             <img className="icon-div1" style={{zIndex: 2}} src={icon}/>
             <div className="text-div1">
-                <div>
-                    <h style={{ fontSize: '40px' }}>处理请求</h>
-                    <br/>
-                    <span style={{ fontSize: '80px', fontWeight: 'bold' }}>
-                        <Counter counts={1000}/>
-                    </span>
-                    <span style={{ fontSize: '40px' }}>个</span>
-                </div>
+            <Combination3 text1="处理请求" count={1000} text2="个" />
             </div>
         </div>
 
-        <div className='message-box'>
+        <div >
          {isPopUpOpen ? (
-        <img style={{ zIndex: 3 }} src={cat} />
+        <img className='message-box' style={{ zIndex: 3 }} src={cat} />
       ) : (
-        <img style={{ zIndex: 3 }} ref={messageRef} src={message} onClick={handleClick}/>
+        <img  className='message-box' style={{ zIndex: 3 }} ref={messageRef} src={message} onClick={handleClick}/>
       )}
       </div>
         
         <div className="fixed-box2" style={{zIndex: 3}}>
-            <img style={{zIndex: 1}} src={mission2}/>
             <div style={{
                 display: 'flex',
                 position: 'absolute',
@@ -173,26 +160,15 @@ const ParallaxComponent = () => {
             </div>
             <div className="text-div2">
                 <div>
-                    <h style={{ fontSize: '40px' }}>消耗水晶头/模块/面板共</h>
-                    <br/>
-                    <span style={{ fontSize: '80px', fontWeight: 'bold' }}>
-                        <Counter counts={1000}/>
-                    </span>
-                    <span style={{ fontSize: '40px' }}>个</span>
+                <Combination3 text1="消耗水晶头/模块/面板共" count={1000} text2="个" />
                 </div>
             </div>
         </div>
         <div className="fixed-box3">
-            <img  style={{zIndex: 2}} src={mission3}/>
             <img className="icon-div1" style={{zIndex: 2}} src={icon}/>
             <div className="text-div1">
                 <div>
-                    <h style={{ fontSize: '40px' }}>通过新开网审批</h>
-                    <br/>
-                    <span style={{ fontSize: '80px', fontWeight: 'bold' }}>
-                        <Counter counts={1000}/>
-                    </span>
-                    <span style={{ fontSize: '40px' }}>个</span>
+                <Combination3 text1="通过新开网审批" count={1000} text2="个" />
                 </div>
             </div>
         </div>
@@ -202,4 +178,4 @@ const ParallaxComponent = () => {
   );
 };
 
-export default ParallaxComponent;
+export default Department;
