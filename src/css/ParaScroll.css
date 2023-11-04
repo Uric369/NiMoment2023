@@ -57,6 +57,8 @@ header_demo {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: url('../img/paraScroll_demo/Back.png');
+    background-size: cover;
 }
 
 #text {
