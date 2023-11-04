@@ -15,6 +15,7 @@ import "../css/ParaScroll.css"
 import { history } from "../utils/history";
 import IconCount from '../Component/IconCount';
 import Combination3 from '../Component/Combination3';
+// import messageNotice from "../audio/message.mp3";
 
 const consumables = [
   { icon: icon, count: 500 },
@@ -28,6 +29,7 @@ const Department = () => {
     const [isSlideEnd, setIsSlideEnd] = useState(false);
   useEffect(() => {
     let timeoutId;
+    // const audio = new Audio(messageNotice);
     const handleScroll = () => {
       let value = window.scrollY;
 
@@ -54,6 +56,7 @@ const Department = () => {
          timeoutId = setTimeout(() => {
             // 触发向左滑特效
             if(messageRef && messageRef.current && messageRef.current.style) {
+              // audio.play();
               messageRef.current.style.transition = 'all 0.3s';
               messageRef.current.style.transform = 'translateX(-40vw)';
             }

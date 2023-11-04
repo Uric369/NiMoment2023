@@ -36,7 +36,6 @@ const Personal2 = () => {
   const handleClick =()=> {
     if(!isDarkMode){
         console.log(catMode);
-        setCatMode(1);
         console.log(catMode);
         setTimeout(() => {
             setCatMode(2);
