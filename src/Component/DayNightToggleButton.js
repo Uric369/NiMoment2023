@@ -13,7 +13,7 @@ export default function DayNightToggleButton(props) {
 
   return (
       <div className="daynight-toggle-container" style={{ "font-size": size }}>
-        <div className={"components " + `components-${modeClassName} `}>
+        <div className={`components components-${modeClassName} `}>
           <div
             className={
               "main-button " +
@@ -33,9 +33,9 @@ export default function DayNightToggleButton(props) {
               setIsMouseHovering(false);
             }}
           >
-            <div className={"moon " + `moon-${modeClassName}`}></div>
-            <div className={"moon " + `moon-${modeClassName}`}></div>
-            <div className={"moon " + `moon-${modeClassName}`}></div>
+            <div className={`moon moon-${modeClassName}`}></div>
+            <div className={`moon moon-${modeClassName}`}></div>
+            <div className={`moon moon-${modeClassName}`}></div>
           </div>
           <div
             className={
@@ -64,7 +64,7 @@ export default function DayNightToggleButton(props) {
                 : "")
             }
           ></div>
-          <div className={"cloud " + `cloud-${modeClassName}`}>
+          <div className={`cloud cloud-${modeClassName}`}>
             <div
               className={"cloud-son " + (isHovering ? "cloud-son-hover" : "")}
             ></div>
@@ -84,7 +84,7 @@ export default function DayNightToggleButton(props) {
               className={"cloud-son " + (isHovering ? "cloud-son-hover" : "")}
             ></div>
           </div>
-          <div className={"cloud-back " + `cloud-back-${modeClassName}`}>
+          <div className={`cloud-back cloud-back-${modeClassName}`}>
             <div
               className={"cloud-son " + (isHovering ? "cloud-son-2-hover" : "")}
             ></div>
@@ -104,7 +104,7 @@ export default function DayNightToggleButton(props) {
               className={"cloud-son " + (isHovering ? "cloud-son-2-hover" : "")}
             ></div>
           </div>
-          <div className={"stars " + `stars-${modeClassName}`}>
+          <div className={`stars stars-${modeClassName}`}>
             <div className={"star big " + (isHovering ? "star-hover" : "")}>
               <div className="star-son"></div>
               <div className="star-son"></div>

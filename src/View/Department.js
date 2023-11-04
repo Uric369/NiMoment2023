@@ -31,14 +31,16 @@ const Department = () => {
     const handleScroll = () => {
       let value = window.scrollY;
 
-      textRef.current.style.marginTop = value * 1.5 + 'px';
-      leafRef.current.style.top = value * -1.5 + 'px';
-      leafRef.current.style.left = value * 1.5 + 'px';
-      hill5Ref.current.style.left = value * 1.5 + 'px';
-      hill4Ref.current.style.left = value * -1.5 + 'px';
-      hill1Ref.current.style.top = value * 0.5 + 'px';
+      if(textRef && textRef.current && textRef.current.style) textRef.current.style.marginTop = value * 1.5 + 'px';
+      if(leafRef && leafRef.current) {
+        leafRef.current.style.top = value * -1.5 + 'px';
+        leafRef.current.style.left = value * 1.5 + 'px';
+      }
+      if(hill5Ref && hill5Ref.current) hill5Ref.current.style.left = value * 1.5 + 'px';
+      if(hill4Ref && hill4Ref.current) hill4Ref.current.style.left = value * -1.5 + 'px';
+      if(hill1Ref && hill1Ref.current) hill1Ref.current.style.top = value * 0.5 + 'px';
     //   spaceShipRef.current.style.marginTop = value * 0.8 + 'px';
-      if (value  <= 0.8 * window.innerHeight) {
+      if (value  <= 0.8 * window.innerHeight && spaceShipRef && spaceShipRef.current) {
         spaceShipRef.current.style.marginTop = value * 0.8 + 'px';
       }
       
@@ -51,13 +53,17 @@ const Department = () => {
          // 设置一个新的定时器
          timeoutId = setTimeout(() => {
             // 触发向左滑特效
-            messageRef.current.style.transition = 'all 0.3s';
-            messageRef.current.style.transform = 'translateX(-40vw)';
+            if(messageRef && messageRef.current && messageRef.current.style) {
+              messageRef.current.style.transition = 'all 0.3s';
+              messageRef.current.style.transform = 'translateX(-40vw)';
+            }
             console.log('执行特效');
             timeoutId = setTimeout(() => {
-            catRef.current.style.visibility = 'visible';
-            catRef.current.style.transform = 'scale(800%)';
-            catRef.current.style.transition = 'width 0.5s, height 0.5s';
+              if(catRef && catRef.current && catRef.current.style) {
+                catRef.current.style.visibility = 'visible';
+                catRef.current.style.transform = 'scale(800%)';
+                catRef.current.style.transition = 'width 0.5s, height 0.5s';
+              }
             timeoutId = setTimeout(() => {
                 setIsSlideEnd(true);
             }, 300);
@@ -76,9 +82,12 @@ const Department = () => {
     window.addEventListener('scroll', handleScroll);
 
     return () => {
+      if (timeoutId && timeoutId.current) {
+        clearTimeout(timeoutId.current);
+      }
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isPopUpOpen]);
 
   const textRef = React.useRef(null);
   const leafRef = React.useRef(null);
@@ -121,7 +130,7 @@ const Department = () => {
         <img src={hill5} id="hill5" ref={hill5Ref} alt="hill5"/>
         <img src={tree} id="tree" alt="tree"/>
         <img src={ufo} id="spaceShip" ref={spaceShipRef}alt="ufo"/>
-        <h2 id="text" ref={textRef}>NiMoment</h2>
+        <h2 id="text" ref={textRef}>NiMoment飞船正在降落👇</h2>
         <img src={leaf} id="leaf" ref={leafRef} alt="leaf"/>
         <img src={plant} id="plant" alt="plant"/>
       </section>

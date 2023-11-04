@@ -63,7 +63,7 @@ header_demo {
 
 #text {
     position: absolute;
-    font-size: 5em;
+    font-size: 5vh;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
 }
@@ -102,29 +102,34 @@ header_demo {
     top: 20vh; /* 相对于容器顶部的距离 */
     left: 5vw; /* 相对于容器左侧的距离 */
     width: 33.7vw; /* 设置方块的宽度 */
-    height: 36vh; /* 设置方块的高度 */
+    height: 40vh; /* 设置方块的高度 */
     background: url('../img/paraScroll_demo/mission1.png');
-    background-size: cover;
+    background-size: 100% auto;
+    background-repeat: no-repeat; /* 防止背景图片重复 */
   }
 
-.fixed-box2 {
+  .fixed-box2 {
     position: absolute;
     top: 50vh; /* 相对于容器顶部的距离 */
     left: 20vw; /* 相对于容器左侧的距离 */
     width: 45vw; /* 设置方块的宽度 */
-    height: 43vh; /* 设置方块的高度 */
+    height: 43vh; /* 让高度自动适应 */
     background: url('../img/paraScroll_demo/mission2.png');
-    background-size: cover;
-  }
+    background-size: 100% auto;
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+}
+
+
 
   .fixed-box3 {
     position: absolute;
     top: 30vh; /* 相对于容器顶部的距离 */
     left: 60vw; /* 相对于容器左侧的距离 */
     width: 33vw; /* 设置方块的宽度 */
-    height: 36vh; /* 设置方块的高度 */
+    height: 40vh; /* 设置方块的高度 */
     background: url('../img/paraScroll_demo/mission3.png');
-    background-size: cover;
+    background-size: 100% auto;
+    background-repeat: no-repeat; /* 防止背景图片重复 */
   }
 
   .message-box {
