@@ -26,6 +26,18 @@
   color: white;
 }
 
+.personal1_container .title_container_special {
+  position: absolute;
+  top: 10vh; /* 相对于容器顶部的距离 */
+  left: 10vw; /* 相对于容器左侧的距离 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 2.5vh;
+  color: white;
+}
+
+
 /* 图片和标题的样式 */
 .personal1_container .title_container .header {
   display: flex;
@@ -33,7 +45,7 @@
 }
 
 /* 分割线的样式 */
-.personal1_container .title_container .divider {
+.divider {
   width: 100%;  /* 或者其他你想要的宽度 */
   height: 4px;  /* 控制分割线的粗细 */
   background-color: rgb(149, 149, 210);  /* 控制分割线的颜色 */
@@ -47,6 +59,29 @@
     color: white;
     margin-bottom: 1vh;
 }
+
+.personal1_container h3 {
+  font-size: 5vh;
+  color: white;
+  margin-bottom: 1vh;
+}
+
+.personal1_container h4 {
+  font-size: 5vh;
+  color: white;
+  margin-bottom: 1vh;
+  font-style: italic; /* 将文字设置为斜体 */
+}
+
+.personal1_container h5 {
+  font-size: 3vh;
+  color: white;
+  margin-top: 2vh;
+  font-weight: 300;
+  line-height: 2; /* 行间距为文字大小的150% */
+  letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
+}
+
 
 .personal1_container .text_container .content2 {
     position: absolute;

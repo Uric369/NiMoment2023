@@ -91,6 +91,12 @@ header_demo {
     margin-bottom: 10px;
 }
 
+.sec h3 {
+  font-size: 4.5vh;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
 .sec p {
     font-size: 1em;
     color: #fff;

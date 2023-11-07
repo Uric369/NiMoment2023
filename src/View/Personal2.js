@@ -12,6 +12,7 @@ import Combination2 from "../Component/Combination2";
 import ImageTransition from "../Component/ImageTransition";
 import cat1 from "../img/personal2/Meow1.png";
 import cat2 from "../img/personal2/Meow2.png";
+import { history } from "../utils/history";
 
 const progressUpdate = {
     earliest: "2023.01.01 10:00",
@@ -54,6 +55,11 @@ const Personal2 = () => {
     setIsDarkMode(!isDarkMode);
   }
 
+  const handleRouter =()=> {
+    history.push("/Achievement");
+    window.location.reload();
+  }
+  
     return (
       <div 
         className="personal2_container" 
@@ -113,7 +119,7 @@ const Personal2 = () => {
             </div>
         </div>
       </div>
-      <div className="cat_container">
+      <div className="cat_container" onClick={handleRouter}>
       {catMode === 0 && <img style={{width:"20vw"}} src={cat2} alt="cat2"/>}
       {catMode === 1 && <ImageTransition cat1={cat2} cat2={cat1} size={20}/>}
       {catMode === 2 && <img style={{width:"20vw"}} src={cat1} alt="cat1"/>}

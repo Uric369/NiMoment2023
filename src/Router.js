@@ -9,7 +9,11 @@ import { history } from "./utils/history";
 import Department from "./View/Department";
 import Personal1 from "./View/Personal1";
 import Personal2 from "./View/Personal2";
+import Achievement from "./View/Achievement";
 import Entry from "./View/Entry";
+import DepartmentSpecial from "./RetireView/Department";
+import Personal1Special from "./RetireView/Personal1";
+import Personal2Special from "./RetireView/Personal2";
 
 
 
@@ -35,7 +39,11 @@ class MyRouter extends React.Component{
         <Route path="/Department" element={<Department/>} />
         <Route path="/Personal1" element={<Personal1/>} />
         <Route path="/Personal2" element={<Personal2/>} />
-        <Route path="/*" element={<Navigate to="/Department" />} />
+        <Route path="/Achievement" element={<Achievement/>} />
+        <Route path="/DepartmentSpecial" element={<DepartmentSpecial/>} />
+        <Route path="/Personal1Special" element={<Personal1Special/>} />
+        <Route path="/Personal2Special" element={<Personal2Special/>} />
+        {/* <Route path="/*" element={<Navigate to="/Department" />} /> */}
       </Routes>
     </Router>
     </div>

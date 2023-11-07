@@ -1,0 +1,86 @@
+.personal2special_container {
+    /* background-image: url('../img/personal1/BG_stars.png'); 
+    background-size: 100vw 100vh;  */
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+
+  .personal2special_container .title_container {
+    position: absolute;
+    top: 8vh; /* 相对于容器顶部的距离 */
+    left: 10vw; /* 相对于容器左侧的距离 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 2.5vh;
+    color: white;
+  }
+  
+  /* 图片和标题的样式 */
+  .personal2special_container .title_container .header {
+    display: flex;
+    align-items: 'flex-end';
+  }
+
+
+  .personal2special_container .outer_container {
+    position: absolute;
+    top: 15vh; /* 相对于容器顶部的距离 */
+    left: 10vw; /* 相对于容器左侧的距离 */
+    right: 10vw;
+    bottom: 5vh;
+    background-image: url('../img/personal2/Panel.png'); 
+    background-size: 80vw 80vh; 
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .personal2special_container .outer_container .inner_container {
+    position: absolute;
+    top: 5vh; /* 相对于容器顶部的距离 */
+    left: 5vw; /* 相对于容器左侧的距离 */
+    right: 5vw;
+    bottom: 5vh;
+
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container {
+    position: absolute;
+    top:20vh; /* 相对于容器顶部的距离 */
+    bottom: 0vh;
+    width: 100%;
+    background-image: url('../img/personal2/Box.png'); 
+    background-size: cover; 
+    padding-left: -10vw;
+    padding-top: 10vh;
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container  h4{
+    position: absolute;
+    top: 46vh; /* 相对于容器顶部的距离 */
+    left: 10vw;
+    font-size: 4vh;
+    color: white;
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container  h5{
+    position: absolute;
+    top: 19vh; /* 相对于容器顶部的距离 */
+    left: 45vw;
+    font-size: 4vh;
+    color: white;
+  }
+
+
+  .personal2special_container .cat_container {
+    position: absolute;
+    top: 62vh; /* 相对于容器顶部的距离 */
+    left: 81vw; /* 相对于容器左侧的距离 */
+    width: 20vw;
+  }
