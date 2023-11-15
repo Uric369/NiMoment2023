@@ -118,7 +118,7 @@ header_demo {
     position: absolute;
     top: 50vh; /* 相对于容器顶部的距离 */
     left: 20vw; /* 相对于容器左侧的距离 */
-    width: 45vw; /* 设置方块的宽度 */
+    width: 42vw; /* 设置方块的宽度 */
     height: 43vh; /* 让高度自动适应 */
     background: url('../img/paraScroll_demo/mission2.png');
     background-size: 100% auto;
@@ -199,6 +199,7 @@ header_demo {
     position: absolute;
     top: 40%; /* 相对于容器顶部的距离 */
     right: 10%; /* 相对于容器左侧的距离 */
+    bottom: 20%;
     letter-spacing: 2px;
     color: #fff;
     text-align: end;

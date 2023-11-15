@@ -102,11 +102,11 @@ const DepartmentSpecial = () => {
          {isPopUpOpen ? (
         <img className='message-box' style={{ zIndex: 3 }} src={cat} alt="cat"/>
       ) : (
-        <img  className='message-box' style={{ zIndex: 3 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
+        <img  className='message-box' style={{ zIndex: 2 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
       )}
       </div>
         
-        <div className="fixed-box2" style={{zIndex: 3}}>
+        <div className="fixed-box2" style={{zIndex: 1}}>
             <div style={{
                 display: 'flex',
                 position: 'absolute',

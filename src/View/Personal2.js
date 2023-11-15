@@ -104,7 +104,9 @@ const Personal2 = () => {
                 <div style={{ display: 'flex', flexDirection: 'column',marginLeft: '5vw'  }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '50%', marginRight: 'auto'}}>
         {consumables.slice(0, 2).map((data, index) => (
-            <IconCount key={index} icon={data.icon} count={data.count} height={8}/>
+                    <div style={{ marginRight: '2vw' }}>
+                    <IconCount key={index} icon={data.icon} count={data.count} height={8}/>
+                </div>
         ))}
     </div>
 

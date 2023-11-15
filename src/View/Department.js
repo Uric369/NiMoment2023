@@ -141,10 +141,10 @@ const Department = () => {
       <section class="sec">
         <h2>2023年度，NIMO......</h2>
         <img className="cat box-2" ref={catRef} src={cat} alt="cat"/>
-        <div className='fixed-box1'>
-            <img className="icon-div1" style={{zIndex: 2}} src={icon} alt="icon"/>
-            <div className="text-div1">
-            <Combination3 text1="处理请求" count={1000} text2="个" />
+        <div className='fixed-box1' style={{zIndex: 3}} >
+            <img className="icon-div1" style={{zIndex: 3}} src={icon} alt="icon"/>
+            <div className="text-div1" style={{zIndex: 3}}>
+            <Combination3 text1="处理请求"   count={1000} text2="个" />
             </div>
         </div>
 
@@ -152,17 +152,18 @@ const Department = () => {
          {isPopUpOpen ? (
         <img className='message-box' style={{ zIndex: 3 }} src={cat} alt="cat"/>
       ) : (
-        <img  className='message-box' style={{ zIndex: 3 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
+        <img  className='message-box' style={{ zIndex: 2 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
       )}
       </div>
         
-        <div className="fixed-box2" style={{zIndex: 3}}>
+        <div className="fixed-box2" style={{zIndex: 1}}>
             <div style={{
                 display: 'flex',
                 position: 'absolute',
                 top: '30%',
                 left: '70%',
-                height: '30%'
+                height: '30%',
+                zIndex:1,
             }}>
                 <div>
                   {consumables.map((data, index) => (
@@ -177,7 +178,7 @@ const Department = () => {
             </div>
         </div>
         <div className="fixed-box3">
-            <img className="icon-div1" style={{zIndex: 2}} src={icon} alt="icon"/>
+            <img className="icon-div1" style={{zIndex: 1}} src={icon} alt="icon"/>
             <div className="text-div1">
                 <div>
                 <Combination3 text1="通过新开网审批" count={1000} text2="个" />

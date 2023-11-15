@@ -16,11 +16,9 @@ import { history } from "../utils/history";
 import Combination4 from "../Component/Combination4";
 import Combination5 from "../Component/Combination5";
 import profileImg from "../img/Personal2Special/profile.png";
+import baoxiuBG from "../img/Personal2Special/cat1.png";
+import renBG from "../img/Personal2Special/cat2.png";
 
-const progressUpdate = {
-    earliest: "2023.01.01 10:00",
-    latest: "2023.07.23 23:59",
-}
 
 const common = {
     building: "D23",
@@ -81,6 +79,19 @@ const Personal2Special = () => {
                 <Combination4 key={index} item={info.item} content={info.content} />
               ))}
             </div>
+            <div style={{marginLeft:"10vw"}}>
+            <IconTitle icon={titleIcon} text={"累计霍霍器材"}/>
+            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+    {consumables.slice(0, 2).map((data, index) => (
+        <div style={{ marginRight: '2vw' }}>
+            <IconCount key={index} icon={data.icon} count={data.count} height={8}/>
+        </div>
+    ))}
+</div>
+    <div>
+        <IconCount icon={consumables[2].icon} count={consumables[2].count} height={8}/>
+    </div>
+            </div>
             
 
             <div className="inner_bottom_container">
@@ -92,6 +103,19 @@ const Personal2Special = () => {
             ))}
             </div>
             </div>
+            <div >
+                <div style={{position:"absolute", top:"10vh", left:"30vw"}}>
+                <IconTitle icon={titleIcon} text={"报修最常去的楼栋"} isMargin={false}/>
+                <img style={{width:"40vw"}} src={baoxiuBG}/>
+                <h style={{position:"absolute", top:"12vh", left:"9vw",fontSize:"4vh"}}>{common.building}</h> 
+                </div>
+                
+                <div style={{position:"absolute", top:"32vh", left:"30vw"}}>
+                <IconTitle icon={titleIcon} text={"报修最常一起去的人"} isMargin={false}/>
+                <img style={{width:"30vw"}} src={renBG}/>
+                <h style={{position:"absolute", top:"14vh", left:"7vw",fontSize:"4vh"}}>{common.colleague}</h> 
+                </div>
+                </div>
             </div>
         </div>
       </div>
@@ -99,6 +123,7 @@ const Personal2Special = () => {
       <ImageTransition cat1={cat1} cat2={cat2} size={20}/>
       </div>
       </div>
+      
     );
 };
   

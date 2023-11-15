@@ -59,9 +59,13 @@
     background-size: cover; 
     padding-left: -10vw;
     padding-top: 10vh;
+    /* added */
+    /* display: flex; */
   }
 
-  .personal2_container .outer_container .inner_container .inner_bottom_container  h4{
+
+
+  .personal2_container .outer_container .inner_container h4{
     position: absolute;
     top: 46vh; /* 相对于容器顶部的距离 */
     left: 10vw;
@@ -69,7 +73,7 @@
     color: white;
   }
 
-  .personal2_container .outer_container .inner_container .inner_bottom_container  h5{
+  .personal2_container .outer_container .inner_container  h5{
     position: absolute;
     top: 19vh; /* 相对于容器顶部的距离 */
     left: 45vw;

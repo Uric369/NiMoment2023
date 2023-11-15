@@ -55,10 +55,11 @@
     top:20vh; /* 相对于容器顶部的距离 */
     bottom: 0vh;
     width: 100%;
-    background-image: url('../img/personal2/Box.png'); 
+    background-image: url('../img/Personal2Special/spliter_2.png'); 
     background-size: cover; 
     padding-left: -10vw;
     padding-top: 10vh;
+    display: flex;
   }
 
   .personal2special_container .outer_container .inner_container .inner_bottom_container  h4{
@@ -83,4 +84,12 @@
     top: 62vh; /* 相对于容器顶部的距离 */
     left: 81vw; /* 相对于容器左侧的距离 */
     width: 20vw;
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiuBG {
+    position: absolute;
+    top: 19vh; /* 相对于容器顶部的距离 */
+    left: 45vw;
+    background-image: url('../img/Personal2Special/cat1.png'); 
+    background-size: cover; 
   }
