@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Navigate,
   Route,
-  Routes
+  Routes,
 } from "react-router-dom";
 import { history } from "./utils/history";
 import Department from "./View/Department";
@@ -14,41 +14,38 @@ import Entry from "./View/Entry";
 import DepartmentSpecial from "./RetireView/Department";
 import Personal1Special from "./RetireView/Personal1";
 import Personal2Special from "./RetireView/Personal2";
+import Login from "./View/Login";
 
-
-
-class MyRouter extends React.Component{
-  
-
+class MyRouter extends React.Component {
   constructor(props) {
-            super(props);
-    
-            history.listen((location, action) => {
-                // clear alert on location change
-                console.log(location,action);
-            });
-        }
+    super(props);
 
-  render(){
+    history.listen((location, action) => {
+      // clear alert on location change
+      console.log(location, action);
+    });
+  }
 
-    return(
+  render() {
+    return (
       <div>
-    <Router history={history}>
-      <Routes>
-        <Route path="/" element={<Entry />} />
-        <Route path="/Department" element={<Department/>} />
-        <Route path="/Personal1" element={<Personal1/>} />
-        <Route path="/Personal2" element={<Personal2/>} />
-        <Route path="/Achievement" element={<Achievement/>} />
-        <Route path="/DepartmentSpecial" element={<DepartmentSpecial/>} />
-        <Route path="/Personal1Special" element={<Personal1Special/>} />
-        <Route path="/Personal2Special" element={<Personal2Special/>} />
-        {/* <Route path="/*" element={<Navigate to="/Department" />} /> */}
-      </Routes>
-    </Router>
-    </div>
+        <Router history={history}>
+          <Routes>
+            <Route path="/" element={<Entry />} />
+            <Route path="/Department" element={<Department />} />
+            <Route path="/Personal1" element={<Personal1 />} />
+            <Route path="/Personal2" element={<Personal2 />} />
+            <Route path="/Achievement" element={<Achievement />} />
+            <Route path="/DepartmentSpecial" element={<DepartmentSpecial />} />
+            <Route path="/Personal1Special" element={<Personal1Special />} />
+            <Route path="/Personal2Special" element={<Personal2Special />} />
+            {/* <Route path="/*" element={<Navigate to="/Department" />} /> */}
+            <Route path="/auth/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </div>
     );
-  };
+  }
 }
 
 export default MyRouter;
