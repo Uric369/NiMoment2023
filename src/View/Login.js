@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getCurUser } from "../utils/api";
+import { getCurrentUser } from "../apis";
 
 const Login = ({ next_url } = { next_url: "" }) => {
   const [user, setUser] = useState(null);
 
   // TODO: change me to configurable
   useEffect(() => {
-    getCurUser().then((resp) => {
+    getCurrentUser().then((resp) => {
       setUser(resp?.info?.name);
     });
   }, []);

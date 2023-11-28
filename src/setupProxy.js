@@ -8,4 +8,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    "/nimoment",
+    createProxyMiddleware({
+      target: "https://nimo.sjtu.edu.cn",
+      changeOrigin: true,
+    })
+  );
 };
