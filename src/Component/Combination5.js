@@ -28,7 +28,7 @@ const Combination5 = ({ text1, count, text2 }) => {
           {text1}
         </strong>
       )}
-      {count && (
+      {count !== undefined && (
         <span
           style={{
             fontSize: isMobile ? "1.5vh" : "3vh",
