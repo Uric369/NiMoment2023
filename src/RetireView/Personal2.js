@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import DayNightToggleButton from "../Component/DayNightToggleButton";
 import "../css/Personal2Special.css";
 import BG1 from "../img/personal2/BG1.png";
@@ -22,35 +22,138 @@ import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
 
+import { dataFormatter } from "../utils/dataFormat";
+import {
+  nimoerApi,
+  personalStatsFieldApi,
+  personalStatsOfficeApi,
+  personalStatsGeneralApi,
+  getRequest,
+} from "../apis";
+
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
-const common = {
-  building: "D23",
-  colleague: "Meow",
+
+const defaultProfileInfo = {
+  name: "管网部 · 暗夜骑士",
+  checkinDate: "...",
+  retirementDate: "...",
 };
 
-const consumables = [
-  { icon: icon, count: 500 },
-  { icon: icon, count: 300 },
-  { icon: icon, count: 200 },
-];
+function formatProfileInfo(profile) {
+  return dataFormatter(
+    profile,
+    "content",
+    ["name", "checkinDate", "retirementDate"],
+    [{ item: "身份认证" }, { item: "入职时间" }, { item: "退休时间" }]
+  );
+}
 
-const profileInfo = [
-  { item: "身份认证", content: "在职网管 · 胡彤" },
-  { item: "入职时间", content: "2023.10.01" },
-  { item: "退休时间", content: "2023.10.01" },
-];
+const defaultConsumables = {
+  numKeystonJacks: "...",
+  numConnectors: "...",
+  numPlates: "...",
+};
 
-const statistics = [
-  { text1: "值班", count: "100", text2: "次" },
-  { text1: "出报修", count: "100", text2: "次" },
-  { text1: "留下进展记录", count: "100", text2: "条" },
-  { text1: "你所在的值班共接到电话", count: "100", text2: "个" },
-  { text1: "你所在的值班共分配 IP ", count: "100", text2: "个" },
-  { text1: "你所在的值班共更换 MAC ", count: "100", text2: "个" },
-];
+function formatPersonalConsumables(consumables) {
+  return dataFormatter(
+    consumables,
+    "count",
+    ["numKeystonJacks", "numConnectors", "numPlates"],
+    [{ icon: icon }, { icon: icon }, { icon: icon }]
+  );
+}
+
+const defaultGeneralStats = {
+  office: 0,
+  field: 0,
+  numNewProgresses: 0,
+  numApDebugs: 0,
+};
+
+const defaultOfficeStats = {
+  numIncomingCalls: 0,
+  numIpAllocs: 0,
+  numMacUpdates: 0,
+  numVisitors: 0,
+};
+
+function formatStatistics(stats) {
+  return dataFormatter(
+    stats,
+    "count",
+    [
+      "office",
+      "field",
+      "numNewProgresses",
+      "numIncomingCalls",
+      "numIpAllocs",
+      "numMacUpdates",
+    ],
+    [
+      { text1: "值班", text2: "次" },
+      { text1: "出报修", text2: "次" },
+      { text1: "留下进展记录", text2: "条" },
+      { text1: "你所在的值班共接到电话", text2: "个" },
+      { text1: "你所在的值班共分配 IP ", text2: "个" },
+      { text1: "你所在的值班共更换 MAC ", text2: "个" },
+    ]
+  );
+}
+
+const defaultHifrequencies = {
+  building: "...",
+  colleague: "...",
+};
 
 const Personal2Special = () => {
+  const [profileInfo, setProfileInfo] = useState(defaultProfileInfo);
+  const [consumables, setConsumables] = useState(defaultConsumables);
+  const [statistics, setStatistics] = useState(defaultGeneralStats);
+  const [hifrequencies, setHifrequencies] = useState(defaultHifrequencies);
   const containerRef = useRef();
+
+  useEffect(() => {
+    getRequest(nimoerApi, (res) => {
+      const data = res.data;
+      setProfileInfo((prev) => {
+        return {
+          ...prev,
+          name: `退休网管 · ${data.name}`,
+        };
+      });
+    });
+    getRequest(personalStatsGeneralApi, (res) => {
+      const data = res.data;
+      setStatistics((prev) => {
+        return {
+          ...prev,
+          office: data.office,
+          field: data.field,
+          numNewProgresses: data.numNewProgresses,
+        };
+      });
+    });
+    getRequest(personalStatsOfficeApi, (res) => {
+      const data = res.data;
+      setStatistics((prev) => {
+        return {
+          ...prev,
+          numIncomingCalls: data.numIncomingCalls,
+          numIpAllocs: data.numIpAllocs,
+          numMacUpdates: data.numMacUpdates,
+        };
+      });
+    });
+    getRequest(personalStatsFieldApi, (res) => {
+      const data = res.data;
+      setConsumables(data.personalConsumables);
+      setHifrequencies({
+        building: data.topDormBuilding,
+        colleague: data.topColleague.name,
+      });
+    });
+  }, []);
+
   const handleRouter = () => {
     history.push("/Achievement");
     window.location.reload();
@@ -98,7 +201,7 @@ const Personal2Special = () => {
           />
           <div>
             <p>&gt;&gt;&gt; </p>
-            {profileInfo.map((info, index) => (
+            {formatProfileInfo(profileInfo).map((info, index) => (
               <Combination4
                 key={index}
                 item={info.item}
@@ -110,21 +213,23 @@ const Personal2Special = () => {
             <div style={{ marginLeft: "10vw" }}>
               <IconTitle icon={titleIcon} text={"累计霍霍器材"} />
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                {consumables.slice(0, 2).map((data, index) => (
-                  <div style={{ marginRight: "2vw" }}>
-                    <IconCount
-                      key={index}
-                      icon={data.icon}
-                      count={data.count}
-                      height={4}
-                    />
-                  </div>
-                ))}
+                {formatPersonalConsumables(consumables)
+                  .slice(0, 2)
+                  .map((data, index) => (
+                    <div style={{ marginRight: "2vw" }}>
+                      <IconCount
+                        key={index}
+                        icon={data.icon}
+                        count={data.count}
+                        height={4}
+                      />
+                    </div>
+                  ))}
               </div>
               <div>
                 <IconCount
-                  icon={consumables[2].icon}
-                  count={consumables[2].count}
+                  icon={formatPersonalConsumables(consumables)[2].icon}
+                  count={formatPersonalConsumables(consumables)[2].count}
                   height={4}
                 />
               </div>
@@ -137,7 +242,7 @@ const Personal2Special = () => {
                 &gt;&gt;&gt; NIMO@localhost: loading log......
               </p>
               <div style={{ lineHeight: "1.7" }}>
-                {statistics.map((stat, index) => (
+                {formatStatistics(statistics).map((stat, index) => (
                   <Combination5
                     key={index}
                     text1={stat.text1}
@@ -172,7 +277,7 @@ const Personal2Special = () => {
                     fontSize: isMobile ? "2vh" : "4vh",
                   }}
                 >
-                  {common.building}
+                  {hifrequencies.building}
                 </h>
               </div>
 
@@ -200,7 +305,7 @@ const Personal2Special = () => {
                     fontSize: isMobile ? "2vh" : "4vh",
                   }}
                 >
-                  {common.colleague}
+                  {hifrequencies.colleague}
                 </h>
               </div>
               {isMobile && (
@@ -209,21 +314,23 @@ const Personal2Special = () => {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    {consumables.slice(0, 2).map((data, index) => (
-                      <div style={{ marginRight: "2vw" }}>
-                        <IconCount
-                          key={index}
-                          icon={data.icon}
-                          count={data.count}
-                          height={10}
-                        />
-                      </div>
-                    ))}
+                    {formatPersonalConsumables(consumables)
+                      .slice(0, 2)
+                      .map((data, index) => (
+                        <div style={{ marginRight: "2vw" }}>
+                          <IconCount
+                            key={index}
+                            icon={data.icon}
+                            count={data.count}
+                            height={10}
+                          />
+                        </div>
+                      ))}
                   </div>
                   <div>
                     <IconCount
-                      icon={consumables[2].icon}
-                      count={consumables[2].count}
+                      icon={formatPersonalConsumables(consumables)[2].icon}
+                      count={formatPersonalConsumables(consumables)[2].count}
                       height={10}
                     />
                   </div>

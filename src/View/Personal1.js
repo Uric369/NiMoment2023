@@ -99,10 +99,10 @@ function formatGeneralStats(generalStats) {
 }
 
 const defaultOfficeStats = {
-  numIncomingCalls: 35,
-  numIpAllocs: 87,
+  numIncomingCalls: 0,
+  numIpAllocs: 0,
   numMacUpdates: 0,
-  numVisitors: 10,
+  numVisitors: 0,
 };
 
 function formatOfficeStats(officeStats) {
