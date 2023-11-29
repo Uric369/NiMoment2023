@@ -10,37 +10,113 @@ import planet4 from "../img/cover/planet4.png";
 import rocket from "../img/cover/rocket.png";
 import NiMoment from "../img/cover/NiMoment.png";
 import Typewriter from "../Component/TypeWriter";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { nimoerApi, getRequest } from "../apis";
-import { padNimoerId } from "../utils/dataFormat";
-
-const defaultNimoerInfo = {
-  id: 0,
-  name: "",
-};
+import { formatDate, padNimoerId } from "../utils/dataFormat";
+import { setNimoerInfo, setIsRetired } from "../features/nimoerReducer";
+import {
+  setDepartmentStats,
+  setPersonalStatsGeneral,
+  setPersonalStatsOffice,
+  setPersonalStatsConsumables,
+  setPersonalStatsProgressUpdates,
+  setPersonalStatsHiFrequencies,
+} from "../features/statsReducer";
+import {
+  getRequest,
+  nimoerApi,
+  departmentStatsApi,
+  personalStatsGeneralApi,
+  personalStatsOfficeApi,
+  personalStatsProgressApi,
+  personalStatsFieldApi,
+} from "../apis";
 
 function Entry() {
   const sceneRef = useRef(null);
   const [animateText, setAnimateText] = useState(false);
-  const [nimoerInfo, setNimoerInfo] = useState(defaultNimoerInfo);
-  const [isRetired, setIsRetired] = useState(false);
   const navigate = useNavigate();
 
-  // get nimoer info
-  useEffect(() => {
+  const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
+  const isRetired = useSelector((state) => state.nimoer.retired);
+  const dispatch = useDispatch();
+
+  function prefetchEverything() {
+    // prefetch all data
     getRequest(
       nimoerApi,
       (data) => {
         const { id, name, isRetired } = data.data;
-        setNimoerInfo({ id, name });
-        setIsRetired(isRetired);
+        dispatch(setNimoerInfo({ id, name }));
+        dispatch(setIsRetired(isRetired));
       },
       (error) => {
         console.error(error);
-        setNimoerInfo(defaultNimoerInfo);
-        setIsRetired(false);
+        dispatch(setNimoerInfo({ id: 0, name: "全校断网" }));
+        dispatch(setIsRetired(true));
       }
     );
+    getRequest(
+      departmentStatsApi,
+      (res) => {
+        dispatch(setDepartmentStats(res.data));
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    getRequest(
+      personalStatsGeneralApi,
+      (res) => {
+        dispatch(setPersonalStatsGeneral(res.data));
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    getRequest(
+      personalStatsOfficeApi,
+      (res) => {
+        dispatch(setPersonalStatsOffice(res.data));
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    getRequest(
+      personalStatsProgressApi,
+      (res) => {
+        dispatch(
+          setPersonalStatsProgressUpdates({
+            earliest: formatDate(res.data.earliestProgress),
+            latest: formatDate(res.data.latestProgress),
+          })
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    getRequest(
+      personalStatsFieldApi,
+      (res) => {
+        dispatch(setPersonalStatsConsumables(res.data.personalConsumables));
+        dispatch(
+          setPersonalStatsHiFrequencies({
+            building: res.data.topDormBuilding,
+            colleague: res.data.topColleague.name,
+          })
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  // get nimoer info
+  useEffect(() => {
+    prefetchEverything();
   }, []);
 
   useEffect(() => {

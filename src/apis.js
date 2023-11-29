@@ -1,4 +1,4 @@
-const nimomentUrlBase = "https://nimo.sjtu.edu.cn/nimoment/api";
+const nimomentUrlBase = "http://localhost:3000/nimoment/api";
 export const nimoerApi = `${nimomentUrlBase}/nimoer`;
 export const departmentStatsApi = `${nimomentUrlBase}/department`;
 export const personalStatsGeneralApi = `${nimomentUrlBase}/stats_general`;

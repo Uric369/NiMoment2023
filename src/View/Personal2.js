@@ -21,23 +21,9 @@ import {
   personalStatsFieldApi,
   getRequest,
 } from "../apis";
+import { useSelector } from "react-redux";
 import { formatDate, dataFormatter } from "../utils/dataFormat";
-
-const defaultProgressUpdate = {
-  earliest: "--:--",
-  latest: "--:--",
-};
-
-const defaultHifrequencies = {
-  building: "",
-  colleague: "",
-};
-
-const defaultConsumables = {
-  numKeystonJacks: 0,
-  numConnectors: 0,
-  numPlates: 0,
-};
+import { useNavigate } from "react-router-dom";
 
 function formatPersonalConsumables(consumables) {
   return dataFormatter(
@@ -53,27 +39,15 @@ const Personal2 = () => {
   const [catMode, setCatMode] = useState(0);
   const containerRef = useRef();
 
-  const [progressUpdate, setProgressUpdate] = useState(defaultProgressUpdate);
-  const [hifrequencies, setHifrequencies] = useState(defaultHifrequencies);
-  const [consumables, setConsumables] = useState(defaultConsumables);
-
-  useEffect(() => {
-    getRequest(personalStatsProgressApi, (res) => {
-      const data = res.data;
-      setProgressUpdate({
-        earliest: formatDate(new Date(data.earliestProgress)),
-        latest: formatDate(new Date(data.latestProgress)),
-      });
-    });
-    getRequest(personalStatsFieldApi, (res) => {
-      const data = res.data;
-      setConsumables(data.personalConsumables);
-      setHifrequencies({
-        building: data.topDormBuilding,
-        colleague: data.topColleague.name,
-      });
-    });
-  }, []);
+  const progressUpdate = useSelector(
+    (state) => state.stats.personalStats.progressUpdates
+  );
+  const consumables = useSelector(
+    (state) => state.stats.personalStats.consumables
+  );
+  const hifrequencies = useSelector(
+    (state) => state.stats.personalStats.hiFrequencies
+  );
 
   const handleClick = () => {
     if (!isDarkMode) {
@@ -95,9 +69,10 @@ const Personal2 = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const navigate = useNavigate();
+
   const handleRouter = () => {
-    history.push("/Achievement");
-    window.location.reload();
+    navigate("/Achievement");
   };
 
   const onClick = () => {

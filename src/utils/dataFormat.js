@@ -20,6 +20,10 @@ function zeroPadToTwoDigits(num) {
 }
 
 export function formatDate(date) {
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+
   const year = date.getFullYear();
   const month = zeroPadToTwoDigits(date.getMonth() + 1);
   const day = zeroPadToTwoDigits(date.getDate());

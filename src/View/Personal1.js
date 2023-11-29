@@ -36,6 +36,8 @@ import {
   personalStatsGeneralApi,
   getRequest,
 } from "../apis";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -98,13 +100,6 @@ function formatGeneralStats(generalStats) {
   );
 }
 
-const defaultOfficeStats = {
-  numIncomingCalls: 0,
-  numIpAllocs: 0,
-  numMacUpdates: 0,
-  numVisitors: 0,
-};
-
 function formatOfficeStats(officeStats) {
   return dataFormatter(
     officeStats,
@@ -131,15 +126,14 @@ const dashedLine = [
   { x: 85, y: 70 },
 ];
 
-const handleClick = () => {
-  history.push("/Personal2"); // 当组件被点击时，跳转到/Personal2路径
-  window.location.reload();
-};
-
 const Personal1 = () => {
-  const [nimoerInfo, setNimoerInfo] = useState(defaultNimoer);
-  const [generalStats, setGeneralStats] = useState(defaultGeneralStats);
-  const [officeStats, setOfficeStats] = useState(defaultOfficeStats);
+  const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
+  const officeStats = useSelector((state) => state.stats.personalStats.office);
+  const generalStats = useSelector(
+    (state) => state.stats.personalStats.general
+  );
+
+  const navigate = useNavigate();
 
   const containerRef = useRef();
   const onClick = () => {
@@ -148,6 +142,9 @@ const Personal1 = () => {
         saveAs(blob, "page.png");
       });
     });
+  };
+  const handleClick = () => {
+    navigate("/Personal1");
   };
 
   return (

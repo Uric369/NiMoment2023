@@ -12,6 +12,8 @@ import cat from "../img/paraScroll_demo/cat.png";
 import icon from "../img/paraScroll_demo/ICON.png";
 import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css";
+import { history } from "../utils/history";
+import { useNavigate } from "react-router-dom";
 import IconCount from "../Component/IconCount";
 import Combination3 from "../Component/Combination3";
 import { useNavigate } from "react-router-dom";
@@ -21,18 +23,8 @@ import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
 import { history } from "../utils/history";
 // import messageNotice from "../audio/message.mp3";
-import { departmentStatsApi, getRequest } from "../apis";
+import { useSelector } from "react-redux";
 import { dataFormatter } from "../utils/dataFormat";
-
-const defaultDepartmentStats = {
-  numRequests: 0,
-  numAuditions: 0,
-  consumables: {
-    numKeystonJacks: 0,
-    numConnectors: 0,
-    numPlates: 0,
-  },
-};
 
 function formatConsumables(consumables) {
   return dataFormatter(
@@ -54,25 +46,8 @@ function sumConsumables(consumables) {
 const Department = () => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isSlideEnd, setIsSlideEnd] = useState(false);
+  const departmentStats = useSelector((state) => state.stats.departmentStats);
   const navigate = useNavigate();
-  const containerRef = useRef();
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const [departmentStats, setDepartmentStats] = useState(
-    defaultDepartmentStats
-  );
-
-  useEffect(() => {
-    getRequest(
-      departmentStatsApi,
-      (data) => {
-        setDepartmentStats(data.data);
-      },
-      (error) => {
-        console.error(error);
-        setDepartmentStats(defaultDepartmentStats);
-      }
-    );
-  }, []);
 
   useEffect(() => {
     let timeoutId;
