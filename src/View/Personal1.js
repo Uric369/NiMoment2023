@@ -144,7 +144,7 @@ const Personal1 = () => {
     });
   };
   const handleClick = () => {
-    navigate("/Personal1");
+    navigate("/Personal2");
   };
 
   return (
