@@ -49,9 +49,9 @@ function formatProfileInfo(profile) {
 }
 
 const defaultConsumables = {
-  numKeystonJacks: "...",
-  numConnectors: "...",
-  numPlates: "...",
+  numKeystonJacks: 0,
+  numConnectors: 0,
+  numPlates: 0,
 };
 
 function formatPersonalConsumables(consumables) {
@@ -67,14 +67,9 @@ const defaultGeneralStats = {
   office: 0,
   field: 0,
   numNewProgresses: 0,
-  numApDebugs: 0,
-};
-
-const defaultOfficeStats = {
   numIncomingCalls: 0,
   numIpAllocs: 0,
   numMacUpdates: 0,
-  numVisitors: 0,
 };
 
 function formatStatistics(stats) {
@@ -101,8 +96,8 @@ function formatStatistics(stats) {
 }
 
 const defaultHifrequencies = {
-  building: "...",
-  colleague: "...",
+  building: "",
+  colleague: "",
 };
 
 const Personal2Special = () => {

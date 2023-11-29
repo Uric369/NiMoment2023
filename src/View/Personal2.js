@@ -29,14 +29,14 @@ const defaultProgressUpdate = {
 };
 
 const defaultHifrequencies = {
-  building: "...",
-  colleague: "...",
+  building: "",
+  colleague: "",
 };
 
 const defaultConsumables = {
-  numKeystonJacks: "...",
-  numConnectors: "...",
-  numPlates: "...",
+  numKeystonJacks: 0,
+  numConnectors: 0,
+  numPlates: 0,
 };
 
 function formatPersonalConsumables(consumables) {

@@ -121,7 +121,7 @@ function formatOfficeStats(officeStats) {
 
 const defaultNimoer = {
   id: 0,
-  name: "暗夜骑士",
+  name: "",
 };
 
 const dashedLine = [

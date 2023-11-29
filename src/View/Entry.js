@@ -16,7 +16,7 @@ import { padNimoerId } from "../utils/dataFormat";
 
 const defaultNimoerInfo = {
   id: 0,
-  name: "暗夜骑士",
+  name: "",
 };
 
 function Entry() {
