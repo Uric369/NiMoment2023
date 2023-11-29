@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import DayNightToggleButton from "../Component/DayNightToggleButton";
 import "../css/Personal2.css";
 import BG1 from "../img/personal2/BG1.png";
@@ -16,27 +16,65 @@ import { history } from "../utils/history";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
+import {
+  personalStatsProgressApi,
+  personalStatsFieldApi,
+  getRequest,
+} from "../apis";
+import { formatDate, dataFormatter } from "../utils/dataFormat";
 
-const progressUpdate = {
-  earliest: "2023.01.01 10:00",
-  latest: "2023.07.23 23:59",
+const defaultProgressUpdate = {
+  earliest: "--:--",
+  latest: "--:--",
 };
 
-const common = {
-  building: "D23",
-  colleague: "Meow",
+const defaultHifrequencies = {
+  building: "...",
+  colleague: "...",
 };
 
-const consumables = [
-  { icon: icon, count: 500 },
-  { icon: icon, count: 300 },
-  { icon: icon, count: 200 },
-];
+const defaultConsumables = {
+  numKeystonJacks: "...",
+  numConnectors: "...",
+  numPlates: "...",
+};
+
+function formatPersonalConsumables(consumables) {
+  return dataFormatter(
+    consumables,
+    "count",
+    ["numKeystonJacks", "numConnectors", "numPlates"],
+    [{ icon: icon }, { icon: icon }, { icon: icon }]
+  );
+}
 
 const Personal2 = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [catMode, setCatMode] = useState(0);
   const containerRef = useRef();
+
+  const [progressUpdate, setProgressUpdate] = useState(defaultProgressUpdate);
+  const [hifrequencies, setHifrequencies] = useState(defaultHifrequencies);
+  const [consumables, setConsumables] = useState(defaultConsumables);
+
+  useEffect(() => {
+    getRequest(personalStatsProgressApi, (res) => {
+      const data = res.data;
+      setProgressUpdate({
+        earliest: formatDate(new Date(data.earliestProgress)),
+        latest: formatDate(new Date(data.latestProgress)),
+      });
+    });
+    getRequest(personalStatsFieldApi, (res) => {
+      const data = res.data;
+      setConsumables(data.personalConsumables);
+      setHifrequencies({
+        building: data.topDormBuilding,
+        colleague: data.topColleague.name,
+      });
+    });
+  }, []);
+
   const handleClick = () => {
     if (!isDarkMode) {
       console.log(catMode);
@@ -153,30 +191,32 @@ const Personal2 = () => {
                     marginRight: "auto",
                   }}
                 >
-                  {consumables.slice(0, 2).map((data, index) => (
-                    <div style={{ marginRight: "2vw" }}>
-                      <IconCount
-                        key={index}
-                        icon={data.icon}
-                        count={data.count}
-                        height={4}
-                      />
-                    </div>
-                  ))}
+                  {formatPersonalConsumables(consumables)
+                    .slice(0, 2)
+                    .map((data, index) => (
+                      <div style={{ marginRight: "2vw" }}>
+                        <IconCount
+                          key={index}
+                          icon={data.icon}
+                          count={data.count}
+                          height={4}
+                        />
+                      </div>
+                    ))}
                 </div>
 
                 <div>
                   <IconCount
-                    icon={consumables[2].icon}
-                    count={consumables[2].count}
+                    icon={formatPersonalConsumables(consumables)[2].icon}
+                    count={formatPersonalConsumables(consumables)[2].count}
                     height={4}
                   />
                 </div>
               </div>
 
               <IconTitle icon={titleIcon} text={"报修最常去的楼栋"} />
-              <h4>{common.building}</h4>
-              <h5>{common.colleague}</h5>
+              <h4>{hifrequencies.building}</h4>
+              <h5>{hifrequencies.colleague}</h5>
             </div>
           </div>
         </div>
