@@ -21,18 +21,8 @@ import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
 import { useNavigate } from "react-router-dom";
 // import messageNotice from "../audio/message.mp3";
-import { departmentStatsApi, getRequest } from "../apis";
 import { dataFormatter } from "../utils/dataFormat";
-
-const defaultDepartmentStats = {
-  numRequests: 0,
-  numAuditions: 0,
-  consumables: {
-    numKeystonJacks: 0,
-    numConnectors: 0,
-    numPlates: 0,
-  },
-};
+import { useSelector } from "react-redux";
 
 function formatConsumables(consumables) {
   return dataFormatter(
@@ -54,9 +44,6 @@ function sumConsumables(consumables) {
 const DepartmentSpecial = () => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isSlideEnd, setIsSlideEnd] = useState(false);
-  const [departmentStats, setDepartmentStats] = useState(
-    defaultDepartmentStats
-  );
   const containerRef = useRef();
   const navigate = useNavigate();
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -67,18 +54,7 @@ const DepartmentSpecial = () => {
   const hill5Ref = React.useRef(null);
   const spaceShipRef = React.useRef(null);
 
-  useEffect(() => {
-    getRequest(
-      departmentStatsApi,
-      (data) => {
-        setDepartmentStats(data.data);
-      },
-      (error) => {
-        console.error(error);
-        setDepartmentStats(defaultDepartmentStats);
-      }
-    );
-  }, []);
+  const departmentStats = useSelector((state) => state.stats.departmentStats);
 
   useEffect(() => {
     let timeoutId;

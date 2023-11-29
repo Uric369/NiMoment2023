@@ -38,7 +38,7 @@ function Entry() {
   const navigate = useNavigate();
 
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
-  const isRetired = useSelector((state) => state.nimoer.retired);
+  const isRetired = useSelector((state) => state.nimoer.isRetired);
   const dispatch = useDispatch();
 
   function prefetchEverything() {

@@ -31,6 +31,9 @@ import {
   getRequest,
 } from "../apis";
 
+import { useSelector } from "react-redux";
+import { dataFormatter } from "../utils/dataFormat";
+
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
 const defaultProfileInfo = {
@@ -47,12 +50,6 @@ function formatProfileInfo(profile) {
     [{ item: "身份认证" }, { item: "入职时间" }, { item: "退休时间" }]
   );
 }
-
-const defaultConsumables = {
-  numKeystonJacks: 0,
-  numConnectors: 0,
-  numPlates: 0,
-};
 
 function formatPersonalConsumables(consumables) {
   return dataFormatter(
@@ -101,54 +98,6 @@ const defaultHifrequencies = {
 };
 
 const Personal2Special = () => {
-  const [profileInfo, setProfileInfo] = useState(defaultProfileInfo);
-  const [consumables, setConsumables] = useState(defaultConsumables);
-  const [statistics, setStatistics] = useState(defaultGeneralStats);
-  const [hifrequencies, setHifrequencies] = useState(defaultHifrequencies);
-  const containerRef = useRef();
-
-  useEffect(() => {
-    getRequest(nimoerApi, (res) => {
-      const data = res.data;
-      setProfileInfo((prev) => {
-        return {
-          ...prev,
-          name: `退休网管 · ${data.name}`,
-        };
-      });
-    });
-    getRequest(personalStatsGeneralApi, (res) => {
-      const data = res.data;
-      setStatistics((prev) => {
-        return {
-          ...prev,
-          office: data.office,
-          field: data.field,
-          numNewProgresses: data.numNewProgresses,
-        };
-      });
-    });
-    getRequest(personalStatsOfficeApi, (res) => {
-      const data = res.data;
-      setStatistics((prev) => {
-        return {
-          ...prev,
-          numIncomingCalls: data.numIncomingCalls,
-          numIpAllocs: data.numIpAllocs,
-          numMacUpdates: data.numMacUpdates,
-        };
-      });
-    });
-    getRequest(personalStatsFieldApi, (res) => {
-      const data = res.data;
-      setConsumables(data.personalConsumables);
-      setHifrequencies({
-        building: data.topDormBuilding,
-        colleague: data.topColleague.name,
-      });
-    });
-  }, []);
-
   const handleRouter = () => {
     history.push("/Achievement");
     window.location.reload();
@@ -161,6 +110,25 @@ const Personal2Special = () => {
       });
     });
   };
+  const profileInfo = useSelector((state) => {
+    return {
+      name: state.nimoer.nimoerInfo.name,
+      checkinDate: "...",
+      retirementDate: "...",
+    };
+  });
+  const consumables = useSelector(
+    (state) => state.stats.personalStats.consumables
+  );
+  const statistics = useSelector((state) => {
+    return {
+      ...state.stats.personalStats.general,
+      ...state.stats.personalStats.office,
+    };
+  });
+  const hifrequencies = useSelector(
+    (state) => state.stats.personalStats.hiFrequencies
+  );
 
   return (
     <div
