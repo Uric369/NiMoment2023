@@ -21,16 +21,42 @@ import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
 import { useNavigate } from "react-router-dom";
 // import messageNotice from "../audio/message.mp3";
+import { departmentStatsApi, getRequest } from "../apis";
+import { dataFormatter } from "../utils/dataFormat";
 
-const consumables = [
-  { icon: icon, count: 500 },
-  { icon: icon, count: 300 },
-  { icon: icon, count: 200 },
-];
+const defaultDepartmentStats = {
+  numRequests: 0,
+  numAuditions: 0,
+  consumables: {
+    numKeystonJacks: 0,
+    numConnectors: 0,
+    numPlates: 0,
+  },
+};
+
+function formatConsumables(consumables) {
+  return dataFormatter(
+    consumables,
+    "count",
+    ["numKeystonJacks", "numConnectors", "numPlates"],
+    [{ icon: icon }, { icon: icon }, { icon: icon }]
+  );
+}
+
+function sumConsumables(consumables) {
+  let sum = 0;
+  for (let key in consumables) {
+    sum += consumables[key];
+  }
+  return sum;
+}
 
 const DepartmentSpecial = () => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isSlideEnd, setIsSlideEnd] = useState(false);
+  const [departmentStats, setDepartmentStats] = useState(
+    defaultDepartmentStats
+  );
   const containerRef = useRef();
   const navigate = useNavigate();
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -40,6 +66,19 @@ const DepartmentSpecial = () => {
   const hill4Ref = React.useRef(null);
   const hill5Ref = React.useRef(null);
   const spaceShipRef = React.useRef(null);
+
+  useEffect(() => {
+    getRequest(
+      departmentStatsApi,
+      (data) => {
+        setDepartmentStats(data.data);
+      },
+      (error) => {
+        console.error(error);
+        setDepartmentStats(defaultDepartmentStats);
+      }
+    );
+  }, []);
 
   useEffect(() => {
     let timeoutId;
@@ -156,7 +195,11 @@ const DepartmentSpecial = () => {
             alt="icon"
           />
           <div className="text-div1">
-            <Combination3 text1="处理请求" count={1000} text2="个" />
+            <Combination3
+              text1="处理请求"
+              count={departmentStats.numRequests}
+              text2="个"
+            />
           </div>
         </div>
 
@@ -204,19 +247,25 @@ const DepartmentSpecial = () => {
             }}
           >
             <div>
-              {consumables.map((data, index) => (
-                <IconCount
-                  key={index}
-                  icon={data.icon}
-                  count={data.count}
-                  height={isMobile ? 10 : 5}
-                />
-              ))}
+              {formatConsumables(departmentStats.consumables).map(
+                (data, index) => (
+                  <IconCount
+                    key={index}
+                    icon={data.icon}
+                    count={data.count}
+                    height={isMobile ? 10 : 5}
+                  />
+                )
+              )}
             </div>
           </div>
           <div className="text-div2">
             <div>
-              <Combination3 text1="消耗耗材共" count={1000} text2="个" />
+              <Combination3
+                text1="消耗耗材共"
+                count={sumConsumables(departmentStats.consumables)}
+                text2="个"
+              />
             </div>
           </div>
         </div>
@@ -229,7 +278,11 @@ const DepartmentSpecial = () => {
           />
           <div className="text-div1">
             <div>
-              <Combination3 text1="通过新开网审批" count={1000} text2="个" />
+              <Combination3
+                text1="通过新开网审批"
+                count={departmentStats.numAuditions}
+                text2="个"
+              />
             </div>
           </div>
         </div>
