@@ -11,16 +11,37 @@ import rocket from "../img/cover/rocket.png";
 import NiMoment from "../img/cover/NiMoment.png";
 import Typewriter from "../Component/TypeWriter";
 import { useNavigate } from "react-router-dom";
+import { nimoerApi, getRequest } from "../apis";
+import { padNimoerId } from "../utils/dataFormat";
 
-const userInfo = {
-  id: 378,
-  name: "胡彤",
+const defaultNimoerInfo = {
+  id: 0,
+  name: "暗夜骑士",
 };
 
 function Entry() {
   const sceneRef = useRef(null);
   const [animateText, setAnimateText] = useState(false);
+  const [nimoerInfo, setNimoerInfo] = useState(defaultNimoerInfo);
+  const [isRetired, setIsRetired] = useState(false);
   const navigate = useNavigate();
+
+  // get nimoer info
+  useEffect(() => {
+    getRequest(
+      nimoerApi,
+      (data) => {
+        const { id, name, isRetired } = data.data;
+        setNimoerInfo({ id, name });
+        setIsRetired(isRetired);
+      },
+      (error) => {
+        console.error(error);
+        setNimoerInfo(defaultNimoerInfo);
+        setIsRetired(false);
+      }
+    );
+  }, []);
 
   useEffect(() => {
     if (sceneRef.current) {
@@ -104,8 +125,10 @@ function Entry() {
       {animateText ? (
         <Typewriter
           originalText1={`>> Authenticating... DONE`}
-          originalText2={`> Welcome NIMOer#${userInfo.id} ${userInfo.name} `}
-          destination={"/Department"}
+          originalText2={`> Welcome NIMOer#${padNimoerId(nimoerInfo.id)} ${
+            nimoerInfo.name
+          } `}
+          destination={isRetired ? "/DepartmentSpecial" : "/Department"}
           navigate={navigate}
         />
       ) : (
