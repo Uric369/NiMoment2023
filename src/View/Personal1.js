@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
+import { useState } from "react";
 import Combination from "../Component/Combination";
 import icon from "../img/paraScroll_demo/ICON.png";
 import astronaut1 from "../img/personal1/cat1.png";
@@ -28,27 +29,15 @@ import { history } from "../utils/history";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
+import { dataFormatter, padNimoerId } from "../utils/dataFormat";
+import {
+  nimoerApi,
+  personalStatsOfficeApi,
+  personalStatsGeneralApi,
+  getRequest,
+} from "../apis";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-const content1 = [
-  { icon: zhiban, text1: "值班", text2: "次", count: 30 },
-  { icon: baoxiu, text1: "出报修", text2: "次", count: 30 },
-  { icon: jingzhan, text1: "留下进展", text2: "条", count: 30 },
-  { icon: ap, text1: "查看用户侧最差 AP ", text2: "个", count: 30 },
-];
-
-const content2 = [
-  { icon: call, text1: "接到电话", text2: "个", count: 30 },
-  { icon: ip, text1: "分配 IP ", text2: "个", count: 30 },
-  { icon: mac, text1: "更换 MAC ", text2: "个", count: 30 },
-  { icon: shangmen, text1: "遇到用户上门", text2: "次", count: 30 },
-];
-
-const user = {
-  id: 378,
-  username: "胡彤",
-};
 
 const rotatingObjects = isMobile
   ? [
@@ -88,6 +77,53 @@ const staticObjects = isMobile
       { img: magicDevice, width: 10, x: 79, y: 34 },
     ];
 
+const defaultGeneralStats = {
+  office: 0,
+  field: 0,
+  numNewProgresses: 0,
+  numApDebugs: 0,
+};
+
+function formatGeneralStats(generalStats) {
+  return dataFormatter(
+    generalStats,
+    "count",
+    ["office", "field", "numNewProgresses", "numApDebugs"],
+    [
+      { icon: icon, text1: "值班", text2: "次" },
+      { icon: icon, text1: "出报修", text2: "次" },
+      { icon: icon, text1: "留下进展", text2: "条" },
+      { icon: icon, text1: "查看用户侧最差 AP ", text2: "个" },
+    ]
+  );
+}
+
+const defaultOfficeStats = {
+  numIncomingCalls: 35,
+  numIpAllocs: 87,
+  numMacUpdates: 0,
+  numVisitors: 10,
+};
+
+function formatOfficeStats(officeStats) {
+  return dataFormatter(
+    officeStats,
+    "count",
+    ["numIncomingCalls", "numIpAllocs", "numMacUpdates", "numVisitors"],
+    [
+      { icon: icon, text1: "接到电话", text2: "个" },
+      { icon: icon, text1: "分配 IP ", text2: "个" },
+      { icon: icon, text1: "更换 MAC ", text2: "个" },
+      { icon: icon, text1: "遇到用户上门", text2: "次" },
+    ]
+  );
+}
+
+const defaultNimoer = {
+  id: 0,
+  name: "暗夜骑士",
+};
+
 const dashedLine = [
   { x: 43, y: 21 },
   { x: 53, y: 15 },
@@ -101,6 +137,10 @@ const handleClick = () => {
 };
 
 const Personal1 = () => {
+  const [nimoerInfo, setNimoerInfo] = useState(defaultNimoer);
+  const [generalStats, setGeneralStats] = useState(defaultGeneralStats);
+  const [officeStats, setOfficeStats] = useState(defaultOfficeStats);
+
   const containerRef = useRef();
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {
@@ -127,9 +167,10 @@ const Personal1 = () => {
         </div>
         <div className="text_container">
           <h2>
-            Nimoer # {user.id + " " + user.username}， 在2023年度， 你.......{" "}
+            Nimoer #{padNimoerId(nimoerInfo.id) + " " + nimoerInfo.name}，
+            在2023年度， 你.......{" "}
           </h2>
-          {content1.map((item, index) => (
+          {formatGeneralStats(generalStats).map((item, index) => (
             <Combination
               key={index}
               icon={item.icon}
@@ -142,7 +183,7 @@ const Personal1 = () => {
 
           <div className="content2">
             <h2> 2023年你所在的所有值班班次一共 </h2>
-            {content2.map((item, index) => (
+            {formatOfficeStats(officeStats).map((item, index) => (
               <Combination
                 key={index}
                 icon={item.icon}

@@ -34,7 +34,7 @@ const Combination = ({ icon, text1, text2, count, sequence }) => {
           &nbsp;{text1}
         </span>
       )}
-      {count && (
+      {count !== undefined && (
         <strong
           style={{
             fontSize: isMobile ? "2.5vh" : "4vh",
