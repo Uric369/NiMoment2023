@@ -93,7 +93,7 @@ function Entry() {
           navigate={navigate}
           />
 ) : (
-    <div className="animated-text layer" data-depth="0" onClick={()=>handleClick()}>
+    <div className="animated-text layer" style={{cursor:"pointer"}} data-depth="0" onClick={()=>handleClick()}>
   <h>&gt; GET STARTED</h>
   </div>
 )}

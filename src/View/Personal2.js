@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import DayNightToggleButton from "../Component/DayNightToggleButton";
 import "../css/Personal2.css";
 import BG1 from "../img/personal2/BG1.png";
@@ -13,6 +13,10 @@ import ImageTransition from "../Component/ImageTransition";
 import cat1 from "../img/personal2/Meow1.png";
 import cat2 from "../img/personal2/Meow2.png";
 import { history } from "../utils/history";
+import { saveAs } from 'file-saver';
+import "../css/SaveButton.css";
+import html2canvas from 'html2canvas';
+
 
 const progressUpdate = {
     earliest: "2023.01.01 10:00",
@@ -34,6 +38,7 @@ const consumables = [
 const Personal2 = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [catMode, setCatMode] = useState(0);
+  const containerRef = useRef();
   const handleClick =()=> {
     if(!isDarkMode){
         console.log(catMode);
@@ -60,7 +65,16 @@ const Personal2 = () => {
     window.location.reload();
   }
   
+  const onClick = () => {
+    html2canvas(containerRef.current).then((canvas) => {
+      canvas.toBlob((blob) => {
+        saveAs(blob, 'page.png');
+      });
+    });
+  };
+
     return (
+      <div>
       <div 
         className="personal2_container" 
         style={{
@@ -69,6 +83,7 @@ const Personal2 = () => {
           width: '100vw',
           height: '100vh'
         }}
+        ref = {containerRef}
       >
       <div className='title_container'>
         <div className="header">
@@ -127,6 +142,10 @@ const Personal2 = () => {
       {catMode === 2 && <img style={{width:"20vw"}} src={cat1} alt="cat1"/>}
       {catMode === 3 && <ImageTransition cat1={cat1} cat2={cat2} size={20}/>}
       </div>
+      </div>
+      <div className="savebutton">
+  <button onClick={onClick}>保存为图片</button>
+</div>
       </div>
     );
 };

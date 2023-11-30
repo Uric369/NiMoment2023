@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Combination from '../Component/Combination';
 import icon from "../img/paraScroll_demo/ICON.png";
 import star_mid from "../img/personal1/Star_Mid.png";
@@ -10,9 +10,13 @@ import Glitter from '../Component/Glitter';
 import DashedLines from '../Component/DashedLines';
 import wifi from "../img/personal1/Wifi.png"
 import { history } from '../utils/history';
-
-
-
+import astronaut1 from "../img/personal1/cat1.png";
+import astronaut2 from "../img/personal1/cat2.png";
+import star from "../img/personal1/Star.png";
+import magicDevice from "../img/personal1/magicDevice.png";
+import { saveAs } from 'file-saver';
+import "../css/SaveButton.css";
+import html2canvas from 'html2canvas';
 
 const user = {
     id: 378,
@@ -22,6 +26,7 @@ const user = {
 const rotatingObjects = [
   {img: star_mid, width: 10, x: 60, y:15, speed:10},
   {img: star_big, width: 15, x: 80, y:60, speed:20},
+  {img: star, width: 5, x: 76, y:35, speed:15},
 ]
 
 const glitteringObjects = [
@@ -29,6 +34,12 @@ const glitteringObjects = [
   {img: star_mid, width: 5, x: 40, y:15, speed:5},
   {img: star_mid, width: 3, x: 90, y:50, speed:2},
   {img: wifi, width: 7, x: 78, y:70, speed:1},
+]
+
+const staticObjects = [
+  {img: astronaut1, width: 17, x: 80, y:5},
+  {img: astronaut2, width: 18, x: 68, y:30},
+  {img: magicDevice, width: 10, x: 79, y:29},
 ]
 
 const dashedLine = [
@@ -46,11 +57,19 @@ const handleClick = () => {
 
 const lastDay = "2023.10.01";
 
-
-
 const Personal1Special = () => {
+  const containerRef = useRef();
+  const onClick = () => {
+    html2canvas(containerRef.current).then((canvas) => {
+      canvas.toBlob((blob) => {
+        saveAs(blob, 'page.png');
+      });
+    });
+  };
+
   return (
-    <div className='personal1_container'>
+    <div>
+    <div className='personal1_container' ref = {containerRef}>
       
       <DashedLines points={dashedLine} color="yellow" />
       <div className='title_container_special'>
@@ -98,6 +117,27 @@ const Personal1Special = () => {
             />
           )}
         </div>
+
+        <div>
+      {staticObjects.map((object, index) => (
+        <img
+          key={index}
+          src={object.img}
+          alt={`Astronaut ${index + 1}`}
+          style={{
+            width: `${object.width}vw`, // Width in viewport width (vw)
+            position: 'absolute',       // Use absolute positioning
+            left: `${object.x}vw`,      // X coordinate in viewport width (vw)
+            top: `${object.y}vh`,       // Y coordinate in viewport height (vh)
+          }}
+        />
+      ))}
+    </div>
+
+    </div>
+    <div className="savebutton">
+  <button onClick={onClick}>保存为图片</button>
+</div>
     </div>
   );
 };

@@ -85,7 +85,7 @@
 
 .personal1_container .text_container .content2 {
     position: absolute;
-    right: 0;
+    right: 5vw;
     bottom: 0;
     align-items: flex-end;
     text-align: right; /* 新增：使文本和行内(块)元素向右对齐 */

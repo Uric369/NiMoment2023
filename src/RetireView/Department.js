@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import hill1 from "../img/paraScroll_demo/hill1.png";
 import hill2 from "../img/paraScroll_demo/hill2.png";
 import hill3 from "../img/paraScroll_demo/hill3.png";
@@ -15,6 +15,9 @@ import "../css/ParaScroll.css"
 import { history } from "../utils/history";
 import IconCount from '../Component/IconCount';
 import Combination3 from '../Component/Combination3';
+import { saveAs } from 'file-saver';
+import "../css/SaveButton.css";
+import html2canvas from 'html2canvas';
 // import messageNotice from "../audio/message.mp3";
 
 const consumables = [
@@ -27,6 +30,7 @@ const consumables = [
 const DepartmentSpecial = () => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
     const [isSlideEnd, setIsSlideEnd] = useState(false);
+    const containerRef = useRef();
   useEffect(() => {
     let timeoutId;
     // const audio = new Audio(messageNotice);
@@ -62,6 +66,7 @@ const DepartmentSpecial = () => {
 
     window.addEventListener('scroll', handleScroll);
 
+
     return () => {
       if (timeoutId && timeoutId.current) {
         clearTimeout(timeoutId.current);
@@ -84,10 +89,17 @@ const DepartmentSpecial = () => {
     }
   }
 
+  const onClick = () => {
+    html2canvas(containerRef.current).then((canvas) => {
+      canvas.toBlob((blob) => {
+        saveAs(blob, 'page.png');
+      });
+    });
+  };
 
   return (
     <div>
-      <section class="sec">
+      <section class="sec" ref = {containerRef}>
         <h3>看看后辈们吧！</h3>
         <h3>2023年度，NIMO......</h3>
         <img className="cat box-2" ref={catRef} src={cat} alt="cat"/>
@@ -135,7 +147,9 @@ const DepartmentSpecial = () => {
             </div>
         </div>
     </section>
-
+    <div className="savebutton">
+  <button onClick={onClick}>保存为图片</button>
+</div>
     </div>
   );
 };

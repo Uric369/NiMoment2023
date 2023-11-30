@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import hill1 from "../img/paraScroll_demo/hill1.png";
 import hill2 from "../img/paraScroll_demo/hill2.png";
 import hill3 from "../img/paraScroll_demo/hill3.png";
@@ -15,6 +15,11 @@ import "../css/ParaScroll.css"
 import { history } from "../utils/history";
 import IconCount from '../Component/IconCount';
 import Combination3 from '../Component/Combination3';
+import { useNavigate } from 'react-router-dom';
+import popupWindow from "../img/paraScroll_demo/popupWindow.png";
+import { saveAs } from 'file-saver';
+import "../css/SaveButton.css";
+import html2canvas from 'html2canvas';
 // import messageNotice from "../audio/message.mp3";
 
 const consumables = [
@@ -27,6 +32,9 @@ const consumables = [
 const Department = () => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
     const [isSlideEnd, setIsSlideEnd] = useState(false);
+    const navigate = useNavigate();
+    const containerRef = useRef();
+    
   useEffect(() => {
     let timeoutId;
     // const audio = new Audio(messageNotice);
@@ -104,14 +112,25 @@ const Department = () => {
   const handleClick = () => {
     if (isSlideEnd) {
       setIsPopUpOpen(true);
-  
-      setTimeout(() => {
-        history.push("/Personal1");
-        window.location.reload();
-      }, 2000); // 2000 milliseconds = 2 seconds
     }
   }
 
+  const handleCloseClick = () => {
+    setIsPopUpOpen(false);
+  }
+
+  const handleRouter = () => {
+    navigate("/Personal1");
+  }
+
+  const onClick = () => {
+    html2canvas(containerRef.current).then((canvas) => {
+      canvas.toBlob((blob) => {
+        saveAs(blob, 'page.png');
+      });
+    });
+  };
+  
 
   return (
     <div>
@@ -124,7 +143,7 @@ const Department = () => {
           <a href="#">Contact</a>
         </nav>
       </header> */}
-
+      <div ref={containerRef}>
       <section className="parallax">
         <img src={hill1} id="hill1" ref={hill1Ref} alt="hill1"/>
         <img src={hill2} id="hill2" alt="hill2"/>
@@ -149,11 +168,29 @@ const Department = () => {
         </div>
 
         <div >
-         {isPopUpOpen ? (
-        <img className='message-box' style={{ zIndex: 3 }} src={cat} alt="cat"/>
-      ) : (
-        <img  className='message-box' style={{ zIndex: 2 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
+         {isPopUpOpen && (
+        <div className="overlay">
+        <div className="popup-image-container">
+          <img
+            src={popupWindow} // The larger image you want to show
+            style={{
+              width: '60vw',
+              height: 'auto',
+              objectFit: 'cover', // Adjust as needed
+            }}
+            alt="Popup"
+            onClick={handleRouter}
+          />
+          <img
+            src={icon} // The close icon image
+            className="close-button"
+            onClick={handleCloseClick}
+            alt="Close"
+          />
+        </div>
+      </div>
       )}
+      <img  className='message-box' style={{ zIndex: 2 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
       </div>
         
         <div className="fixed-box2" style={{zIndex: 1}}>
@@ -187,6 +224,10 @@ const Department = () => {
         </div>
     </section>
 
+    </div>
+      <div className="savebutton">
+  <button onClick={onClick}>保存为图片</button>
+</div>
     </div>
   );
 };

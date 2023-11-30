@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import DayNightToggleButton from "../Component/DayNightToggleButton";
 import "../css/Personal2Special.css";
 import BG1 from "../img/personal2/BG1.png";
@@ -18,6 +18,9 @@ import Combination5 from "../Component/Combination5";
 import profileImg from "../img/Personal2Special/profile.png";
 import baoxiuBG from "../img/Personal2Special/cat1.png";
 import renBG from "../img/Personal2Special/cat2.png";
+import { saveAs } from 'file-saver';
+import "../css/SaveButton.css";
+import html2canvas from 'html2canvas';
 
 
 const common = {
@@ -48,10 +51,20 @@ const statistics = [
 
 
 const Personal2Special = () => {
+  const containerRef = useRef();
   const handleRouter =()=> {
     history.push("/Achievement");
     window.location.reload();
   }
+
+  const onClick = () => {
+    html2canvas(containerRef.current).then((canvas) => {
+      canvas.toBlob((blob) => {
+        saveAs(blob, 'page.png');
+      });
+    });
+  };
+
   
     return (
       <div 
@@ -62,6 +75,7 @@ const Personal2Special = () => {
           width: '100vw',
           height: '100vh'
         }}
+        ref = {containerRef}
       >
       <div className='title_container'>
         <div className="header">
@@ -122,6 +136,9 @@ const Personal2Special = () => {
       <div className="cat_container" onClick={handleRouter}>
       <ImageTransition cat1={cat1} cat2={cat2} size={20}/>
       </div>
+      <div className="savebutton">
+  <button onClick={onClick}>保存为图片</button>
+</div>
       </div>
       
     );

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import "../css/Achievement.css";
 import A1 from "../img/image/01.png";
 import Atext from "../img/image/text-1.png";
@@ -12,8 +13,11 @@ import C2 from "../img/image/13.PNG";
 import sub from "../img/achievement/achieve_back.png";
 import profile from "../img/achievement/profile.png";
 import wordCloud from "../img/achievement/wordcloud.png";
+import html2canvas from 'html2canvas';
 import achiveIcon from "../img/achievement/achieve_icon.png";
 import profileHistory from "../img/achievement/profile_history.png";
+import { saveAs } from 'file-saver';
+import "../css/SaveButton.css";
 
 const userInfo = {
   id: 378,
@@ -22,13 +26,29 @@ const userInfo = {
 }
 
 export default function Achievement(props) {
+
+  const containerRef = useRef();
 //   const { h } = props;
 const handleProfileHistory =()=> {
   // to de implemented
 }
+const onClick = () => {
+  html2canvas(containerRef.current).then((canvas) => {
+    canvas.toBlob((blob) => {
+      saveAs(blob, 'page.png');
+    });
+  });
+};
+
 
   return (
-    <div className="achievement">
+    <div>
+<div className="savebutton">
+  <button onClick={onClick}>保存为图片</button>
+</div>
+
+    <div className="achievement" ref={containerRef}>
+      
       <div className="border"/>
      <div className="achievement-text">
       <img style={{height:"10vh"}} src={achiveIcon}/>
@@ -46,6 +66,7 @@ const handleProfileHistory =()=> {
      <h style={{fontSize:"2vh"}}>查看NIMO后台</h>
      <h style={{fontSize:"2vh"}}>历史头像</h>
      </div>
+     <h style={{marginLeft:"10vw", fontSize:"4vh"}}>xxx群词云</h>
      </div>
      <img className="wordCloud" src={wordCloud}/>
     <div className="shell">
@@ -73,6 +94,7 @@ const handleProfileHistory =()=> {
         <img src={C2} alt="" className="character" />
       </div>
 
+    </div>
     </div>
     </div>
   );

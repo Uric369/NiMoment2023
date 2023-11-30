@@ -155,8 +155,8 @@
 
 .wordCloud {
     position: absolute;
-    top: 10vh;
-    left: 45vw;
+    top: 3vh;
+    left: 60vw;
     width: auto;
-    height: 30vh;
+    height: 40vh;
 }

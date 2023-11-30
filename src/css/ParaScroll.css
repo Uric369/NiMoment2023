@@ -221,3 +221,34 @@ header_demo {
 
 
   
+  /* ParaScroll.css */
+
+.overlay {
+  position: fixed; /* Full screen and above other content */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  display: flex; /* Center the child div */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1000; /* Make sure it's on top of everything else */
+}
+
+.popup-image-container {
+  position: relative; /* For positioning the close button absolutely */
+  width: 50vw; /* Width of the image container */
+  height: 30vh; /* Height of the image container */
+  /* Additional styles if needed */
+}
+
+.close-button {
+  position: absolute;
+  top: 0; /* Position it on the top-right */
+  right: 0;
+  cursor: pointer; /* Change cursor to indicate it's clickable */
+  width: 32px; /* Width of the close button */
+  height: 32px; /* Height of the close button */
+  /* Add any additional styling for close button */
+}

@@ -46,8 +46,7 @@
     top: 5vh; /* 相对于容器顶部的距离 */
     left: 5vw; /* 相对于容器左侧的距离 */
     right: 5vw;
-    bottom: 5vh;
-
+    bottom: 3vh;
   }
 
   .personal2_container .outer_container .inner_container .inner_bottom_container {
@@ -55,7 +54,7 @@
     top: 12vh; /* 相对于容器顶部的距离 */
     bottom: 0vh;
     width: 100%;
-    background-image: url('../img/personal2/Box.png'); 
+    background-image: url('../img/personal2/twoCats.png'); 
     background-size: cover; 
     padding-left: -10vw;
     padding-top: 10vh;
