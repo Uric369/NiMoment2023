@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import hill1 from "../img/paraScroll_demo/hill1.png";
 import hill2 from "../img/paraScroll_demo/hill2.png";
 import hill3 from "../img/paraScroll_demo/hill3.png";
@@ -8,6 +8,7 @@ import leaf from "../img/paraScroll_demo/leaf.png";
 import tree from "../img/paraScroll_demo/tree.png";
 import plant from "../img/paraScroll_demo/plant.png";
 import message from "../img/paraScroll_demo/message.png";
+import popupWindow from "../img/paraScroll_demo/popupWindow.png";
 import cat from "../img/paraScroll_demo/cat.png";
 import icon from "../img/paraScroll_demo/ICON.png"
 import ufo from "../img/paraScroll_demo/UFO2.png";
@@ -18,6 +19,7 @@ import Combination3 from '../Component/Combination3';
 import { saveAs } from 'file-saver';
 import "../css/SaveButton.css";
 import html2canvas from 'html2canvas';
+import { useNavigate } from 'react-router-dom';
 // import messageNotice from "../audio/message.mp3";
 
 const consumables = [
@@ -27,12 +29,46 @@ const consumables = [
 ];
 
 
+
+
 const DepartmentSpecial = () => {
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
     const [isSlideEnd, setIsSlideEnd] = useState(false);
     const containerRef = useRef();
+    const navigate = useNavigate();
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const textRef = React.useRef(null);
+    const leafRef = React.useRef(null);
+    const hill1Ref = React.useRef(null);
+    const hill4Ref = React.useRef(null);
+    const hill5Ref = React.useRef(null);
+    const spaceShipRef = React.useRef(null);
+
   useEffect(() => {
     let timeoutId;
+    if (isMobile) {
+      // 设置一个新的定时器
+      timeoutId = setTimeout(() => {
+         // 触发向左滑特效
+         if(messageRef && messageRef.current && messageRef.current.style) {
+           // audio.play();
+           messageRef.current.style.transition = 'all 0.3s';
+           messageRef.current.style.transform = 'translateX(-70vw)';
+         }
+         console.log('执行特效');
+         timeoutId = setTimeout(() => {
+           if(catRef && catRef.current && catRef.current.style) {
+             catRef.current.style.visibility = 'visible';
+             catRef.current.style.transform = 'scale(800%)';
+             catRef.current.style.transition = 'width 0.5s, height 0.5s';
+           }
+         timeoutId = setTimeout(() => {
+             setIsSlideEnd(true);
+         }, 300);
+
+         }, 300);
+       }, 1000); // 延迟0.5秒触发特效
+  }
     // const audio = new Audio(messageNotice);
     const handleScroll = () => {
          timeoutId = setTimeout(() => {
@@ -62,8 +98,6 @@ const DepartmentSpecial = () => {
       
     }
 
-    
-
     window.addEventListener('scroll', handleScroll);
 
 
@@ -81,12 +115,15 @@ const DepartmentSpecial = () => {
   const handleClick = () => {
     if (isSlideEnd) {
       setIsPopUpOpen(true);
-  
-      setTimeout(() => {
-        history.push("/Personal1");
-        window.location.reload();
-      }, 2000); // 2000 milliseconds = 2 seconds
     }
+  }
+
+  const handleRouter = () => {
+    navigate("/Personal1Special");
+  }
+
+  const handleCloseClick = () => {
+    setIsPopUpOpen(false);
   }
 
   const onClick = () => {
@@ -99,6 +136,19 @@ const DepartmentSpecial = () => {
 
   return (
     <div>
+            {!isMobile && <section className="parallax">
+        <img src={hill1} id="hill1" ref={hill1Ref} alt="hill1"/>
+        <img src={hill2} id="hill2" alt="hill2"/>
+        <img src={hill3} id="hill3" alt="hill3"/>
+        <img src={hill4} id="hill4" ref={hill4Ref} alt="hill4"/>
+        <img src={hill5} id="hill5" ref={hill5Ref} alt="hill5"/>
+        <img src={tree} id="tree" alt="tree"/>
+        <img src={ufo} id="spaceShip" ref={spaceShipRef}alt="ufo"/>
+        <h2 id="text" ref={textRef}>NiMoment飞船正在降落👇</h2>
+        <img src={leaf} id="leaf" ref={leafRef} alt="leaf"/>
+        <img src={plant} id="plant" alt="plant"/>
+      </section>
+      }
       <section class="sec" ref = {containerRef}>
         <h3>看看后辈们吧！</h3>
         <h3>2023年度，NIMO......</h3>
@@ -111,30 +161,48 @@ const DepartmentSpecial = () => {
         </div>
 
         <div >
-         {isPopUpOpen ? (
-        <img className='message-box' style={{ zIndex: 3 }} src={cat} alt="cat"/>
-      ) : (
-        <img  className='message-box' style={{ zIndex: 2 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
+         {isPopUpOpen && (
+        <div className="overlay">
+        <div className="popup-image-container">
+          <img
+            src={popupWindow} // The larger image you want to show
+            style={{
+              width: isMobile? '90vw': '50vw',
+              height: 'auto',
+              objectFit: 'cover', // Adjust as needed
+            }}
+            alt="Popup"
+            onClick={handleRouter}
+          />
+          <img
+            src={icon} // The close icon image
+            className="close-button"
+            onClick={handleCloseClick}
+            alt="Close"
+          />
+        </div>
+      </div>
       )}
+      <img  className='message-box' style={{ zIndex: 2 }} ref={messageRef} src={message} onClick={handleClick} alt="message"/>
       </div>
         
         <div className="fixed-box2" style={{zIndex: 1}}>
             <div style={{
                 display: 'flex',
                 position: 'absolute',
-                top: '30%',
-                left: '70%',
+                top: isMobile? '10%':'30%',
+                left: '60%',
                 height: '30%'
             }}>
                 <div>
                   {consumables.map((data, index) => (
-                  <IconCount key={index} icon={data.icon} count={data.count} height={10}/>
+                  <IconCount key={index} icon={data.icon} count={data.count} height={isMobile ? 10 : 5}/>
                   ))}
                 </div>
             </div>
             <div className="text-div2">
                 <div>
-                <Combination3 text1="消耗水晶头/模块/面板共" count={1000} text2="个" />
+                <Combination3 text1="消耗耗材共" count={1000} text2="个" />
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-.personal1_container {
+@media (min-width: 768px) {
+  .personal1_container {
     /* background-image: url('../img/personal1/BG_stars.png'); 
     background-size: 100vw 100vh;  */
     background-image: url('../img/personal1/BG.png');
@@ -82,6 +83,14 @@
   letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
 }
 
+.personal1_container h6 {
+  font-size: 3vh;
+  color: white;
+  margin-top: 2vh;
+  font-weight: 500;
+  line-height: 3; /* 行间距为文字大小的150% */
+  letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
+}
 
 .personal1_container .text_container .content2 {
     position: absolute;
@@ -93,3 +102,110 @@
     flex-direction: column; /* 新增：将主轴方向设置为垂直 */
     justify-content: flex-end; /* 新增：使块级元素向右对齐 */
   }
+}
+
+@media (max-width: 768px) {
+  .personal1_container {
+    /* background-image: url('../img/personal1/BG_stars.png'); 
+    background-size: 100vw 100vh;  */
+    background-image: url('../img/personal1/BG.png');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+  }
+
+.personal1_container .text_container {
+    position: absolute;
+    top: 25vh; /* 相对于容器顶部的距离 */
+    left: 10vw; /* 相对于容器左侧的距离 */
+    width: 80vw; /* 设置方块的宽度 */
+    height: 60vh; /* 设置方块的高度 */
+}
+
+.personal1_container .title_container {
+  position: absolute;
+  top: 10vh; /* 相对于容器顶部的距离 */
+  left: 10vw; /* 相对于容器左侧的距离 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 2vh;
+  color: white;
+}
+
+.personal1_container .title_container_special {
+  position: absolute;
+  top: 10vh; /* 相对于容器顶部的距离 */
+  left: 10vw; /* 相对于容器左侧的距离 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 2.5vh;
+  color: white;
+}
+
+
+/* 图片和标题的样式 */
+.personal1_container .title_container .header {
+  display: flex;
+  align-items: 'flex-end';
+}
+
+/* 分割线的样式 */
+.divider {
+  width: 100%;  /* 或者其他你想要的宽度 */
+  height: 4px;  /* 控制分割线的粗细 */
+  background-color: rgb(149, 149, 210);  /* 控制分割线的颜色 */
+  margin-top: 10px;  /* 添加一些空间在分割线和标题之间 */
+}
+
+
+
+.personal1_container h2 {
+    font-size: 2vh;
+    color: white;
+    margin-bottom: 1vh;
+}
+
+.personal1_container h3 {
+  font-size: 3vh;
+  color: white;
+  margin-bottom: 1vh;
+}
+
+.personal1_container h4 {
+  font-size: 3vh;
+  color: white;
+  margin-bottom: 1vh;
+  font-style: italic; /* 将文字设置为斜体 */
+}
+
+.personal1_container h5 {
+  font-size: 1.6vh;
+  color: white;
+  margin-top: 2vh;
+  font-weight: 500;
+  line-height: 3; /* 行间距为文字大小的150% */
+  letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
+}
+
+.personal1_container h6 {
+  font-size: 1.6vh;
+  color: white;
+  margin-top: 2vh;
+  font-weight: 500;
+  line-height: 2; /* 行间距为文字大小的150% */
+  letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
+}
+
+.personal1_container .text_container .content2 {
+    position: absolute;
+    right: 5vw;
+    bottom: 5vh;
+    align-items: flex-end;
+    text-align: right; /* 新增：使文本和行内(块)元素向右对齐 */
+    display: flex; /* 新增：使 content2 成为一个 flex 容器 */
+    flex-direction: column; /* 新增：将主轴方向设置为垂直 */
+    justify-content: flex-end; /* 新增：使块级元素向右对齐 */
+  }
+}

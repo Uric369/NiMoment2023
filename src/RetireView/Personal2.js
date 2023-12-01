@@ -22,7 +22,7 @@ import { saveAs } from 'file-saver';
 import "../css/SaveButton.css";
 import html2canvas from 'html2canvas';
 
-
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const common = {
     building: "D23",
     colleague: "Meow",
@@ -79,38 +79,38 @@ const Personal2Special = () => {
       >
       <div className='title_container'>
         <div className="header">
-          <img style={{width:"6vw"}} src={logo} alt="logo"/>
+          <img style={{width:isMobile? "12vw":"6vw"}} src={logo} alt="logo"/>
           <h1>NIMO 来信 · 职业生涯回顾</h1>
         </div>
       </div>
 
       <div className="outer_container">
       <div className="inner_container" style={{display: 'flex'}}>
-            <img style={{width:"25vh",height:"27vh",marginRight:"2vw"}} src={profileImg}/>
+            <img style={{width:isMobile? "12vh":"25vh",height:isMobile? "13vh":"27vh", marginRight:"2vw"}} src={profileImg}/>
             <div >
               <p>&gt;&gt;&gt; </p>
               {profileInfo.map((info, index) => (
                 <Combination4 key={index} item={info.item} content={info.content} />
               ))}
             </div>
-            <div style={{marginLeft:"10vw"}}>
+             {!isMobile && <div style={{marginLeft:"10vw"}}>
             <IconTitle icon={titleIcon} text={"累计霍霍器材"}/>
             <div style={{ display: 'flex', justifyContent: 'space-between'}}>
     {consumables.slice(0, 2).map((data, index) => (
         <div style={{ marginRight: '2vw' }}>
-            <IconCount key={index} icon={data.icon} count={data.count} height={8}/>
+            <IconCount key={index} icon={data.icon} count={data.count} height={4}/>
         </div>
     ))}
 </div>
     <div>
-        <IconCount icon={consumables[2].icon} count={consumables[2].count} height={8}/>
+        <IconCount icon={consumables[2].icon} count={consumables[2].count} height={4}/>
     </div>
-            </div>
+            </div>}
             
 
             <div className="inner_bottom_container">
               <div>
-            <p style={{fontSize:"3vh"}}>&gt;&gt;&gt; NIMO@localhost: loading log......</p>
+            <p style={{fontSize:isMobile? "1.5vh":"3vh"}}>&gt;&gt;&gt; NIMO@localhost: loading log......</p>
               <div style={{lineHeight: "1.7"}}>
             {statistics.map((stat, index) => (
               <Combination5 key={index} text1={stat.text1} count={stat.count} text2={stat.text2} />
@@ -118,17 +118,30 @@ const Personal2Special = () => {
             </div>
             </div>
             <div >
-                <div style={{position:"absolute", top:"10vh", left:"30vw"}}>
+                <div style={{position:"absolute", top:isMobile? "33vh":"10vh", left:isMobile? "0vw":"30vw"}}>
                 <IconTitle icon={titleIcon} text={"报修最常去的楼栋"} isMargin={false}/>
-                <img style={{width:"40vw"}} src={baoxiuBG}/>
-                <h style={{position:"absolute", top:"12vh", left:"9vw",fontSize:"4vh"}}>{common.building}</h> 
+                <img style={{width:isMobile?"80vw":"40vw"}} src={baoxiuBG}/>
+                <h style={{position:"absolute", top:isMobile? "6vh":"12vh", left:isMobile? "9vh":"9vw",fontSize:isMobile? "2vh":"4vh"}}>{common.building}</h> 
                 </div>
                 
-                <div style={{position:"absolute", top:"32vh", left:"30vw"}}>
+                <div style={{position:"absolute", top:isMobile? "43vh":"32vh", left:isMobile? "0vw":"30vw"}}>
                 <IconTitle icon={titleIcon} text={"报修最常一起去的人"} isMargin={false}/>
-                <img style={{width:"30vw"}} src={renBG}/>
-                <h style={{position:"absolute", top:"14vh", left:"7vw",fontSize:"4vh"}}>{common.colleague}</h> 
+                <img style={{width:isMobile?"80vw":"30vw"}} src={renBG}/>
+                <h style={{position:"absolute", top:isMobile? "9vh":"14vh", left:isMobile? "10vh":"7vw",fontSize:isMobile? "2vh":"4vh"}}>{common.colleague}</h> 
                 </div>
+                {isMobile && <div style={{position:"absolute", top:"54vh", left:"0vw"}}>
+            <IconTitle icon={titleIcon} text={"累计霍霍器材"}/>
+            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+    {consumables.slice(0, 2).map((data, index) => (
+        <div style={{ marginRight: '2vw' }}>
+            <IconCount key={index} icon={data.icon} count={data.count} height={10}/>
+        </div>
+    ))}
+</div>
+    <div>
+        <IconCount icon={consumables[2].icon} count={consumables[2].count} height={10}/>
+    </div>
+            </div>}
                 </div>
             </div>
         </div>

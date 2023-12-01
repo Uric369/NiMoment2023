@@ -29,6 +29,7 @@ import { saveAs } from 'file-saver';
 import "../css/SaveButton.css";
 import html2canvas from 'html2canvas';
 
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
 const content1 = [
     {icon: zhiban, text1: "值班", text2 : "次", count: 30},
@@ -49,23 +50,39 @@ const user = {
     username: "胡彤",
 }
 
-const rotatingObjects = [
+const rotatingObjects = isMobile? 
+[
+  {img: star_mid, width: 13, x: 30, y:50, speed:10},
+  {img: star_big, width: 18, x: 80, y:5, speed:20},
+  {img: star, width: 10, x: 23, y:64, speed:15},
+]:
+[
   {img: star_mid, width: 10, x: 60, y:15, speed:10},
   {img: star_big, width: 15, x: 80, y:60, speed:20},
   {img: star, width: 5, x: 76, y:35, speed:15},
 ]
 
-const glitteringObjects = [
+const glitteringObjects = isMobile? [
+  {img: star_mid, width: 15, x: 75, y:50, speed:3},
+  {img: star_mid, width: 10, x: 40, y:5, speed:5},
+  // {img: star_mid, width: 15, x: 80, y:15, speed:2},
+  {img: wifi, width: 14, x: 65, y:50, speed:1},
+]:[
   {img: star_mid, width: 5, x: 50, y:10, speed:3},
   {img: star_mid, width: 5, x: 40, y:15, speed:5},
   {img: star_mid, width: 3, x: 90, y:50, speed:2},
   {img: wifi, width: 7, x: 78, y:70, speed:1},
 ]
 
-const staticObjects = [
+const staticObjects = isMobile? 
+[
+  {img: astronaut1, width: 35, x: 65, y:30},
+  {img: astronaut2, width: 40, x: 3, y:63},
+  {img: magicDevice, width: 14, x: 69, y:43},
+]:[
   {img: astronaut1, width: 17, x: 80, y:5},
   {img: astronaut2, width: 18, x: 68, y:30},
-  {img: magicDevice, width: 10, x: 79, y:29},
+  {img: magicDevice, width: 10, x: 79, y:34},
 ]
 
 const dashedLine = [
@@ -100,16 +117,16 @@ const Personal1 = () => {
 
     <div className='personal1_container' ref={containerRef}>
       
-      <DashedLines points={dashedLine} color="yellow" />
+      {!isMobile && <DashedLines points={dashedLine} color="yellow" />}
       <div className='title_container'>
         <div className="header">
-          <img style={{width:"6vw"}} src={logo} alt="logo"/>
+          <img style={{width:isMobile? "20vw":"6vw"}} src={logo} alt="logo"/>
           <h1>工作情况统计</h1>
         </div>
         <div className="divider"/>
       </div>
         <div className="text_container">
-            <h2>Nimoer # {user.id+ " " +user.username}， 在2023年度， 你....... </h2>
+          <h2>Nimoer # {user.id+ " " +user.username}， 在2023年度， 你....... </h2>
         {content1.map((item, index) => 
           <Combination 
             key={index} 

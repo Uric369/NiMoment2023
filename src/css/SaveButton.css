@@ -1,3 +1,5 @@
+
+@media (min-width: 768px) {
 .savebutton {
     position: absolute;
     top:5vh;
@@ -5,3 +7,14 @@
     height: 5vh;
     width: 10vw;
 }
+}
+
+@media (max-width: 768px) {
+    .savebutton {
+        position: absolute;
+        top:5vh;
+        left: 5vw;
+        height: 2vh;
+        width: 10vw;
+    }
+    }

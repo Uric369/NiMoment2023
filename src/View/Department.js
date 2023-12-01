@@ -12,7 +12,6 @@ import cat from "../img/paraScroll_demo/cat.png";
 import icon from "../img/paraScroll_demo/ICON.png"
 import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css"
-import { history } from "../utils/history";
 import IconCount from '../Component/IconCount';
 import Combination3 from '../Component/Combination3';
 import { useNavigate } from 'react-router-dom';
@@ -34,13 +33,39 @@ const Department = () => {
     const [isSlideEnd, setIsSlideEnd] = useState(false);
     const navigate = useNavigate();
     const containerRef = useRef();
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
     
   useEffect(() => {
     let timeoutId;
     // const audio = new Audio(messageNotice);
+    if (isMobile) {
+      // 设置一个新的定时器
+      timeoutId = setTimeout(() => {
+         // 触发向左滑特效
+         if(messageRef && messageRef.current && messageRef.current.style) {
+           // audio.play();
+           messageRef.current.style.transition = 'all 0.3s';
+           messageRef.current.style.transform = 'translateX(-70vw)';
+         }
+         console.log('执行特效');
+         timeoutId = setTimeout(() => {
+           if(catRef && catRef.current && catRef.current.style) {
+             catRef.current.style.visibility = 'visible';
+             catRef.current.style.transform = 'scale(800%)';
+             catRef.current.style.transition = 'width 0.5s, height 0.5s';
+           }
+         timeoutId = setTimeout(() => {
+             setIsSlideEnd(true);
+         }, 300);
+
+         }, 300);
+       }, 1000); // 延迟0.5秒触发特效
+  }
+
+
     const handleScroll = () => {
       let value = window.scrollY;
-
       if(textRef && textRef.current && textRef.current.style) textRef.current.style.marginTop = value * 1.5 + 'px';
       if(leafRef && leafRef.current) {
         leafRef.current.style.top = value * -1.5 + 'px';
@@ -56,7 +81,7 @@ const Department = () => {
       
 
       if (!isPopUpOpen && messageRef && messageRef.current && messageRef.current.style){
-        console.log(isPopUpOpen);
+      console.log(isPopUpOpen);
       const messageTop = messageRef.current.offsetTop;
       const windowHeight = window.innerHeight;
       if ( !isPopUpOpen && window.pageYOffset > messageTop - windowHeight) {
@@ -144,7 +169,7 @@ const Department = () => {
         </nav>
       </header> */}
       <div ref={containerRef}>
-      <section className="parallax">
+      {!isMobile && <section className="parallax">
         <img src={hill1} id="hill1" ref={hill1Ref} alt="hill1"/>
         <img src={hill2} id="hill2" alt="hill2"/>
         <img src={hill3} id="hill3" alt="hill3"/>
@@ -156,6 +181,7 @@ const Department = () => {
         <img src={leaf} id="leaf" ref={leafRef} alt="leaf"/>
         <img src={plant} id="plant" alt="plant"/>
       </section>
+      }
 
       <section class="sec">
         <h2>2023年度，NIMO......</h2>
@@ -174,7 +200,7 @@ const Department = () => {
           <img
             src={popupWindow} // The larger image you want to show
             style={{
-              width: '60vw',
+              width: isMobile? '90vw': '50vw',
               height: 'auto',
               objectFit: 'cover', // Adjust as needed
             }}
@@ -197,20 +223,20 @@ const Department = () => {
             <div style={{
                 display: 'flex',
                 position: 'absolute',
-                top: '30%',
-                left: '70%',
+                top: isMobile? '10%':'30%',
+                left:  '60%',
                 height: '30%',
                 zIndex:1,
             }}>
                 <div>
-                  {consumables.map((data, index) => (
-                  <IconCount key={index} icon={data.icon} count={data.count} height={10}/>
-                  ))}
+                {consumables.map((data, index) => (
+  <IconCount key={index} icon={data.icon} count={data.count} height={isMobile ? 10 : 5}/>
+))}
                 </div>
             </div>
             <div className="text-div2">
                 <div>
-                <Combination3 text1="消耗水晶头/模块/面板共" count={1000} text2="个" />
+                <Combination3 text1="消耗耗材共" count={1000} text2="个" />
                 </div>
             </div>
         </div>
