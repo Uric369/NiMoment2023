@@ -160,3 +160,17 @@
     width: auto;
     height: 40vh;
 }
+
+.card-subtitle {
+    height: 6vh;
+    aspect-ratio: 5 / 1; /* 设置宽高比为1:2 */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 25px;
+    perspective: 2500px;
+    margin: 0 100px;
+    font-size: 2vh;
+}
+

@@ -64,7 +64,39 @@ const achievements = [
   }
 ]
 
-const achievementList = [0, 1, 2]
+const achvmtInfo=[{
+  text1: "你曾在",
+  info: "2023.11.01 14:09:59",
+  text2: "极限签到",
+},
+{
+  text1: "2023年，你通过了",
+  info: 10,
+  text2: "个培训任务",
+},
+{
+  text1: "你完成了这个学期所有的培训任务！",
+  info: null,
+  text2: null,
+},
+{
+  text1: "你曾在",
+  info: "2023.11.01 00:00:00",
+  text2: "留下进展",
+},
+{
+  text1: "2023年，你修改了",
+  info: 10,
+  text2: "次wiki",
+},
+{
+  text1: "2023年，你拿下了",
+  info: 10,
+  text2: "个用户侧最差AP",
+},
+]
+
+const achievementList = [0, 1]
 
 export default function Achievement(props) {
 
@@ -112,14 +144,22 @@ const onClick = () => {
      <img className="wordCloud" src={wordCloud}/>
     <div className="shell">
     {achievementList.map((index) => (
-      <div className="card" key={index}>
-        <div className="wrapper">
-          <img src={achievements[index].bg} alt="" className="cover-image" />
-        </div>
-        <img src={achievements[index].text} alt="" className="title" />
-        <img src={achievements[index].cat} alt="" className="character" />
-      </div>
-    ))}
+      <div>
+  <div className="card" key={index}>
+    <div className="wrapper">
+      <img src={achievements[index].bg} alt="" className="cover-image" />
+    </div>
+    <img src={achievements[index].text} alt="" className="title" />
+    <img src={achievements[index].cat} alt="" className="character" />
+  </div>
+      {index!=2 && <div className="card-subtitle">
+      {achvmtInfo[index].text1 + achvmtInfo[index].info + achvmtInfo[index].text2}
+    </div>}
+    {index===2 && <div className="card-subtitle">
+      {achvmtInfo[index].text1}
+    </div>}
+    </div>
+))}
 
     </div>
     </div>
