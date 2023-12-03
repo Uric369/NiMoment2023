@@ -110,7 +110,7 @@
 
 .character {
     width: 100%;
-    opacity: 0;
+    opacity: 1;
     transition: all 0.3s;
     position: absolute;
     z-index: -1;

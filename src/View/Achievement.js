@@ -1,16 +1,21 @@
 import React from "react";
 import { useRef } from "react";
 import "../css/Achievement.css";
-import A1 from "../img/image/01.png";
-import Atext from "../img/image/text-1.png";
-import A2 from "../img/image/02.png";
-import B3 from "../img/image/03.png";
-import Btext from "../img/image/text-2.png";
-import B4 from "../img/image/04.png";
-import C1 from "../img/image/12.PNG";
-import Ctext from "../img/image/11.PNG";
-import C2 from "../img/image/13.PNG";
-import sub from "../img/achievement/achieve_back.png";
+import BG_bg from "../img/achievement/BG_bg.png";
+import BG_cat from "../img/achievement/BG_cat.png";
+import BG_text from "../img/achievement/BG_text.png";
+import thief_bg from "../img/achievement/work_bg.png";
+import thief_cat from "../img/achievement/work_cat.png";
+import thief_text from "../img/achievement/work_text.png";
+import teacher_bg from "../img/achievement/teacher_bg.png";
+import teacher_cat from "../img/achievement/teacher_cat.png";
+import teacher_text from "../img/achievement/teacher_text.png";
+import xpy_bg from "../img/achievement/xpy_bg.png";
+import xpy_cat from "../img/achievement/xpy_cat.png";
+import xpy_text from "../img/achievement/xpy_text.png";
+import wiki_bg from "../img/achievement/wiki_bg.png";
+import wiki_cat from "../img/achievement/wiki_cat.png";
+import wiki_text from "../img/achievement/wiki_text.png";
 import profile from "../img/achievement/profile.png";
 import wordCloud from "../img/achievement/wordcloud.png";
 import html2canvas from 'html2canvas';
@@ -18,12 +23,48 @@ import achiveIcon from "../img/achievement/achieve_icon.png";
 import profileHistory from "../img/achievement/profile_history.png";
 import { saveAs } from 'file-saver';
 import "../css/SaveButton.css";
+import Card from "../Component/Card";
 
 const userInfo = {
   id: 378,
   name:"胡彤",
   hireDate:"2023.10.01",
 }
+
+const achievements = [
+  {
+    bg: BG_bg,
+    cat: BG_cat,
+    text: BG_text,
+  },
+  {
+    bg: teacher_bg,
+    cat: teacher_cat,
+    text: teacher_text,
+  },
+  {
+    bg: xpy_bg,
+    cat: xpy_cat,
+    text: xpy_text,
+  },
+  {
+    bg: thief_bg,
+    cat: thief_cat,
+    text: thief_text,
+  },
+  {
+    bg: wiki_bg,
+    cat: wiki_cat,
+    text: wiki_text,
+  },
+  {
+    bg: BG_bg,
+    cat: BG_cat,
+    text: BG_text,
+  }
+]
+
+const achievementList = [0, 1, 2]
 
 export default function Achievement(props) {
 
@@ -70,29 +111,15 @@ const onClick = () => {
      </div>
      <img className="wordCloud" src={wordCloud}/>
     <div className="shell">
-    <div className="card">
+    {achievementList.map((index) => (
+      <div className="card" key={index}>
         <div className="wrapper">
-          <img src={sub} alt="" className="cover-image" />
+          <img src={achievements[index].bg} alt="" className="cover-image" />
         </div>
-        <img src={Ctext} alt="" className="title" />
-        <img src={C2} alt="" className="character" />
+        <img src={achievements[index].text} alt="" className="title" />
+        <img src={achievements[index].cat} alt="" className="character" />
       </div>
-
-      <div className="card">
-        <div className="wrapper">
-          <img src={sub} alt="" className="cover-image" />
-        </div>
-        <img src={Ctext} alt="" className="title" />
-        <img src={C2} alt="" className="character" />
-      </div>
-
-      <div className="card">
-        <div className="wrapper">
-          <img src={sub} alt="" className="cover-image" />
-        </div>
-        <img src={Ctext} alt="" className="title" />
-        <img src={C2} alt="" className="character" />
-      </div>
+    ))}
 
     </div>
     </div>
