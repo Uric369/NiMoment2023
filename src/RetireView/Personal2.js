@@ -32,7 +32,6 @@ import {
 } from "../apis";
 
 import { useSelector } from "react-redux";
-import { dataFormatter } from "../utils/dataFormat";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -98,6 +97,7 @@ const defaultHifrequencies = {
 };
 
 const Personal2Special = () => {
+  const containerRef = useRef();
   const handleRouter = () => {
     history.push("/Achievement");
     window.location.reload();
