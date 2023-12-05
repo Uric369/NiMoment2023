@@ -24,6 +24,9 @@ import {
 import { useSelector } from "react-redux";
 import { formatDate, dataFormatter } from "../utils/dataFormat";
 import { useNavigate } from "react-router-dom";
+import baoxiu_cat1 from "../img/personal2/baoxiu_cat1.png";
+import baoxiu_cat2 from "../img/personal2/baoxiu_cat2.png";
+
 
 function formatPersonalConsumables(consumables) {
   return dataFormatter(
@@ -35,6 +38,7 @@ function formatPersonalConsumables(consumables) {
 }
 
 const Personal2 = () => {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [catMode, setCatMode] = useState(0);
   const containerRef = useRef();
@@ -97,10 +101,10 @@ const Personal2 = () => {
       >
         <div className="title_container">
           <div className="header">
-            <img style={{ width: "6vw" }} src={logo} alt="logo" />
+            <img style={{ width: isMobile? "20vw":"6vw" }} src={logo} alt="logo" />
             <h1>工作情况统计</h1>
             <DayNightToggleButton
-              size={1.2}
+              size={isMobile? 0.4:1.2}
               onToggle={() => handleClick()}
               defaultMode={false}
             ></DayNightToggleButton>
@@ -125,7 +129,7 @@ const Personal2 = () => {
             >
               <IconTitle
                 icon={titleIcon}
-                text={"最早/最晚更新进展（猜猜怎么触发“最晚”呢）"}
+                text={"最早/最晚更新进展（hint: 怎么触发“最晚”呢）"}
               />
             </div>
 
@@ -144,12 +148,12 @@ const Personal2 = () => {
             </div>
 
             <div className="inner_bottom_container">
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ display: isMobile? "column":"flex", justifyContent: "space-between" }}>
                 <IconTitle icon={titleIcon} text={"器材消耗"} />
-                <IconTitle
+                {!isMobile && <IconTitle
                   icon={titleIcon}
                   text={"最常一起出报（郊）修（游）的人"}
-                />
+                />}
               </div>
               <div
                 style={{
@@ -158,11 +162,31 @@ const Personal2 = () => {
                   marginLeft: "5vw",
                 }}
               >
-                <div
+                { isMobile ? (<div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
-                    maxWidth: "39%",
+                    maxWidth: isMobile? "100%":"39%",
+                    marginRight: "auto",
+                  }}
+                >
+                  {formatPersonalConsumables(consumables)
+                    .map((data, index) => (
+                      <div style={{ marginRight: "4vw" }}>
+                        <IconCount
+                          key={index}
+                          icon={data.icon}
+                          count={data.count}
+                          height={10}
+                        />
+                      </div>
+                    ))}
+                </div>):(
+                  <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    maxWidth: isMobile? "100%":"39%",
                     marginRight: "auto",
                   }}
                 >
@@ -179,17 +203,29 @@ const Personal2 = () => {
                       </div>
                     ))}
                 </div>
+                )}
 
-                <div>
+                {!isMobile && <div>
                   <IconCount
                     icon={formatPersonalConsumables(consumables)[2].icon}
                     count={formatPersonalConsumables(consumables)[2].count}
                     height={4}
                   />
-                </div>
+                </div>}
               </div>
 
               <IconTitle icon={titleIcon} text={"报修最常去的楼栋"} />
+
+              {isMobile && 
+              <div>
+                <img style={{width:"80vw"}} src={baoxiu_cat1}/>
+                <IconTitle
+                  icon={titleIcon}
+                  text={"最常一起出报（郊）修（游）的人"}
+                />
+                <img style={{width:"90vw"}} src={baoxiu_cat2}/>
+                </div>
+              }
               <h4>{hifrequencies.building}</h4>
               <h5>{hifrequencies.colleague}</h5>
             </div>
@@ -197,13 +233,13 @@ const Personal2 = () => {
         </div>
         <div className="cat_container" onClick={handleRouter}>
           {catMode === 0 && (
-            <img style={{ width: "20vw" }} src={cat2} alt="cat2" />
+            <img style={{ width: isMobile? "40vw":"20vw" }} src={cat2} alt="cat2" />
           )}
           {catMode === 1 && (
             <ImageTransition cat1={cat2} cat2={cat1} size={20} />
           )}
           {catMode === 2 && (
-            <img style={{ width: "20vw" }} src={cat1} alt="cat1" />
+            <img style={{ width: isMobile? "40vw":"20vw" }} src={cat1} alt="cat1" />
           )}
           {catMode === 3 && (
             <ImageTransition cat1={cat1} cat2={cat2} size={20} />

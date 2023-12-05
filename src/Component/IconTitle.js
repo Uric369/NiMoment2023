@@ -5,7 +5,7 @@ const IconTitle = ({ icon, text, isMargin = true }) => {
   const style = isMargin
     ? {
         display: "flex",
-        alignItems: "flex-end",
+        alignItems: "flex-start",
         marginBottom: "1vh",
         marginTop: "2vh",
       }

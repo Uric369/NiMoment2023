@@ -9,7 +9,7 @@ const IconCount = ({ icon, count, height }) => {
       <img
         src={icon}
         alt="Icon"
-        style={{ marginRight: "10px", height: `${height}vw` }}
+        style={{ marginRight: isMobile? "2px":"10px", height: `${height}vw` }}
       />
       <span
         style={{
