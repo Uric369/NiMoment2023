@@ -19,11 +19,12 @@ const Combination2 = ({ text, time }) => {
             fontSize: isMobile ? "4vw" : "3vh",
             verticalAlign: "bottom",
             color: "#fff",
-            marginBottom: isMobile ? "0.5vh" : "0" // Add margin only if isMobile is true
+            marginBottom: isMobile ? "0.5vh" : "0", // Add margin only if isMobile is true
+            marginRight:"1vw"
           }}
         >
           {text}
-        </span>
+        </span> 
       )}
       {time && (
         <strong

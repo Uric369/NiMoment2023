@@ -16,6 +16,9 @@ import xpy_text from "../img/achievement/xpy_text.png";
 import wiki_bg from "../img/achievement/wiki_bg.png";
 import wiki_cat from "../img/achievement/wiki_cat.png";
 import wiki_text from "../img/achievement/wiki_text.png";
+import ap_bg from "../img/achievement/AP_bg.png";
+import ap_cat from "../img/achievement/AP_cat.png";
+import ap_text from "../img/achievement/AP_text.png";
 import profile from "../img/achievement/profile.png";
 import wordCloud from "../img/achievement/wordcloud.png";
 import html2canvas from "html2canvas";
@@ -58,9 +61,9 @@ const achievements = [
     text: wiki_text,
   },
   {
-    bg: BG_bg,
-    cat: BG_cat,
-    text: BG_text,
+    bg: ap_bg,
+    cat: ap_cat,
+    text: ap_text,
   },
 ];
 
@@ -97,7 +100,7 @@ const achvmtInfo = [
   },
 ];
 
-const achievementList = [0, 1];
+const achievementList = [0, 1, 5];
 
 export default function Achievement(props) {
   const containerRef = useRef();
