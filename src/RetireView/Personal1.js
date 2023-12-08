@@ -20,13 +20,9 @@ import html2canvas from "html2canvas";
 import cat1 from "../img/testGradient/Meow1.png";
 import cat2 from "../img/testGradient/Meow2.png";
 import ImageTransition from "../Component/ImageTransition";
+import { useSelector } from "react-redux";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-const user = {
-  id: 378,
-  username: "胡彤",
-};
 
 const rotatingObjects = isMobile
   ? [
@@ -78,9 +74,8 @@ const handleClick = () => {
   window.location.reload();
 };
 
-const lastDay = "2023.10.01";
-
 const Personal1Special = () => {
+  const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
   const containerRef = useRef();
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {

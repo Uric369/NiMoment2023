@@ -13,7 +13,11 @@ import Typewriter from "../Component/TypeWriter";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate, padNimoerId } from "../utils/dataFormat";
-import { setNimoerInfo, setIsRetired } from "../features/nimoerReducer";
+import {
+  setNimoerInfo,
+  setIsRetired,
+  setSignInOut,
+} from "../features/nimoerReducer";
 import {
   setDepartmentStats,
   setPersonalStatsGeneral,
@@ -30,6 +34,7 @@ import {
   personalStatsOfficeApi,
   personalStatsProgressApi,
   personalStatsFieldApi,
+  signinApi,
 } from "../apis";
 
 function Entry() {
@@ -112,6 +117,14 @@ function Entry() {
         console.error(error);
       }
     );
+    getRequest(signinApi, (res) => {
+      dispatch(
+        setSignInOut({
+          signIn: formatDate(res.data.firstTime),
+          signOut: formatDate(res.data.lastTime),
+        })
+      );
+    });
   }
 
   // get nimoer info

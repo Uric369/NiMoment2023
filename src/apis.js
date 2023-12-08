@@ -5,11 +5,35 @@ export const personalStatsGeneralApi = `${nimomentUrlBase}/stats_general`;
 export const personalStatsOfficeApi = `${nimomentUrlBase}/stats_office`;
 export const personalStatsProgressApi = `${nimomentUrlBase}/stats_progress`;
 export const personalStatsFieldApi = `${nimomentUrlBase}/stats_field`;
+export const signinApi = `${nimomentUrlBase}/retired_dates`;
+export const achievementApi = `${nimomentUrlBase}/achievements`;
+export const wordcloudApi = `${nimomentUrlBase}/wordcloud`;
 
 function getDefaultHeaders() {
   return {
     "Content-Type": "application/json",
   };
+}
+
+export function getBlob(url, onSuccess, onError) {
+  let opts = {
+    method: "GET",
+    headers: getDefaultHeaders(),
+    credentials: "include",
+  };
+
+  fetch(url, opts)
+    .then((response) => {
+      return response.blob();
+    })
+    .then((data) => {
+      onSuccess(data);
+    })
+    .catch((error) => {
+      if (onError) {
+        onError(error);
+      }
+    });
 }
 
 export function getRequest(url, onSuccess, onError) {
