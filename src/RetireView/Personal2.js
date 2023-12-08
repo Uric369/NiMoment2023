@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 import DayNightToggleButton from "../Component/DayNightToggleButton";
 import "../css/Personal2Special.css";
 import BG1 from "../img/personal2/BG1.png";
@@ -31,15 +32,8 @@ import {
   getRequest,
 } from "../apis";
 
-import { useSelector } from "react-redux";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-const defaultProfileInfo = {
-  name: "管网部 · 暗夜骑士",
-  checkinDate: "...",
-  retirementDate: "...",
-};
 
 function formatProfileInfo(profile) {
   return dataFormatter(
@@ -58,15 +52,6 @@ function formatPersonalConsumables(consumables) {
     [{ icon: icon }, { icon: icon }, { icon: icon }]
   );
 }
-
-const defaultGeneralStats = {
-  office: 0,
-  field: 0,
-  numNewProgresses: 0,
-  numIncomingCalls: 0,
-  numIpAllocs: 0,
-  numMacUpdates: 0,
-};
 
 function formatStatistics(stats) {
   return dataFormatter(
@@ -91,11 +76,6 @@ function formatStatistics(stats) {
   );
 }
 
-const defaultHifrequencies = {
-  building: "",
-  colleague: "",
-};
-
 const Personal2Special = () => {
   const containerRef = useRef();
   const handleRouter = () => {
@@ -113,8 +93,8 @@ const Personal2Special = () => {
   const profileInfo = useSelector((state) => {
     return {
       name: state.nimoer.nimoerInfo.name,
-      checkinDate: "...",
-      retirementDate: "...",
+      checkinDate: state.nimoer.signInOut.signIn,
+      retirementDate: state.nimoer.signInOut.signOut,
     };
   });
   const consumables = useSelector(

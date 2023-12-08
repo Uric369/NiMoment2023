@@ -1,5 +1,6 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "../css/Achievement.css";
 import BG_bg from "../img/achievement/BG_bg.png";
 import BG_cat from "../img/achievement/BG_cat.png";
@@ -20,19 +21,15 @@ import ap_bg from "../img/achievement/AP_bg.png";
 import ap_cat from "../img/achievement/AP_cat.png";
 import ap_text from "../img/achievement/AP_text.png";
 import profile from "../img/achievement/profile.png";
-import wordCloud from "../img/achievement/wordcloud.png";
 import html2canvas from "html2canvas";
 import achiveIcon from "../img/achievement/achieve_icon.png";
 import profileHistory from "../img/achievement/profile_history.png";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
+import { padNimoerId } from "../utils/dataFormat";
+import { achievementApi, getBlob, getRequest, wordcloudApi } from "../apis";
+import { formatDateTimeHHMMSS } from "../utils/dataFormat";
 import Card from "../Component/Card";
-
-const userInfo = {
-  id: 378,
-  name: "胡彤",
-  hireDate: "2023.10.01",
-};
 
 const achievements = [
   {
@@ -100,9 +97,51 @@ const achvmtInfo = [
   },
 ];
 
-const achievementList = [0, 1, 5];
-
 export default function Achievement(props) {
+  const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
+  const isRetired = useSelector((state) => state.nimoer.isRetired);
+  const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
+  const [achievementList, setAchievementList] = useState([]);
+  const [achievementInfo, setAchievementDetails] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
+  const imageRef = useRef();
+
+  function setAchievementInfo(achievementList, achievementDetails) {
+    let updatedDetails = Array.from(achievementDetails);
+    const keys = [
+      [0, "signIn"],
+      [1, "taskNum"],
+      [3, "strikeBreaker"],
+      [4, "wikiEditor"],
+      [5, "apKiller"],
+    ];
+    for (const [id, key] of keys) {
+      if (key == "signIn" || key == "strikeBreaker") {
+        achievementDetails[key] = formatDateTimeHHMMSS(achievementDetails[key]);
+      }
+      updatedDetails[id] = achievementDetails[key];
+    }
+
+    setAchievementDetails(updatedDetails);
+  }
+
+  useEffect(() => {
+    getRequest(achievementApi, (res) => {
+      setAchievementList(res.data.achievementList);
+      setAchievementInfo(res.data.achievementList, res.data.info);
+    });
+    getBlob(wordcloudApi, (res) => {
+      const url = URL.createObjectURL(res);
+      imageRef.current.src = url;
+    });
+  }, []);
+
   const containerRef = useRef();
   //   const { h } = props;
   const handleProfileHistory = () => {
@@ -139,10 +178,10 @@ export default function Achievement(props) {
             <img style={{ height: "25vh" }} src={profile} />
             <h style={{ fontWeight: "bold", fontSize: "3vh" }}>身份认证</h>
             <h style={{ fontSize: "2vh" }}>
-              #Nimoer {userInfo.id} {userInfo.name}
+              #Nimoer {padNimoerId(nimoerInfo.id)} {nimoerInfo.name}
             </h>
             <h style={{ fontSize: "2vh" }}>
-              状态：在职 入职时间：{userInfo.hireDate}
+              状态：{isRetired ? "退休" : "在职"} 入职时间：{signInDate}
             </h>
           </div>
           <div
@@ -162,7 +201,7 @@ export default function Achievement(props) {
           </div>
           <h style={{ marginLeft: "10vw", fontSize: "4vh" }}>xxx群词云</h>
         </div>
-        <img className="wordCloud" src={wordCloud} />
+        <img className="wordCloud" ref={imageRef} />
         <div className="shell">
           {achievementList.map((index) => (
             <div>
@@ -184,7 +223,7 @@ export default function Achievement(props) {
               {index != 2 && (
                 <div className="card-subtitle">
                   {achvmtInfo[index].text1 +
-                    achvmtInfo[index].info +
+                    achievementInfo[index] +
                     achvmtInfo[index].text2}
                 </div>
               )}

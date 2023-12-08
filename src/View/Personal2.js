@@ -22,7 +22,7 @@ import {
   getRequest,
 } from "../apis";
 import { useSelector } from "react-redux";
-import { formatDate, dataFormatter } from "../utils/dataFormat";
+import { formatDateTimeHHMM, dataFormatter } from "../utils/dataFormat";
 import { useNavigate } from "react-router-dom";
 import baoxiu_cat1 from "../img/personal2/baoxiu_cat1.png";
 import baoxiu_cat2 from "../img/personal2/baoxiu_cat2.png";

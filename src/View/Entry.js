@@ -12,8 +12,12 @@ import NiMoment from "../img/cover/NiMoment.png";
 import Typewriter from "../Component/TypeWriter";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { formatDate, padNimoerId } from "../utils/dataFormat";
-import { setNimoerInfo, setIsRetired } from "../features/nimoerReducer";
+import { formatDateTimeHHMM, padNimoerId } from "../utils/dataFormat";
+import {
+  setNimoerInfo,
+  setIsRetired,
+  setSignInOut,
+} from "../features/nimoerReducer";
 import {
   setDepartmentStats,
   setPersonalStatsGeneral,
@@ -30,6 +34,7 @@ import {
   personalStatsOfficeApi,
   personalStatsProgressApi,
   personalStatsFieldApi,
+  signinApi,
 } from "../apis";
 
 function Entry() {
@@ -88,8 +93,8 @@ function Entry() {
       (res) => {
         dispatch(
           setPersonalStatsProgressUpdates({
-            earliest: formatDate(res.data.earliestProgress),
-            latest: formatDate(res.data.latestProgress),
+            earliest: formatDateTimeHHMM(res.data.earliestProgress),
+            latest: formatDateTimeHHMM(res.data.latestProgress),
           })
         );
       },
@@ -112,6 +117,14 @@ function Entry() {
         console.error(error);
       }
     );
+    getRequest(signinApi, (res) => {
+      dispatch(
+        setSignInOut({
+          signIn: formatDateTimeHHMM(res.data.firstTime),
+          signOut: formatDateTimeHHMM(res.data.lastTime),
+        })
+      );
+    });
   }
 
   // get nimoer info
