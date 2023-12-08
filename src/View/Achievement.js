@@ -17,9 +17,6 @@ import xpy_text from "../img/achievement/xpy_text.png";
 import wiki_bg from "../img/achievement/wiki_bg.png";
 import wiki_cat from "../img/achievement/wiki_cat.png";
 import wiki_text from "../img/achievement/wiki_text.png";
-import ap_bg from "../img/achievement/AP_bg.png";
-import ap_cat from "../img/achievement/AP_cat.png";
-import ap_text from "../img/achievement/AP_text.png";
 import profile from "../img/achievement/profile.png";
 import html2canvas from "html2canvas";
 import achiveIcon from "../img/achievement/achieve_icon.png";
@@ -58,9 +55,9 @@ const achievements = [
     text: wiki_text,
   },
   {
-    bg: ap_bg,
-    cat: ap_cat,
-    text: ap_text,
+    bg: BG_bg,
+    cat: BG_cat,
+    text: BG_text,
   },
 ];
 
@@ -100,7 +97,7 @@ const achvmtInfo = [
 export default function Achievement(props) {
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
-  const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
+  const signInDate = useSelector((state) => 1111111111111111);
   const [achievementList, setAchievementList] = useState([]);
   const [achievementInfo, setAchievementDetails] = useState([
     null,

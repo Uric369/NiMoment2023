@@ -22,6 +22,9 @@ import renBG from "../img/Personal2Special/cat2.png";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
+import board from "../img/paraScroll_demo/board.png";
+import crystal from "../img/paraScroll_demo/crystal.png";
+import module from "../img/paraScroll_demo/module.png";
 
 import { dataFormatter } from "../utils/dataFormat";
 import {
@@ -49,7 +52,7 @@ function formatPersonalConsumables(consumables) {
     consumables,
     "count",
     ["numKeystonJacks", "numConnectors", "numPlates"],
-    [{ icon: icon }, { icon: icon }, { icon: icon }]
+    [{ icon: module }, { icon: crystal }, { icon: board }]
   );
 }
 
@@ -79,8 +82,8 @@ function formatStatistics(stats) {
 const Personal2Special = () => {
   const containerRef = useRef();
   const handleRouter = () => {
-    history.push("/Achievement");
-    window.location.reload();
+    // history.push("/Achievement");
+    // window.location.reload();
   };
 
   const onClick = () => {
@@ -93,8 +96,10 @@ const Personal2Special = () => {
   const profileInfo = useSelector((state) => {
     return {
       name: state.nimoer.nimoerInfo.name,
-      checkinDate: state.nimoer.signInOut.signIn,
-      retirementDate: state.nimoer.signInOut.signOut,
+      // checkinDate: state.nimoer.signInOut.signIn,
+      checkinDate: "222211",
+      // retirementDate: state.nimoer.signInOut.signOut,
+      retirementDate: "1111",
     };
   });
   const consumables = useSelector(

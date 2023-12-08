@@ -75,7 +75,8 @@ const handleClick = () => {
 };
 
 const Personal1Special = () => {
-  const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
+  // const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
+  const lastDay = useSelector((state) => 1);
   const containerRef = useRef();
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {

@@ -24,16 +24,18 @@ import {
 import { useSelector } from "react-redux";
 import { formatDateTimeHHMM, dataFormatter } from "../utils/dataFormat";
 import { useNavigate } from "react-router-dom";
-import baoxiu_cat1 from "../img/personal2/baoxiu_cat1.png";
+import baoxiu_cat1 from "../img/personal2/cat2.png";
 import baoxiu_cat2 from "../img/personal2/baoxiu_cat2.png";
-
+import board from "../img/paraScroll_demo/board.png";
+import crystal from "../img/paraScroll_demo/crystal.png";
+import module from "../img/paraScroll_demo/module.png";
 
 function formatPersonalConsumables(consumables) {
   return dataFormatter(
     consumables,
     "count",
     ["numKeystonJacks", "numConnectors", "numPlates"],
-    [{ icon: icon }, { icon: icon }, { icon: icon }]
+    [{ icon: module }, { icon: crystal }, { icon: board }]
   );
 }
 
@@ -218,12 +220,12 @@ const Personal2 = () => {
 
               {isMobile && 
               <div>
-                <img style={{width:"80vw"}} src={baoxiu_cat1}/>
+                <img style={{width:"85vw"}} src={baoxiu_cat1}/>
                 <IconTitle
                   icon={titleIcon}
                   text={"最常一起出报（郊）修（游）的人"}
                 />
-                <img style={{width:"90vw"}} src={baoxiu_cat2}/>
+                <img style={{width:"80vw"}} src={baoxiu_cat2}/>
                 </div>
               }
               <h4>{hifrequencies.building}</h4>

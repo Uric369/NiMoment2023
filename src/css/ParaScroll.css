@@ -176,7 +176,7 @@ header_demo {
     aspect-ratio: 1/1; /* 设置宽高比为1:2 */
     justify-content: flex-start;
     left: 10% ;
-    width:30% ;
+    width:25% ;
     text-align: end;
     align-items: flex-end;
   }
@@ -248,7 +248,7 @@ header_demo {
 .close-button {
   position: absolute;
   top: 0; /* Position it on the top-right */
-  right: 0;
+  right: 3vw;
   cursor: pointer; /* Change cursor to indicate it's clickable */
   width: 5vw; /* Width of the close button */
   height: 5vw; /* Height of the close button */

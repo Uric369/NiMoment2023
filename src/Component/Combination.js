@@ -17,7 +17,7 @@ const Combination = ({ icon, text1, text2, count, sequence }) => {
           alt="Icon"
           style={{
             marginRight: "10px",
-            width: isMobile ? "3vh" : "6vh",
+            width: "auto",
             height: isMobile ? "3vh" : "6vh",
           }}
         />
@@ -64,7 +64,7 @@ const Combination = ({ icon, text1, text2, count, sequence }) => {
           alt="Icon"
           style={{
             marginRight: "10px",
-            width: isMobile ? "3vh" : "6vh",
+            width: "auto",
             height: isMobile ? "3vh" : "6vh",
           }}
         />

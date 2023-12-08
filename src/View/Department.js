@@ -15,7 +15,7 @@ import "../css/ParaScroll.css";
 import IconCount from "../Component/IconCount";
 import Combination3 from "../Component/Combination3";
 import { useNavigate } from "react-router-dom";
-import popupWindow from "../img/paraScroll_demo/popupWindow.png";
+import popupWindow from "../img/paraScroll_demo/popup_landscape.png";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
@@ -23,13 +23,19 @@ import { history } from "../utils/history";
 // import messageNotice from "../audio/message.mp3";
 import { useSelector } from "react-redux";
 import { dataFormatter } from "../utils/dataFormat";
+import requestIcon from "../img/paraScroll_demo/request.png";
+import applicationIcon from "../img/paraScroll_demo/application.png";
+import board from "../img/paraScroll_demo/board.png";
+import crystal from "../img/paraScroll_demo/crystal.png";
+import module from "../img/paraScroll_demo/module.png";
+import cross from "../img/paraScroll_demo/cross.png";
 
 function formatConsumables(consumables) {
   return dataFormatter(
     consumables,
     "count",
     ["numKeystonJacks", "numConnectors", "numPlates"],
-    [{ icon: icon }, { icon: icon }, { icon: icon }]
+    [{ icon: module }, { icon: crystal }, { icon: board }]
   );
 }
 
@@ -213,7 +219,7 @@ const Department = () => {
             <img
               className="icon-div1"
               style={{ zIndex: 3 }}
-              src={icon}
+              src={requestIcon}
               alt="icon"
             />
             <div className="text-div1" style={{ zIndex: 3 }}>
@@ -240,7 +246,7 @@ const Department = () => {
                     onClick={handleRouter}
                   />
                   <img
-                    src={icon} // The close icon image
+                    src={cross} // The close icon image
                     className="close-button"
                     onClick={handleCloseClick}
                     alt="Close"
@@ -297,7 +303,7 @@ const Department = () => {
             <img
               className="icon-div1"
               style={{ zIndex: 1 }}
-              src={icon}
+              src={applicationIcon}
               alt="icon"
             />
             <div className="text-div1">

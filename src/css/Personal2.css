@@ -126,7 +126,7 @@
       left: 4vw; /* 相对于容器左侧的距离 */
       right: 4vw;
       bottom: 3vh;
-      background-image: url('../img/personal2/Panel.png'); 
+      background-image: url('../img/personal2/panel_mobile.png'); 
       background-size: 92vw 85vh; 
       flex-direction: column;
       align-items: flex-start;
@@ -147,7 +147,7 @@
       top: 12vh; /* 相对于容器顶部的距离 */
       bottom: 0vh;
       width: 100%;
-      background-image: url('../img/personal2/twoCats.png'); 
+      background-image: url('../img/personal2/Box_mobile.png'); 
       background-size: cover; 
       padding-left: -10vw;
       padding-top: 10vh;
@@ -160,7 +160,7 @@
     .personal2_container .outer_container .inner_container h4{
       position: absolute;
       top: 32vh; /* 相对于容器顶部的距离 */
-      left: 46vw;
+      left: 24vw;
       font-size: 2vh;
       color: white;
     }
@@ -168,7 +168,7 @@
     .personal2_container .outer_container .inner_container  h5{
       position: absolute;
       top: 53vh; /* 相对于容器顶部的距离 */
-      left: 20vw;
+      left: 47vw;
       font-size: 2vh;
       color: white;
     }

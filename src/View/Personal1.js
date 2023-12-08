@@ -9,6 +9,7 @@ import magicDevice from "../img/personal1/magicDevice.png";
 import zhiban from "../img/icon/zhiban.png";
 import baoxiu from "../img/icon/baoxiu.png";
 import jingzhan from "../img/icon/jingzhan.png";
+import updoor from "../img/personal1/upDoor.png";
 import ap from "../img/icon/AP.png";
 import mac from "../img/icon/Mac.png";
 import ip from "../img/icon/IP.png";
@@ -92,10 +93,10 @@ function formatGeneralStats(generalStats) {
     "count",
     ["office", "field", "numNewProgresses", "numApDebugs"],
     [
-      { icon: icon, text1: "值班", text2: "次" },
-      { icon: icon, text1: "出报修", text2: "次" },
-      { icon: icon, text1: "留下进展", text2: "条" },
-      { icon: icon, text1: "查看用户侧最差 AP ", text2: "个" },
+      { icon: zhiban, text1: "值班", text2: "次" },
+      { icon: baoxiu, text1: "出报修", text2: "次" },
+      { icon: jingzhan, text1: "留下进展", text2: "条" },
+      { icon: ap, text1: "查看用户侧最差 AP ", text2: "个" },
     ]
   );
 }
@@ -106,10 +107,10 @@ function formatOfficeStats(officeStats) {
     "count",
     ["numIncomingCalls", "numIpAllocs", "numMacUpdates", "numVisitors"],
     [
-      { icon: icon, text1: "接到电话", text2: "个" },
-      { icon: icon, text1: "分配 IP ", text2: "个" },
-      { icon: icon, text1: "更换 MAC ", text2: "个" },
-      { icon: icon, text1: "遇到用户上门", text2: "次" },
+      { icon: call, text1: "接到电话", text2: "个" },
+      { icon: ip, text1: "分配 IP ", text2: "个" },
+      { icon: mac, text1: "更换 MAC ", text2: "个" },
+      { icon: updoor, text1: "遇到用户上门", text2: "次" },
     ]
   );
 }
