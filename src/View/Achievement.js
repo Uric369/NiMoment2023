@@ -25,7 +25,7 @@ import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import { padNimoerId } from "../utils/dataFormat";
 import { achievementApi, getBlob, getRequest, wordcloudApi } from "../apis";
-import { formatDate } from "../utils/dataFormat";
+import { formatDateTimeHHMMSS } from "../utils/dataFormat";
 import Card from "../Component/Card";
 
 const achievements = [
@@ -120,7 +120,7 @@ export default function Achievement(props) {
     ];
     for (const [id, key] of keys) {
       if (key == "signIn" || key == "strikeBreaker") {
-        achievementDetails[key] = formatDate(achievementDetails[key]);
+        achievementDetails[key] = formatDateTimeHHMMSS(achievementDetails[key]);
       }
       updatedDetails[id] = achievementDetails[key];
     }

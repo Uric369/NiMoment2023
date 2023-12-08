@@ -19,7 +19,7 @@ function zeroPadToTwoDigits(num) {
   return num.toString().padStart(2, "0");
 }
 
-export function formatDate(date) {
+export function formatDateTimeHHMM(date) {
   if (typeof date === "string") {
     date = new Date(date);
   }
@@ -32,4 +32,20 @@ export function formatDate(date) {
   const minute = zeroPadToTwoDigits(date.getMinutes());
 
   return `${year}-${month}-${day} ${hour}:${minute}`;
+}
+
+export function formatDateTimeHHMMSS(date) {
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+
+  const year = date.getFullYear();
+  const month = zeroPadToTwoDigits(date.getMonth() + 1);
+  const day = zeroPadToTwoDigits(date.getDate());
+
+  const hour = zeroPadToTwoDigits(date.getHours());
+  const minute = zeroPadToTwoDigits(date.getMinutes());
+  const second = zeroPadToTwoDigits(date.getSeconds());
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }

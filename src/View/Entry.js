@@ -12,7 +12,7 @@ import NiMoment from "../img/cover/NiMoment.png";
 import Typewriter from "../Component/TypeWriter";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { formatDate, padNimoerId } from "../utils/dataFormat";
+import { formatDateTimeHHMM, padNimoerId } from "../utils/dataFormat";
 import {
   setNimoerInfo,
   setIsRetired,
@@ -93,8 +93,8 @@ function Entry() {
       (res) => {
         dispatch(
           setPersonalStatsProgressUpdates({
-            earliest: formatDate(res.data.earliestProgress),
-            latest: formatDate(res.data.latestProgress),
+            earliest: formatDateTimeHHMM(res.data.earliestProgress),
+            latest: formatDateTimeHHMM(res.data.latestProgress),
           })
         );
       },
@@ -120,8 +120,8 @@ function Entry() {
     getRequest(signinApi, (res) => {
       dispatch(
         setSignInOut({
-          signIn: formatDate(res.data.firstTime),
-          signOut: formatDate(res.data.lastTime),
+          signIn: formatDateTimeHHMM(res.data.firstTime),
+          signOut: formatDateTimeHHMM(res.data.lastTime),
         })
       );
     });
