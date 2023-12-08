@@ -97,7 +97,7 @@ const achvmtInfo = [
 export default function Achievement(props) {
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
-  const signInDate = useSelector((state) => 1111111111111111);
+  const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
   const [achievementList, setAchievementList] = useState([]);
   const [achievementInfo, setAchievementDetails] = useState([
     null,

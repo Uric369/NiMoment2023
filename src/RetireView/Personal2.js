@@ -96,10 +96,10 @@ const Personal2Special = () => {
   const profileInfo = useSelector((state) => {
     return {
       name: state.nimoer.nimoerInfo.name,
-      // checkinDate: state.nimoer.signInOut.signIn,
-      checkinDate: "222211",
-      // retirementDate: state.nimoer.signInOut.signOut,
-      retirementDate: "1111",
+      checkinDate: state.nimoer.signInOut.signIn,
+      // checkinDate: "222211",
+      retirementDate: state.nimoer.signInOut.signOut,
+      // retirementDate: "1111",
     };
   });
   const consumables = useSelector(
