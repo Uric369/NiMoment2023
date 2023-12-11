@@ -91,6 +91,7 @@ header_demo {
     font-size: 6vh;
     color: #fff;
     margin-bottom: 10px;
+    align-items: end;
 }
 
 .sec h3 {
@@ -146,6 +147,7 @@ header_demo {
     left: 100vw; /* 相对于容器左侧的距离 */
     height: 14vh;
     width: 40vw;
+    cursor: pointer;
   }
   
   .cat {
@@ -181,6 +183,18 @@ header_demo {
     align-items: flex-end;
   }
 
+  .icon-div3 {
+    display: flex;
+    position: absolute;
+    top: 30%; /* 相对于容器顶部的距离 */
+    aspect-ratio: 1/1; /* 设置宽高比为1:2 */
+    justify-content: flex-start;
+    left: 10% ;
+    width:25% ;
+    text-align: end;
+    align-items: flex-end;
+  }
+
   .icon-div2 {
     display: flex;
     position: absolute;
@@ -199,7 +213,7 @@ header_demo {
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    top: 40%; /* 相对于容器顶部的距离 */
+    top: 30%; /* 相对于容器顶部的距离 */
     right: 10%; /* 相对于容器左侧的距离 */
     bottom: 20%;
     letter-spacing: 2px;
@@ -403,6 +417,7 @@ header_demo {
       left: 100vw; /* 相对于容器左侧的距离 */
       height: 7vh;
       width: 80vw;
+      cursor: pointer;
     }
     
     .cat {
@@ -436,6 +451,19 @@ header_demo {
       width:30% ;
       text-align: end;
       align-items: flex-end;
+    }
+
+    .icon-div3 {
+      display: flex;
+      position: absolute;
+      top: 20%; /* 相对于容器顶部的距离 */
+      aspect-ratio: 1/1; /* 设置宽高比为1:2 */
+      justify-content: flex-start;
+      left: 10% ;
+      width:25% ;
+      text-align: end;
+      align-items: flex-end;
+      margin-right: 5vw;
     }
   
     .icon-div2 {

@@ -6,6 +6,8 @@
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    max-height: 100vh; /* 设置最大高度为视窗高度 */
+    overflow: hidden;  /* 隐藏超出部分 */
   }
 
 .personal1_container .text_container {
@@ -18,7 +20,7 @@
 
 .personal1_container .title_container {
   position: absolute;
-  top: 20vh; /* 相对于容器顶部的距离 */
+  top: 15vh; /* 相对于容器顶部的距离 */
   left: 10vw; /* 相对于容器左侧的距离 */
   display: flex;
   flex-direction: column;
@@ -48,7 +50,7 @@
 /* 分割线的样式 */
 .divider {
   width: 100%;  /* 或者其他你想要的宽度 */
-  height: 4px;  /* 控制分割线的粗细 */
+  height: 0.5vh;  /* 控制分割线的粗细 */
   background-color: rgb(149, 149, 210);  /* 控制分割线的颜色 */
   margin-top: 10px;  /* 添加一些空间在分割线和标题之间 */
 }
@@ -88,7 +90,7 @@
   color: white;
   margin-top: 2vh;
   font-weight: 500;
-  line-height: 3; /* 行间距为文字大小的150% */
+  line-height: 2; /* 行间距为文字大小的150% */
   letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
 }
 
@@ -101,6 +103,14 @@
     display: flex; /* 新增：使 content2 成为一个 flex 容器 */
     flex-direction: column; /* 新增：将主轴方向设置为垂直 */
     justify-content: flex-end; /* 新增：使块级元素向右对齐 */
+  }
+
+  .nextReminder {
+    position: absolute;
+    top: 65vh;
+    width: 20vw;
+    max-height: 35vh;
+    overflow: hidden
   }
 }
 
@@ -124,7 +134,7 @@
 
 .personal1_container .title_container {
   position: absolute;
-  top: 10vh; /* 相对于容器顶部的距离 */
+  top: 12vh; /* 相对于容器顶部的距离 */
   left: 10vw; /* 相对于容器左侧的距离 */
   display: flex;
   flex-direction: column;
@@ -192,9 +202,8 @@
 .personal1_container h6 {
   font-size: 1.6vh;
   color: white;
-  margin-top: 2vh;
   font-weight: 500;
-  line-height: 2; /* 行间距为文字大小的150% */
+  line-height: 2.5; /* 行间距为文字大小的150% */
   letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
 }
 
@@ -207,5 +216,14 @@
     display: flex; /* 新增：使 content2 成为一个 flex 容器 */
     flex-direction: column; /* 新增：将主轴方向设置为垂直 */
     justify-content: flex-end; /* 新增：使块级元素向右对齐 */
+  }
+
+  .nextReminder {
+    position: absolute;
+    top: 80vh;
+    right: 0vw;
+    width: 45vw;
+    max-height: 35vh;
+    overflow: hidden
   }
 }

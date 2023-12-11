@@ -29,6 +29,9 @@ import cross from "../img/paraScroll_demo/cross.png";
 import board from "../img/paraScroll_demo/board.png";
 import requestIcon from "../img/paraScroll_demo/request.png";
 import applicationIcon from "../img/paraScroll_demo/application.png";
+import saveButton from "../img/icon/saveButton.png";
+import popupWindow_mobile from "../img/paraScroll_demo/popup_potrait.png";
+
 
 function formatConsumables(consumables) {
   return dataFormatter(
@@ -195,8 +198,8 @@ const DepartmentSpecial = () => {
         <img src={tree} id="tree" alt="tree" />
         <img src={ufo} id="spaceShip" ref={spaceShipRef} alt="ufo" />
         <h2 id="text" ref={textRef}>
-          NiMoment飞船正在降落👇
-        </h2>
+              NiMoment飞船正在降落🢃
+            </h2>
         <img src={leaf} id="leaf" ref={leafRef} alt="leaf" />
         <img src={plant} id="plant" alt="plant" />
       </section>
@@ -223,14 +226,15 @@ const DepartmentSpecial = () => {
 
         <div>
           {isPopUpOpen && (
-            <div className="overlay">
-              <div className="popup-image-container">
+              <div className="overlay">
+              {!isMobile && <div className="popup-image-container">
                 <img
                   src={popupWindow} // The larger image you want to show
                   style={{
-                    width: isMobile ? "90vw" : "50vw",
+                    width: "50vw",
                     height: "auto",
                     objectFit: "cover", // Adjust as needed
+                    cursor:"pointer",
                   }}
                   alt="Popup"
                   onClick={handleRouter}
@@ -241,7 +245,26 @@ const DepartmentSpecial = () => {
                   onClick={handleCloseClick}
                   alt="Close"
                 />
-              </div>
+              </div>}
+              {isMobile && <div className="popup-image-container">
+                <img
+                  src={popupWindow_mobile} // The larger image you want to show
+                  style={{
+                    width: "80vw",
+                    height: "auto",
+                    objectFit: "cover", // Adjust as needed
+                    cursor:"pointer",
+                  }}
+                  alt="Popup"
+                  onClick={handleRouter}
+                />
+                <img
+                  src={cross} // The close icon image
+                  className="close-button"
+                  onClick={handleCloseClick}
+                  alt="Close"
+                />
+              </div>}
             </div>
           )}
           <img
@@ -305,9 +328,7 @@ const DepartmentSpecial = () => {
           </div>
         </div>
       </section>
-      <div className="savebutton">
-        <button onClick={onClick}>保存为图片</button>
-      </div>
+      <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>
   );
 };

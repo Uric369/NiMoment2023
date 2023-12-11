@@ -29,6 +29,8 @@ import baoxiu_cat2 from "../img/personal2/baoxiu_cat2.png";
 import board from "../img/paraScroll_demo/board.png";
 import crystal from "../img/paraScroll_demo/crystal.png";
 import module from "../img/paraScroll_demo/module.png";
+import next from "../img/personal2/next.PNG";
+import saveButton from "../img/icon/saveButton.png";
 
 function formatPersonalConsumables(consumables) {
   return dataFormatter(
@@ -106,7 +108,7 @@ const Personal2 = () => {
             <img style={{ width: isMobile? "20vw":"6vw" }} src={logo} alt="logo" />
             <h1>工作情况统计</h1>
             <DayNightToggleButton
-              size={isMobile? 0.4:1.2}
+              size={isMobile? 0.4: "0.05vw"}
               onToggle={() => handleClick()}
               defaultMode={false}
             ></DayNightToggleButton>
@@ -234,6 +236,7 @@ const Personal2 = () => {
           </div>
         </div>
         <div className="cat_container" onClick={handleRouter}>
+          {/* <img src={next} style={{position:"absolute", bottom:"vh", right:"4vw",width:"8vw",height:"auto"}}/> */}
           {catMode === 0 && (
             <img style={{ width: isMobile? "40vw":"20vw" }} src={cat2} alt="cat2" />
           )}
@@ -247,10 +250,9 @@ const Personal2 = () => {
             <ImageTransition cat1={cat1} cat2={cat2} size={20} />
           )}
         </div>
+        <img src={next} style={{position:"absolute", bottom:"5vh", right:"4vw",width:isMobile? "20vw":"8vw",height:"auto",cursor:"pointer"}}/>
       </div>
-      <div className="savebutton">
-        <button onClick={onClick}>保存为图片</button>
-      </div>
+      <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>
   );
 };

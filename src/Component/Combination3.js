@@ -7,10 +7,18 @@ const Combination3 = ({ text1, count, text2 }) => {
     <div>
       <h1 style={{ fontSize: isMobile ? "5vw" : "2vw" }}>{text1}</h1>
       <br />
+
+      <div
+      style={{
+        display: "flex",
+        alignItems: "baseline",
+      }}
+    >
       <span style={{ fontSize: isMobile ? "8vw" : "4vw", fontWeight: "bold" }}>
         <Counter counts={count} />
       </span>
       <span style={{ fontSize: isMobile ? "5vw" : "2vw" }}>{text2}</span>
+      </div>
     </div>
   );
 };

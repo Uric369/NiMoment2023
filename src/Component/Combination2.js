@@ -8,7 +8,7 @@ const Combination2 = ({ text, time }) => {
       style={{
         display: "flex",
         flexDirection: isMobile ? "column" : "row", // Use column layout for mobile
-        alignItems: "flex-start",
+        alignItems: "baseline",
         marginBottom: "1vh",
         
       }}

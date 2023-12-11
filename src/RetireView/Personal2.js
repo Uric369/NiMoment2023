@@ -25,6 +25,8 @@ import html2canvas from "html2canvas";
 import board from "../img/paraScroll_demo/board.png";
 import crystal from "../img/paraScroll_demo/crystal.png";
 import module from "../img/paraScroll_demo/module.png";
+import saveButton from "../img/icon/saveButton.png";
+import next from "../img/personal2/next.PNG";
 
 import { dataFormatter } from "../utils/dataFormat";
 import {
@@ -96,10 +98,10 @@ const Personal2Special = () => {
   const profileInfo = useSelector((state) => {
     return {
       name: state.nimoer.nimoerInfo.name,
-      // checkinDate: state.nimoer.signInOut.signIn,
-      checkinDate: "222211",
-      // retirementDate: state.nimoer.signInOut.signOut,
-      retirementDate: "1111",
+      checkinDate: state.nimoer.signInOut.signIn,
+      // checkinDate: "222211",
+      retirementDate: state.nimoer.signInOut.signOut,
+      // retirementDate: "1111",
     };
   });
   const consumables = useSelector(
@@ -232,7 +234,7 @@ const Personal2Special = () => {
               <div
                 style={{
                   position: "absolute",
-                  top: isMobile ? "43vh" : "32vh",
+                  top: isMobile ? "44vh" : "32vh",
                   left: isMobile ? "0vw" : "30vw",
                 }}
               >
@@ -257,13 +259,12 @@ const Personal2Special = () => {
                 </h>
               </div>
               {isMobile && (
-                <div style={{ position: "absolute", top: "54vh", left: "0vw" }}>
+                <div style={{ position: "absolute", top: "57vh", left: "0vw" }}>
                   <IconTitle icon={titleIcon} text={"累计霍霍器材"} />
                   <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
+                    style={{ display: "flex", justifyContent: "space-between",zIndex:2 }}
                   >
                     {formatPersonalConsumables(consumables)
-                      .slice(0, 2)
                       .map((data, index) => (
                         <div style={{ marginRight: "2vw" }}>
                           <IconCount
@@ -275,13 +276,13 @@ const Personal2Special = () => {
                         </div>
                       ))}
                   </div>
-                  <div>
+                  {/* <div>
                     <IconCount
                       icon={formatPersonalConsumables(consumables)[2].icon}
                       count={formatPersonalConsumables(consumables)[2].count}
                       height={10}
                     />
-                  </div>
+                  </div> */}
                 </div>
               )}
             </div>
@@ -289,11 +290,10 @@ const Personal2Special = () => {
         </div>
       </div>
       <div className="cat_container" onClick={handleRouter}>
-        <ImageTransition cat1={cat1} cat2={cat2} size={20} />
+        <ImageTransition cat1={cat1} cat2={cat2} size={isMobile? 35:20} />
       </div>
-      <div className="savebutton">
-        <button onClick={onClick}>保存为图片</button>
-      </div>
+      <img src={saveButton} onClick={handleRouter} className="savebutton"/>
+      <img src={next} style={{position:"absolute", bottom:"5vh", right:"4vw",width:isMobile? "20vw":"8vw",height:"auto",cursor:"pointer"}}/>
     </div>
   );
 };

@@ -11,6 +11,9 @@ import thief_text from "../img/achievement/work_text.png";
 import teacher_bg from "../img/achievement/teacher_bg.png";
 import teacher_cat from "../img/achievement/teacher_cat.png";
 import teacher_text from "../img/achievement/teacher_text.png";
+import ap_bg from "../img/achievement/AP_bg.png";
+import ap_cat from "../img/achievement/AP_cat.png";
+import ap_text from "../img/achievement/AP_text.png";
 import xpy_bg from "../img/achievement/xpy_bg.png";
 import xpy_cat from "../img/achievement/xpy_cat.png";
 import xpy_text from "../img/achievement/xpy_text.png";
@@ -27,6 +30,9 @@ import { padNimoerId } from "../utils/dataFormat";
 import { achievementApi, getBlob, getRequest, wordcloudApi } from "../apis";
 import { formatDateTimeHHMMSS } from "../utils/dataFormat";
 import Card from "../Component/Card";
+import saveButton from "../img/icon/saveButton.png";
+import wordcloud from "../img/achievement/wordcloud.png";
+import notice from "../img/achievement/notice.png";
 
 const achievements = [
   {
@@ -55,9 +61,9 @@ const achievements = [
     text: wiki_text,
   },
   {
-    bg: BG_bg,
-    cat: BG_cat,
-    text: BG_text,
+    bg: ap_bg,
+    cat: ap_cat,
+    text: ap_text,
   },
 ];
 
@@ -97,7 +103,7 @@ const achvmtInfo = [
 export default function Achievement(props) {
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
-  const signInDate = useSelector((state) => 1111111111111111);
+  const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
   const [achievementList, setAchievementList] = useState([]);
   const [achievementInfo, setAchievementDetails] = useState([
     null,
@@ -131,6 +137,8 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
+      // const test=[]
+      // setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
     getBlob(wordcloudApi, (res) => {
@@ -154,15 +162,13 @@ export default function Achievement(props) {
 
   return (
     <div>
-      <div className="savebutton">
-        <button onClick={onClick}>保存为图片</button>
-      </div>
-
+      <img src={saveButton} onClick={onClick} className="savebutton"/>
+      <img src={notice} className="notice"/>
       <div className="achievement" ref={containerRef}>
         <div className="border" />
         <div className="achievement-text">
           <img style={{ height: "10vh" }} src={achiveIcon} />
-          成就
+          年度成就
         </div>
         <div className="id_card">
           <div
@@ -178,10 +184,13 @@ export default function Achievement(props) {
               #Nimoer {padNimoerId(nimoerInfo.id)} {nimoerInfo.name}
             </h>
             <h style={{ fontSize: "2vh" }}>
-              状态：{isRetired ? "退休" : "在职"} 入职时间：{signInDate}
+              状态：{isRetired ? "退休" : "在职"}
+            </h>
+            <h style={{ fontSize: "2vh" }}>
+              入职时间：{signInDate}
             </h>
           </div>
-          <div
+          {/* <div
             style={{
               display: "flex",
               flexDirection: "column",
@@ -195,10 +204,19 @@ export default function Achievement(props) {
             />
             <h style={{ fontSize: "2vh" }}>查看NIMO后台</h>
             <h style={{ fontSize: "2vh" }}>历史头像</h>
-          </div>
-          <h style={{ marginLeft: "10vw", fontSize: "4vh" }}>xxx群词云</h>
+          </div> */}
+          
         </div>
-        <img className="wordCloud" ref={imageRef} />
+        <div  className="wordCloud" >
+        <h4>QQ群词云</h4>
+        <img style={{height:"35vh"}} ref={imageRef} />
+        {/* <img style={{height:"35vh"}} src={wordcloud} /> */}
+        </div>
+        {achievementList.length === 0 ? (
+           <div className="no-achievements">
+           啊偶，今年没有获得成就，明年加油
+         </div>
+       ) : (
         <div className="shell">
           {achievementList.map((index) => (
             <div>
@@ -230,6 +248,7 @@ export default function Achievement(props) {
             </div>
           ))}
         </div>
+        )}
       </div>
     </div>
   );

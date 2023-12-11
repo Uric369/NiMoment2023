@@ -39,6 +39,8 @@ import {
 } from "../apis";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import nextReminder from "../img/personal1/cat_next.png";
+import saveButton from "../img/icon/saveButton.png";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -238,16 +240,12 @@ const Personal1 = () => {
           ))}
         </div>
 
-        <div
-          onClick={handleClick}
-          style={{ position: "absolute", top: "70vh" }}
-        >
-          <ImageTransition cat1={cat1} cat2={cat2} />
-        </div>
+        <div onClick={handleClick} className="nextReminder">
+  <img src={nextReminder} style={{ width:"100%", height:"100%", objectFit: "contain", cursor: "pointer" }}/>
+</div>
+
       </div>
-      <div className="savebutton">
-        <button onClick={onClick}>保存为图片</button>
-      </div>
+      <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>
   );
 };

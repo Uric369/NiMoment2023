@@ -21,6 +21,8 @@ import cat1 from "../img/testGradient/Meow1.png";
 import cat2 from "../img/testGradient/Meow2.png";
 import ImageTransition from "../Component/ImageTransition";
 import { useSelector } from "react-redux";
+import nextReminder from "../img/personal1/cat_next.png";
+import saveButton from "../img/icon/saveButton.png";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -28,7 +30,7 @@ const rotatingObjects = isMobile
   ? [
       // {img: star_mid, width: 13, x: 30, y:50, speed:10},
       { img: star_big, width: 18, x: 80, y: 5, speed: 20 },
-      { img: star, width: 10, x: 23, y: 58, speed: 15 },
+      { img: star, width: 10, x: 23, y: 75, speed: 15 },
     ]
   : [
       { img: star_mid, width: 10, x: 60, y: 15, speed: 10 },
@@ -53,7 +55,7 @@ const glitteringObjects = isMobile
 const staticObjects = isMobile
   ? [
       { img: astronaut1, width: 35, x: 65, y: 20 },
-      { img: astronaut2, width: 40, x: 3, y: 57 },
+      { img: astronaut2, width: 40, x: 3, y: 73 },
       { img: magicDevice, width: 14, x: 69, y: 33 },
     ]
   : [
@@ -75,8 +77,8 @@ const handleClick = () => {
 };
 
 const Personal1Special = () => {
-  // const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
-  const lastDay = useSelector((state) => 1);
+  const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
+  // const lastDay = useSelector((state) => 1);
   const containerRef = useRef();
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {
@@ -124,7 +126,7 @@ const Personal1Special = () => {
               {" "}
               {lastDay}
             </h5>
-            <h6>是你最后一天上班的日子，签离的那一刻，想必百感交集吧...</h6>
+            <h6>是你最后一天上班的日子，<br /> 签离的那一刻，想必百感交集吧...</h6>
           </div>
         </div>
 
@@ -172,12 +174,10 @@ const Personal1Special = () => {
           ))}
         </div>
       </div>
-      <div className="savebutton">
-        <button onClick={onClick}>保存为图片</button>
-      </div>
-      <div onClick={handleClick} style={{ position: "absolute", top: "70vh" }}>
-        <ImageTransition cat1={cat1} cat2={cat2} />
-      </div>
+      <img src={saveButton} onClick={onClick} className="savebutton"/>
+      <div onClick={handleClick} className="nextReminder">
+  <img src={nextReminder} style={{ width:"100%", height:"100%", objectFit: "contain", cursor: "pointer" }}/>
+</div>
     </div>
   );
 };

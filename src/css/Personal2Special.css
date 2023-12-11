@@ -85,6 +85,7 @@
     top: 62vh; /* 相对于容器顶部的距离 */
     left: 81vw; /* 相对于容器左侧的距离 */
     width: 20vw;
+    cursor: pointer;
   }
 
   .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiuBG {
@@ -180,9 +181,11 @@
   
     .personal2special_container .cat_container {
       position: absolute;
-      top: 82vh; /* 相对于容器顶部的距离 */
-      left: 81vw; /* 相对于容器左侧的距离 */
+      top: 83vh; /* 相对于容器顶部的距离 */
+      left: 70vw; /* 相对于容器左侧的距离 */
       width: 60vw;
+      cursor: pointer;
+      z-index: 0;
     }
   
     .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiuBG {

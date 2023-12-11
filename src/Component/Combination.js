@@ -7,7 +7,7 @@ const Combination = ({ icon, text1, text2, count, sequence }) => {
     <div
       style={{
         display: "flex",
-        alignItems: "flex-end",
+        alignItems: "baseline",
         marginBottom: isMobile ? "1vh" : "2vh",
       }}
     >

@@ -1,20 +1,22 @@
 
 @media (min-width: 768px) {
 .savebutton {
-    position: absolute;
-    top:5vh;
-    left: 5vw;
-    height: 5vh;
-    width: 10vw;
+    position: fixed;
+    top:2vh;
+    left: 1vw;
+    height: auto;
+    width: 8vw;
+    cursor: pointer;
 }
 }
 
 @media (max-width: 768px) {
     .savebutton {
         position: absolute;
-        top:5vh;
-        left: 5vw;
-        height: 2vh;
-        width: 10vw;
+        top:2vh;
+        left: 4vw;
+        height: auto;
+        width: 20vw;
+        cursor: pointer;
     }
     }
