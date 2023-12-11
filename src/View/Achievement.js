@@ -34,6 +34,7 @@ import saveButton from "../img/icon/saveButton.png";
 import wordcloud from "../img/achievement/wordcloud.png";
 import notice from "../img/achievement/notice.png";
 
+
 const achievements = [
   {
     bg: BG_bg,
@@ -101,6 +102,8 @@ const achvmtInfo = [
 ];
 
 export default function Achievement(props) {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
   const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
@@ -137,7 +140,7 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
-      // const test=[]
+      // const test=[0,1,2,3,4]
       // setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
@@ -162,12 +165,13 @@ export default function Achievement(props) {
 
   return (
     <div>
+      
       <img src={saveButton} onClick={onClick} className="savebutton"/>
       <img src={notice} className="notice"/>
       <div className="achievement" ref={containerRef}>
         <div className="border" />
         <div className="achievement-text">
-          <img style={{ height: "10vh" }} src={achiveIcon} />
+          <img style={{ height: isMobile?"5vh":"10vh" }} src={achiveIcon} />
           年度成就
         </div>
         <div className="id_card">
@@ -178,7 +182,7 @@ export default function Achievement(props) {
               alignItems: "center",
             }}
           >
-            <img style={{ height: "25vh" }} src={profile} />
+            <img style={{ height: isMobile?"10vh":"25vh" }} src={profile} />
             <h style={{ fontWeight: "bold", fontSize: "3vh" }}>身份认证</h>
             <h style={{ fontSize: "2vh" }}>
               #Nimoer {padNimoerId(nimoerInfo.id)} {nimoerInfo.name}
@@ -209,15 +213,19 @@ export default function Achievement(props) {
         </div>
         <div  className="wordCloud" >
         <h4>QQ群词云</h4>
-        <img style={{height:"35vh"}} ref={imageRef} />
+        <img style={{height:isMobile?"15vh":"35vh"}} ref={imageRef} />
         {/* <img style={{height:"35vh"}} src={wordcloud} /> */}
         </div>
+        
         {achievementList.length === 0 ? (
            <div className="no-achievements">
            啊偶，今年没有获得成就，明年加油
          </div>
        ) : (
+        <div>
+          {isMobile && <h6> 左右滑动查看成就</h6>}
         <div className="shell">
+          
           {achievementList.map((index) => (
             <div>
               <div className="card" key={index}>
@@ -248,8 +256,12 @@ export default function Achievement(props) {
             </div>
           ))}
         </div>
+         </div>
         )}
+        
+          
       </div>
+
     </div>
   );
 }
