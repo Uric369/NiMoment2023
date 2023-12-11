@@ -250,7 +250,7 @@ const Personal2 = () => {
             <ImageTransition cat1={cat1} cat2={cat2} size={20} />
           )}
         </div>
-        <img src={next} style={{position:"absolute", bottom:"5vh", right:"4vw",width:isMobile? "20vw":"8vw",height:"auto",cursor:"pointer"}}/>
+        <img src={next}onClick={handleRouter}  style={{position:"absolute", bottom:"5vh", right:"4vw",width:isMobile? "20vw":"8vw",height:"auto",cursor:"pointer"}}/>
       </div>
       <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>

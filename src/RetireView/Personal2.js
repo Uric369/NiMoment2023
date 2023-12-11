@@ -118,6 +118,7 @@ const Personal2Special = () => {
   );
 
   return (
+    <div>
     <div
       className="personal2special_container"
       style={{
@@ -206,7 +207,7 @@ const Personal2Special = () => {
               <div
                 style={{
                   position: "absolute",
-                  top: isMobile ? "33vh" : "10vh",
+                  top: isMobile ? "30vh" : "10vh",
                   left: isMobile ? "0vw" : "30vw",
                 }}
               >
@@ -234,7 +235,7 @@ const Personal2Special = () => {
               <div
                 style={{
                   position: "absolute",
-                  top: isMobile ? "44vh" : "32vh",
+                  top: isMobile ? "41vh" : "32vh",
                   left: isMobile ? "0vw" : "30vw",
                 }}
               >
@@ -259,7 +260,7 @@ const Personal2Special = () => {
                 </h>
               </div>
               {isMobile && (
-                <div style={{ position: "absolute", top: "57vh", left: "0vw" }}>
+                <div style={{ position: "absolute", top: "54vh", left: "0vw" }}>
                   <IconTitle icon={titleIcon} text={"累计霍霍器材"} />
                   <div
                     style={{ display: "flex", justifyContent: "space-between",zIndex:2 }}
@@ -292,8 +293,10 @@ const Personal2Special = () => {
       <div className="cat_container" onClick={handleRouter}>
         <ImageTransition cat1={cat1} cat2={cat2} size={isMobile? 35:20} />
       </div>
-      <img src={saveButton} onClick={handleRouter} className="savebutton"/>
-      <img src={next} style={{position:"absolute", bottom:"5vh", right:"4vw",width:isMobile? "20vw":"8vw",height:"auto",cursor:"pointer"}}/>
+      
+      <img src={next} onClick={handleRouter} style={{position:"absolute", bottom:"5vh", right:"4vw",width:isMobile? "20vw":"8vw",height:"auto",cursor:"pointer"}}/>
+    </div>
+    <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>
   );
 };

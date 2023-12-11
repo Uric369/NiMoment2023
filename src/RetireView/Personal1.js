@@ -173,11 +173,11 @@ const Personal1Special = () => {
             />
           ))}
         </div>
-      </div>
-      <img src={saveButton} onClick={onClick} className="savebutton"/>
-      <div onClick={handleClick} className="nextReminder">
+        <div onClick={handleClick} className="nextReminder">
   <img src={nextReminder} style={{ width:"100%", height:"100%", objectFit: "contain", cursor: "pointer" }}/>
 </div>
+      </div>
+      <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>
   );
 };

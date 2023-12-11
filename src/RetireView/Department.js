@@ -187,6 +187,7 @@ const DepartmentSpecial = () => {
   };
 
   return (
+    <div>   
     <div ref={containerRef}>
     {!isMobile && (
       <section className="parallax">
@@ -328,6 +329,7 @@ const DepartmentSpecial = () => {
           </div>
         </div>
       </section>
+      </div>
       <img src={saveButton} onClick={onClick} className="savebutton"/>
     </div>
   );

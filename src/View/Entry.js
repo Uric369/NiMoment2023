@@ -9,6 +9,16 @@ import planet3 from "../img/cover/planet3.png";
 import planet4 from "../img/cover/planet4.png";
 import rocket from "../img/cover/rocket.png";
 import NiMoment from "../img/cover/NiMoment.png";
+
+import planet1_m from "../img/mobile_cover/planet1.png";
+// import planet2_m from "../img/mobile_cover/planet2.png";
+import man_m from "../img/mobile_cover/man.png";
+import earth_m from "../img/mobile_cover/earth.png";
+import planet3_m from "../img/mobile_cover/planet3.png";
+import planet4_m from "../img/mobile_cover/planet4.png";
+import rocket_m from "../img/mobile_cover/rocket.png";
+import NiMoment_m from "../img/mobile_cover/NiMoment.png";
+
 import Typewriter from "../Component/TypeWriter";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +48,7 @@ import {
 } from "../apis";
 
 function Entry() {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const sceneRef = useRef(null);
   const [animateText, setAnimateText] = useState(false);
   const navigate = useNavigate();
@@ -165,9 +176,10 @@ function Entry() {
       const image = images[i];
 
       // 计算图片的缩放比例
+      const isKill = window.matchMedia("(max-width: 768px)").matches;
       const widthRatio = windowWidth / image.naturalWidth;
       const heightRatio = windowHeight / image.naturalHeight;
-      const scaleRatio = Math.max(widthRatio, heightRatio);
+      const scaleRatio = isKill? 430 / image.naturalWidth:  Math.max(widthRatio, heightRatio);
 
       // 根据缩放比例设置图片的尺寸
       const newWidth = image.naturalWidth * scaleRatio;
@@ -183,31 +195,30 @@ function Entry() {
 
   return (
     <div>
+      {isMobile? (
+    <div>
       <div className="container">
         <ul ref={sceneRef}>
           <li className="layer" data-depth=".2">
-            <img src={planet1} alt="" />
-          </li>
-          <li className="layer" data-depth=".3">
-            <img src={planet2} alt="" />
+            <img src={planet1_m} alt="" />
           </li>
           <li className="layer" data-depth=".2">
-            <img src={man} alt="" />
+            <img src={man_m} alt="" />
           </li>
           <li className="layer" data-depth=".5">
-            <img src={earth} alt="" />
+            <img src={earth_m} alt="" />
           </li>
           <li className="layer" data-depth=".1">
-            <img src={NiMoment} alt="" />
+            <img src={NiMoment_m} alt="" />
           </li>
           <li className="layer" data-depth=".4">
-            <img src={planet3} alt="" />
+            <img src={planet3_m} alt="" />
           </li>
           <li className="layer" data-depth=".8">
-            <img src={planet4} alt="" />
+            <img src={planet4_m} alt="" />
           </li>
           <li className="layer" data-depth="0">
-            <img src={rocket} alt="" />
+            <img src={rocket_m} alt="" />
           </li>
         </ul>
       </div>
@@ -230,6 +241,57 @@ function Entry() {
           <h>&gt; GET STARTED</h>
         </div>
       )}
+    </div>):(
+        <div>
+        <div className="container">
+          <ul ref={sceneRef}>
+            <li className="layer" data-depth=".2">
+              <img src={planet1} alt="" />
+            </li>
+            <li className="layer" data-depth=".3">
+              <img src={planet2} alt="" />
+            </li>
+            <li className="layer" data-depth=".2">
+              <img src={man} alt="" />
+            </li>
+            <li className="layer" data-depth=".5">
+              <img src={earth} alt="" />
+            </li>
+            <li className="layer" data-depth=".1">
+              <img src={NiMoment} alt="" />
+            </li>
+            <li className="layer" data-depth=".4">
+              <img src={planet3} alt="" />
+            </li>
+            <li className="layer" data-depth=".8">
+              <img src={planet4} alt="" />
+            </li>
+            <li className="layer" data-depth="0">
+              <img src={rocket} alt="" />
+            </li>
+          </ul>
+        </div>
+        {animateText ? (
+          <Typewriter
+            originalText1={`>> Authenticating... DONE`}
+            originalText2={`> Welcome NIMOer#${padNimoerId(nimoerInfo.id)} ${
+              nimoerInfo.name
+            } `}
+            destination={isRetired ? "/DepartmentSpecial" : "/Department"}
+            navigate={navigate}
+          />
+        ) : (
+          <div
+            className="animated-text layer"
+            style={{ cursor: "pointer" }}
+            data-depth="0"
+            onClick={() => handleClick()}
+          >
+            <h>&gt; GET STARTED</h>
+          </div>
+        )}
+      </div>
+    )}
     </div>
   );
 }
