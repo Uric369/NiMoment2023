@@ -134,7 +134,7 @@
       left: 4vw; /* 相对于容器左侧的距离 */
       right: 4vw;
       bottom: 3vh;
-      background-image: url('../img/personal2/Panel.png'); 
+      background-image: url('../img/personal2/Box_mobile.png'); 
       background-size: 92vw 85vh; 
       flex-direction: column;
       align-items: flex-start;
