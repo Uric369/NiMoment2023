@@ -53,7 +53,7 @@ function Entry() {
   const [animateText, setAnimateText] = useState(false);
   const navigate = useNavigate();
 
-  const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
+  const nimoer = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
   const dispatch = useDispatch();
 
@@ -69,7 +69,7 @@ function Entry() {
       (error) => {
         console.error(error);
         dispatch(setNimoerInfo({ id: 0, name: "全校断网" }));
-        dispatch(setIsRetired(true));
+        dispatch(setIsRetired(null));
       }
     );
     getRequest(
@@ -179,7 +179,9 @@ function Entry() {
       const isKill = window.matchMedia("(max-width: 768px)").matches;
       const widthRatio = windowWidth / image.naturalWidth;
       const heightRatio = windowHeight / image.naturalHeight;
-      const scaleRatio = isKill? 430 / image.naturalWidth:  Math.max(widthRatio, heightRatio);
+      const scaleRatio = isKill
+        ? 430 / image.naturalWidth
+        : Math.max(widthRatio, heightRatio);
 
       // 根据缩放比例设置图片的尺寸
       const newWidth = image.naturalWidth * scaleRatio;
@@ -195,103 +197,136 @@ function Entry() {
 
   return (
     <div>
-      {isMobile? (
-    <div>
-      <div className="container">
-        <ul ref={sceneRef}>
-          <li className="layer" data-depth=".2">
-            <img src={planet1_m} alt="" />
-          </li>
-          <li className="layer" data-depth=".2">
-            <img src={man_m} alt="" />
-          </li>
-          <li className="layer" data-depth=".5">
-            <img src={earth_m} alt="" />
-          </li>
-          <li className="layer" data-depth=".1">
-            <img src={NiMoment_m} alt="" />
-          </li>
-          <li className="layer" data-depth=".4">
-            <img src={planet3_m} alt="" />
-          </li>
-          <li className="layer" data-depth=".8">
-            <img src={planet4_m} alt="" />
-          </li>
-          <li className="layer" data-depth="0">
-            <img src={rocket_m} alt="" />
-          </li>
-        </ul>
-      </div>
-      {animateText ? (
-        <Typewriter
-          originalText1={`>> Authenticating... DONE`}
-          originalText2={`> Welcome NIMOer#${padNimoerId(nimoerInfo.id)} ${
-            nimoerInfo.name
-          } `}
-          destination={isRetired ? "/DepartmentSpecial" : "/Department"}
-          navigate={navigate}
-        />
+      {isMobile ? (
+        <div>
+          <div className="container">
+            <ul ref={sceneRef}>
+              <li className="layer" data-depth=".2">
+                <img src={planet1_m} alt="" />
+              </li>
+              <li className="layer" data-depth=".2">
+                <img src={man_m} alt="" />
+              </li>
+              <li className="layer" data-depth=".5">
+                <img src={earth_m} alt="" />
+              </li>
+              <li className="layer" data-depth=".1">
+                <img src={NiMoment_m} alt="" />
+              </li>
+              <li className="layer" data-depth=".4">
+                <img src={planet3_m} alt="" />
+              </li>
+              <li className="layer" data-depth=".8">
+                <img src={planet4_m} alt="" />
+              </li>
+              <li className="layer" data-depth="0">
+                <img src={rocket_m} alt="" />
+              </li>
+            </ul>
+          </div>
+          {animateText ? (
+            <Typewriter
+              originalText1={`>> Authenticating... ${
+                isRetired === null ? "FAILED" : "DONE"
+              }`}
+              originalText2={
+                isRetired === null
+                  ? "> FATAL: Login required. REDIRECTING."
+                  : `> Welcome NIMOer#${padNimoerId(nimoer.id)} ${nimoer.name} `
+              }
+              destination={
+                isRetired === null
+                  ? "https://nimo.sjtu.edu.cn/kaleid/login/?next=/nimoment/"
+                  : isRetired
+                  ? "/DepartmentSpecial"
+                  : "/Department"
+              }
+              navigate={
+                isRetired === null
+                  ? (url) => {
+                      window.location.href = url;
+                    }
+                  : navigate
+              }
+            />
+          ) : (
+            <div
+              className="animated-text layer"
+              style={{ cursor: "pointer" }}
+              data-depth="0"
+              onClick={() => handleClick()}
+            >
+              <h>&gt; GET STARTED</h>
+            </div>
+          )}
+        </div>
       ) : (
-        <div
-          className="animated-text layer"
-          style={{ cursor: "pointer" }}
-          data-depth="0"
-          onClick={() => handleClick()}
-        >
-          <h>&gt; GET STARTED</h>
+        <div>
+          <div className="container">
+            <ul ref={sceneRef}>
+              <li className="layer" data-depth=".2">
+                <img src={planet1} alt="" />
+              </li>
+              <li className="layer" data-depth=".3">
+                <img src={planet2} alt="" />
+              </li>
+              <li className="layer" data-depth=".2">
+                <img src={man} alt="" />
+              </li>
+              <li className="layer" data-depth=".5">
+                <img src={earth} alt="" />
+              </li>
+              <li className="layer" data-depth=".1">
+                <img src={NiMoment} alt="" />
+              </li>
+              <li className="layer" data-depth=".4">
+                <img src={planet3} alt="" />
+              </li>
+              <li className="layer" data-depth=".8">
+                <img src={planet4} alt="" />
+              </li>
+              <li className="layer" data-depth="0">
+                <img src={rocket} alt="" />
+              </li>
+            </ul>
+          </div>
+          {animateText ? (
+            <Typewriter
+              originalText1={`>> Authenticating... ${
+                isRetired === null ? "FAILED" : "DONE"
+              }`}
+              originalText2={
+                isRetired === null
+                  ? "> FATAL: Login required. REDIRECTING."
+                  : `> Welcome NIMOer#${padNimoerId(nimoer.id)} ${nimoer.name} `
+              }
+              destination={
+                isRetired === null
+                  ? "https://nimo.sjtu.edu.cn/kaleid/login/?next=/nimoment/"
+                  : isRetired
+                  ? "/DepartmentSpecial"
+                  : "/Department"
+              }
+              navigate={
+                isRetired === null
+                  ? (url) => {
+                      window.location.href = url;
+                    }
+                  : navigate
+              }
+            />
+          ) : (
+            <div
+              className="animated-text layer"
+              style={{ cursor: "pointer" }}
+              data-depth="0"
+              onClick={() => handleClick()}
+            >
+              <h>&gt; GET STARTED</h>
+            </div>
+          )}
         </div>
       )}
-    </div>):(
-        <div>
-        <div className="container">
-          <ul ref={sceneRef}>
-            <li className="layer" data-depth=".2">
-              <img src={planet1} alt="" />
-            </li>
-            <li className="layer" data-depth=".3">
-              <img src={planet2} alt="" />
-            </li>
-            <li className="layer" data-depth=".2">
-              <img src={man} alt="" />
-            </li>
-            <li className="layer" data-depth=".5">
-              <img src={earth} alt="" />
-            </li>
-            <li className="layer" data-depth=".1">
-              <img src={NiMoment} alt="" />
-            </li>
-            <li className="layer" data-depth=".4">
-              <img src={planet3} alt="" />
-            </li>
-            <li className="layer" data-depth=".8">
-              <img src={planet4} alt="" />
-            </li>
-            <li className="layer" data-depth="0">
-              <img src={rocket} alt="" />
-            </li>
-          </ul>
-        </div>
-        {animateText ? (
-          <Typewriter
-            originalText1={`>> Authenticating... DONE`}
-            originalText2={`> Welcome NIMOer#${padNimoerId(nimoerInfo.id)} ${
-              nimoerInfo.name
-            } `}
-            destination={isRetired ? "/DepartmentSpecial" : "/Department"}
-            navigate={navigate}
-          />
-        ) : (
-          <div
-            className="animated-text layer"
-            style={{ cursor: "pointer" }}
-            data-depth="0"
-            onClick={() => handleClick()}
-          >
-            <h>&gt; GET STARTED</h>
-          </div>
-        )}
-      </div>
-    )}
     </div>
   );
 }
