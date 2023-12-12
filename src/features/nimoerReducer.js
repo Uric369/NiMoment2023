@@ -7,7 +7,7 @@ export const nimoerSlice = createSlice({
       id: 0,
       name: "",
     },
-    isRetired: false,
+    isRetired: null,
     signInOut: {
       signIn: null,
       signOut: null,
