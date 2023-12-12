@@ -43,7 +43,7 @@ const Combination = ({ icon, text1, text2, count, sequence }) => {
           }}
         >
           &nbsp;
-          <Counter counts={count} time={1000} />
+          <Counter counts={count} />
           &nbsp;
         </strong>
       )}

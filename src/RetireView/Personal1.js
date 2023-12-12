@@ -23,6 +23,7 @@ import ImageTransition from "../Component/ImageTransition";
 import { useSelector } from "react-redux";
 import nextReminder from "../img/personal1/cat_next.png";
 import saveButton from "../img/icon/saveButton.png";
+import { useNavigate } from "react-router-dom";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -71,14 +72,11 @@ const dashedLine = [
   { x: 85, y: 70 },
 ];
 
-const handleClick = () => {
-  history.push("/Personal2Special"); // 当组件被点击时，跳转到/Personal2路径
-  window.location.reload();
-};
 
 const Personal1Special = () => {
   const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
   // const lastDay = useSelector((state) => 1);
+  const navigate = useNavigate();
   const containerRef = useRef();
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {
@@ -87,6 +85,11 @@ const Personal1Special = () => {
       });
     });
   };
+
+  
+const handleClick = () => {
+  navigate("/Personal2Special");
+};
 
   return (
     <div>

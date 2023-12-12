@@ -148,19 +148,24 @@ function Entry() {
       const parallaxInstance = new Parallax(sceneRef.current, {
         relativeInput: true,
       });
-
-      // 添加 resize 事件监听器
-      window.addEventListener("resize", handleResize);
-      // 调用一次 handleResize 进行初始化
+  
+      // 立即调整图片大小以适应屏幕
       handleResize();
-      document.addEventListener("DOMContentLoaded", handleResize);
-
+  
+      // 添加 resize 事件监听器
+      window.addEventListener('resize', handleResize);
+  
+      // 组件卸载时清理事件监听器和parallax实例
       return () => {
         parallaxInstance.destroy();
-        window.removeEventListener("resize", handleResize);
+        window.removeEventListener('resize', handleResize);
       };
+      handleResize();
     }
   }, []);
+  
+  // 现在，无论是页面加载还是大小改变，handleResize 都会被调用
+  
 
   const handleResize = () => {
     // 获取窗口的宽度和高度
@@ -182,6 +187,7 @@ function Entry() {
       const scaleRatio = isKill
         ? 430 / image.naturalWidth
         : Math.max(widthRatio, heightRatio);
+      console.log(scaleRatio)
 
       // 根据缩放比例设置图片的尺寸
       const newWidth = image.naturalWidth * scaleRatio;

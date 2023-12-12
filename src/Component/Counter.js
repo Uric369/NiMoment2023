@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Counter = ({ counts, time = 300 }) => {
+const Counter = ({ counts, time = 30 }) => {
   //counts：传入的数字，time: 默认500毫秒之内整个动画完成
   const [count, setCount] = useState(0);
   useEffect(() => {

@@ -37,7 +37,7 @@ const Combination5 = ({ text1, count, text2 }) => {
           }}
         >
           &nbsp;
-          <Counter counts={count} time={1000} />
+          <Counter counts={count}/>
           &nbsp;
         </span>
       )}

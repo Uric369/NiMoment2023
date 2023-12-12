@@ -140,7 +140,7 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
-      // const test=[0,1,2,3,4]
+      // const test=[]
       // setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
@@ -167,7 +167,7 @@ export default function Achievement(props) {
     <div>
       
       <img src={saveButton} onClick={onClick} className="savebutton"/>
-      <img src={notice} className="notice"/>
+      {achievementList.length !== 0 && <img src={notice} className="notice"/>}
       <div className="achievement" ref={containerRef}>
         <div className="border" />
         <div className="achievement-text">
@@ -219,11 +219,11 @@ export default function Achievement(props) {
         
         {achievementList.length === 0 ? (
            <div className="no-achievements">
-           啊偶，今年没有获得成就，明年加油
+           啊偶，今年没有获得成就，{isMobile &&<br/>} 明年加油
          </div>
        ) : (
         <div>
-          {isMobile && <h6> 左右滑动查看成就</h6>}
+          {isMobile && achievementList.length > 2 && <h6> 左右滑动查看成就</h6>}
         <div className="shell">
           
           {achievementList.map((index) => (

@@ -1,7 +1,8 @@
 
 @media (min-width: 768px) {
 .savebutton {
-    position: fixed;
+    position: absolute;
+    /* position: fixed; */
     top:2vh;
     left: 1vw;
     height: auto;
