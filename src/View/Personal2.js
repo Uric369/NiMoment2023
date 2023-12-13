@@ -6,13 +6,13 @@ import BG2 from "../img/personal2/BG2.png";
 import logo from "../img/personal1/Logo.png";
 import titleIcon from "../img/personal2/Icon.png";
 import IconTitle from "../Component/IconTitle";
-import icon from "../img/personal1/icon.png";
+// import icon from "../img/personal1/icon.png";
 import IconCount from "../Component/IconCount";
 import Combination2 from "../Component/Combination2";
 import ImageTransition from "../Component/ImageTransition";
 import cat1 from "../img/personal2/Meow1.png";
 import cat2 from "../img/personal2/Meow2.png";
-import { history } from "../utils/history";
+// import { history } from "../utils/history";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
@@ -105,7 +105,7 @@ const Personal2 = () => {
       >
         <div className="title_container">
           <div className="header">
-            <img style={{ width: isMobile? "20vw":"6vw" }} src={logo} alt="logo" />
+            <img style={{ width: isMobile? "20vw":"6vw", height:isMobile? "13vw":"4vw" }} src={logo} alt="logo" />
             <h1>工作情况统计</h1>
             <DayNightToggleButton
               size={isMobile? 0.4: "0.05vw"}
@@ -222,16 +222,25 @@ const Personal2 = () => {
 
               {isMobile && 
               <div>
-                <img style={{width:"85vw"}} src={baoxiu_cat1}/>
+                <div className="baoxiu_cat1">
+                <h4>{hifrequencies.building}</h4>
+                </div>
                 <IconTitle
                   icon={titleIcon}
                   text={"最常一起出报（郊）修（游）的人"}
                 />
-                <img style={{width:"80vw"}} src={baoxiu_cat2}/>
+                <div className="baoxiu_cat2">
+                <h5>{hifrequencies.colleague}</h5>
+                </div>
                 </div>
               }
-              <h4>{hifrequencies.building}</h4>
-              <h5>{hifrequencies.colleague}</h5>
+              {!isMobile && 
+                <div>
+                  <h4>{hifrequencies.building}</h4>
+                  <h5>{hifrequencies.colleague}</h5>
+                </div>
+              }
+              
             </div>
           </div>
         </div>

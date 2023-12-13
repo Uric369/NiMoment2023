@@ -23,16 +23,17 @@ import wiki_text from "../img/achievement/wiki_text.png";
 import profile from "../img/achievement/profile.png";
 import html2canvas from "html2canvas";
 import achiveIcon from "../img/achievement/achieve_icon.png";
-import profileHistory from "../img/achievement/profile_history.png";
+// import profileHistory from "../img/achievement/profile_history.png";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import { padNimoerId } from "../utils/dataFormat";
 import { achievementApi, getBlob, getRequest, wordcloudApi } from "../apis";
 import { formatDateTimeHHMMSS } from "../utils/dataFormat";
-import Card from "../Component/Card";
+// import Card from "../Component/Card";
 import saveButton from "../img/icon/saveButton.png";
-import wordcloud from "../img/achievement/wordcloud.png";
+// import wordcloud from "../img/achievement/wordcloud.png";
 import notice from "../img/achievement/notice.png";
+import notice_mobile from "../img/achievement/notice_potrait.png";
 
 
 const achievements = [
@@ -167,7 +168,8 @@ export default function Achievement(props) {
     <div>
       
       <img src={saveButton} onClick={onClick} className="savebutton"/>
-      {achievementList.length !== 0 && <img src={notice} className="notice"/>}
+      {achievementList.length !== 0 && !isMobile && <img src={notice} className="notice"/>}
+      {achievementList.length !== 0 && isMobile && <img src={notice_mobile} className="notice"/>}
       <div className="achievement" ref={containerRef}>
         <div className="border" />
         <div className="achievement-text">
@@ -243,7 +245,7 @@ export default function Achievement(props) {
                   className="character"
                 />
               </div>
-              {index != 2 && (
+              {index !== 2 && (
                 <div className="card-subtitle">
                   {achvmtInfo[index].text1 +
                     achievementInfo[index] +

@@ -10,10 +10,10 @@ import plant from "../img/paraScroll_demo/plant.png";
 import message from "../img/paraScroll_demo/message.png";
 import popupWindow from "../img/paraScroll_demo/popup_landscape.png";
 import cat from "../img/paraScroll_demo/cat.png";
-import icon from "../img/paraScroll_demo/ICON.png";
+// import icon from "../img/paraScroll_demo/ICON.png";
 import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css";
-import { history } from "../utils/history";
+// import { history } from "../utils/history";
 import IconCount from "../Component/IconCount";
 import Combination3 from "../Component/Combination3";
 import { saveAs } from "file-saver";
@@ -187,7 +187,7 @@ const DepartmentSpecial = () => {
   };
 
   return (
-    <div>   
+    <div style={{overflow: "hidden"}}>  
     <div ref={containerRef}>
     {!isMobile && (
       <section className="parallax">

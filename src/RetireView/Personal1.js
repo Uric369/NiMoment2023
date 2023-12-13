@@ -1,15 +1,12 @@
 import React, { useRef } from "react";
-import Combination from "../Component/Combination";
-import icon from "../img/paraScroll_demo/ICON.png";
 import star_mid from "../img/personal1/Star_Mid.png";
 import star_big from "../img/personal1/Star_Big.png";
 import logo from "../img/personal1/Logo.png";
-import "../css/Personal1.css";
+import "../css/Personal1Special.css";
 import Rotator from "../Component/Rotator";
 import Glitter from "../Component/Glitter";
 import DashedLines from "../Component/DashedLines";
 import wifi from "../img/personal1/Wifi.png";
-import { history } from "../utils/history";
 import astronaut1 from "../img/personal1/cat1.png";
 import astronaut2 from "../img/personal1/cat2.png";
 import star from "../img/personal1/Star.png";
@@ -17,9 +14,6 @@ import magicDevice from "../img/personal1/magicDevice.png";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
-import cat1 from "../img/testGradient/Meow1.png";
-import cat2 from "../img/testGradient/Meow2.png";
-import ImageTransition from "../Component/ImageTransition";
 import { useSelector } from "react-redux";
 import nextReminder from "../img/personal1/cat_next.png";
 import saveButton from "../img/icon/saveButton.png";
@@ -31,7 +25,7 @@ const rotatingObjects = isMobile
   ? [
       // {img: star_mid, width: 13, x: 30, y:50, speed:10},
       { img: star_big, width: 18, x: 80, y: 5, speed: 20 },
-      { img: star, width: 10, x: 23, y: 75, speed: 15 },
+      { img: star, width: 10, x: 23, y: 78, speed: 15 },
     ]
   : [
       { img: star_mid, width: 10, x: 60, y: 15, speed: 10 },
@@ -56,7 +50,7 @@ const glitteringObjects = isMobile
 const staticObjects = isMobile
   ? [
       { img: astronaut1, width: 35, x: 65, y: 20 },
-      { img: astronaut2, width: 40, x: 3, y: 73 },
+      { img: astronaut2, width: 40, x: 3, y: 76 },
       { img: magicDevice, width: 14, x: 69, y: 33 },
     ]
   : [
@@ -92,7 +86,7 @@ const handleClick = () => {
 };
 
   return (
-    <div>
+    <div style={{position: "relative", overflow:"hidden"}}>
       <div className="personal1_container" ref={containerRef}>
         {!isMobile && <DashedLines points={dashedLine} color="yellow" />}
         <div className="title_container_special">
@@ -118,7 +112,7 @@ const handleClick = () => {
             官网的后台，还是你记忆中的样子吗？
           </h5>
 
-          <div className="content2">
+          <div className="content3">
             <h5
               style={{
                 fontWeight: "bold",
@@ -128,8 +122,10 @@ const handleClick = () => {
             >
               {" "}
               {lastDay}
+              <br/>
             </h5>
-            <h6>是你最后一天上班的日子，<br /> 签离的那一刻，想必百感交集吧...</h6>
+            {isMobile && <h style={{color:"white", lineHeight:2}}>是你最后一天上班的日子,<br/>签离的那一刻，想必百感交集吧...</h>}
+            {!isMobile && <h6>是你最后一天上班的日子,<br/>签离的那一刻，想必百感交集吧...</h6>}
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import Combination from "../Component/Combination";
-import icon from "../img/paraScroll_demo/ICON.png";
+// import icon from "../img/paraScroll_demo/ICON.png";
 import astronaut1 from "../img/personal1/cat1.png";
 import astronaut2 from "../img/personal1/cat2.png";
 import star from "../img/personal1/Star.png";
@@ -14,7 +14,7 @@ import ap from "../img/icon/AP.png";
 import mac from "../img/icon/Mac.png";
 import ip from "../img/icon/IP.png";
 import call from "../img/icon/call.png";
-import shangmen from "../img/icon/call.png";
+// import shangmen from "../img/icon/call.png";
 import star_mid from "../img/personal1/Star_Mid.png";
 import star_big from "../img/personal1/Star_Big.png";
 import logo from "../img/personal1/Logo.png";
@@ -23,10 +23,10 @@ import Rotator from "../Component/Rotator";
 import Glitter from "../Component/Glitter";
 import DashedLines from "../Component/DashedLines";
 import wifi from "../img/personal1/Wifi.png";
-import cat1 from "../img/testGradient/Meow1.png";
-import cat2 from "../img/testGradient/Meow2.png";
-import ImageTransition from "../Component/ImageTransition";
-import { history } from "../utils/history";
+// import cat1 from "../img/testGradient/Meow1.png";
+// import cat2 from "../img/testGradient/Meow2.png";
+// import ImageTransition from "../Component/ImageTransition";
+// import { history } from "../utils/history";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
@@ -151,7 +151,7 @@ const Personal1 = () => {
   };
 
   return (
-    <div>
+    <div style={{position: "relative", overflow:"hidden"}}>
       <div className="personal1_container" ref={containerRef}>
         {!isMobile && <DashedLines points={dashedLine} color="yellow" />}
         <div className="title_container">

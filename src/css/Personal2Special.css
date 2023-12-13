@@ -95,6 +95,36 @@
     background-image: url('../img/Personal2Special/cat1.png'); 
     background-size: cover; 
   }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat1 {
+    width: 35vw;
+    height: 12vw;
+    background-image: url('../img/Personal2Special/cat1.png');
+    background-size: cover;
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat1 h4{
+    position: relative;
+    top: 31%; /* 相对于容器顶部的距离 */
+    left: 30%;
+    font-size: 150%;
+    color: white;
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat2 {
+    width: 30vw;
+    height: 11vw;
+    background-image: url('../img/Personal2Special/cat2.png');
+    background-size: cover;
+  }
+
+  .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat2  h5{
+    position: relative;
+    top: 30%; /* 相对于容器顶部的距离 */
+    left: 60%;
+    font-size: 130%;
+    color: white;
+  }
 }
 
 
@@ -194,5 +224,35 @@
       left: 45vw;
       background-image: url('../img/Personal2Special/cat1.png'); 
       background-size: cover; 
+    }
+
+    .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat1 {
+      width: 80vw;
+      height: 25vw;
+      background-image: url('../img/Personal2Special/cat1.png');
+      background-size: cover;
+    }
+
+    .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat1 h4{
+      position: relative;
+      top: 31%; /* 相对于容器顶部的距离 */
+      left: 30%;
+      font-size: 100%;
+      color: white;
+    }
+
+    .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat2 {
+      width: 80vw;
+      height: 27vw;
+      background-image: url('../img/Personal2Special/cat2.png');
+      background-size: cover;
+    }
+
+    .personal2special_container .outer_container .inner_container .inner_bottom_container .baoxiu_cat2  h5{
+      position: relative;
+      top: 30%; /* 相对于容器顶部的距离 */
+      left: 60%;
+      font-size: 100%;
+      color: white;
     }
   }

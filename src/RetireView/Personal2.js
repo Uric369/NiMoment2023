@@ -1,19 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import DayNightToggleButton from "../Component/DayNightToggleButton";
+// import DayNightToggleButton from "../Component/DayNightToggleButton";
 import "../css/Personal2Special.css";
 import BG1 from "../img/personal2/BG1.png";
-import BG2 from "../img/personal2/BG2.png";
+// import BG2 from "../img/personal2/BG2.png";
 import logo from "../img/personal1/Logo.png";
 import titleIcon from "../img/personal2/Icon.png";
 import IconTitle from "../Component/IconTitle";
-import icon from "../img/personal1/icon.png";
+// import icon from "../img/personal1/icon.png";
 import IconCount from "../Component/IconCount";
-import Combination2 from "../Component/Combination2";
+// import Combination2 from "../Component/Combination2";
 import ImageTransition from "../Component/ImageTransition";
 import cat1 from "../img/personal2/Meow1.png";
 import cat2 from "../img/personal2/Meow2.png";
-import { history } from "../utils/history";
+// import { history } from "../utils/history";
 import Combination4 from "../Component/Combination4";
 import Combination5 from "../Component/Combination5";
 import profileImg from "../img/Personal2Special/profile.png";
@@ -216,20 +216,11 @@ const Personal2Special = () => {
                   text={"报修最常去的楼栋"}
                   isMargin={false}
                 />
-                <img
-                  style={{ width: isMobile ? "80vw" : "40vw" }}
-                  src={baoxiuBG}
-                />
-                <h
-                  style={{
-                    position: "absolute",
-                    top: isMobile ? "6vh" : "12vh",
-                    left: isMobile ? "9vh" : "9vw",
-                    fontSize: isMobile ? "2vh" : "4vh",
-                  }}
-                >
+                <div className="baoxiu_cat1">
+                <h4>
                   {hifrequencies.building}
-                </h>
+                </h4>
+                </div>
               </div>
 
               <div
@@ -244,20 +235,11 @@ const Personal2Special = () => {
                   text={"报修最常一起去的人"}
                   isMargin={false}
                 />
-                <img
-                  style={{ width: isMobile ? "80vw" : "30vw" }}
-                  src={renBG}
-                />
-                <h
-                  style={{
-                    position: "absolute",
-                    top: isMobile ? "9vh" : "14vh",
-                    left: isMobile ? "10vh" : "7vw",
-                    fontSize: isMobile ? "2vh" : "4vh",
-                  }}
-                >
+                <div className="baoxiu_cat2">
+                <h5>
                   {hifrequencies.colleague}
-                </h>
+                </h5>
+                </div>
               </div>
               {isMobile && (
                 <div style={{ position: "absolute", top: "54vh", left: "0vw" }}>

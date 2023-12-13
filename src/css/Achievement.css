@@ -114,7 +114,7 @@
     opacity: 1;
     transition: all 0.3s;
     position: absolute;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 .card:hover .character {
@@ -131,14 +131,14 @@
     font-size: 5vh;
     color: white;
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
     animation: glow 3s infinite;
     position: absolute;
     top: 10%;
     left: 5%;
       /* 添加竖排文字样式 */
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
 
 .id_card {
@@ -237,7 +237,7 @@
         height: 40vh;
         bottom: 0vh;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         overflow-x: auto; /* Enable horizontal scrolling */
         scroll-snap-type: x mandatory; /* Enable snap effect on scroll */
@@ -332,7 +332,7 @@
         opacity: 1;
         transition: all 0.3s;
         position: absolute;
-        z-index: -1;
+        /* z-index: -1; */
     }
     
     .card:hover .character {
@@ -418,7 +418,7 @@
         position: absolute;
         top: 91vh;
         right: 0vh;
-        width: 50vw;
+        width: 82vw;
         height: auto;
         z-index: 2;
     }

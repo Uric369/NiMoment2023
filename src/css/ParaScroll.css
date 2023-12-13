@@ -256,6 +256,7 @@ header_demo {
   position: relative; /* For positioning the close button absolutely */
   width: 50vw; /* Width of the image container */
   height: 30vh; /* Height of the image container */
+  left: 2vw;
   /* Additional styles if needed */
 }
 
@@ -527,8 +528,8 @@ header_demo {
     position: relative; /* For positioning the close button absolutely */
     width: 95vw; /* Width of the image container */
     height: 50vh; /* Height of the image container */
-    top: 10vh;
-    left: 0vw;
+    top: 5vh;
+    left: 8vw;
     /* Additional styles if needed */
   }
   

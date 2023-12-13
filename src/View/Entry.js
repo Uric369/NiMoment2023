@@ -177,23 +177,18 @@ function Entry() {
 
     // 遍历所有图片元素，更新它们的尺寸
     const images = sceneRef.current.getElementsByTagName("img");
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-
-      // 计算图片的缩放比例
-      const isKill = window.matchMedia("(max-width: 768px)").matches;
-      const widthRatio = windowWidth / image.naturalWidth;
-      const heightRatio = windowHeight / image.naturalHeight;
-      const scaleRatio = isKill
-        ? 430 / image.naturalWidth
-        : Math.max(widthRatio, heightRatio);
-      console.log(scaleRatio)
-
-      // 根据缩放比例设置图片的尺寸
-      const newWidth = image.naturalWidth * scaleRatio;
-      const newHeight = image.naturalHeight * scaleRatio;
-      image.style.width = `${newWidth}px`;
-      image.style.height = `${newHeight}px`;
+    for (const image of images) {
+      // 用 onload 而不是 addEventListener 的原因是 onload 可以被覆盖
+      // 当 handleResize 再次被调用的时候，旧的 onload 事件会被新的覆盖
+      image.onload = () => {
+        const widthRatio = windowWidth / image.naturalWidth;
+        const heightRatio = windowHeight / image.naturalHeight;
+        const scaleRatio = Math.max(widthRatio, heightRatio);
+        const newWidth = image.naturalWidth * scaleRatio;
+        const newHeight = image.naturalHeight * scaleRatio;
+        image.style.width = `${newWidth}px`;
+        image.style.height = `${newHeight}px`;
+      }
     }
   };
 
@@ -202,7 +197,7 @@ function Entry() {
   };
 
   return (
-    <div>
+    <div style={{position: "relative", overflow:"hidden"}}>
       {isMobile ? (
         <div>
           <div className="container">

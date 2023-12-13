@@ -52,7 +52,7 @@
   width: 100%;  /* 或者其他你想要的宽度 */
   height: 0.5vh;  /* 控制分割线的粗细 */
   background-color: rgb(149, 149, 210);  /* 控制分割线的颜色 */
-  margin-top: 10px;  /* 添加一些空间在分割线和标题之间 */
+  margin-top: 1vh;  /* 添加一些空间在分割线和标题之间 */
 }
 
 
@@ -85,14 +85,7 @@
   letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
 }
 
-.personal1_container h6 {
-  font-size: 3vh;
-  color: white;
-  margin-top: 2vh;
-  font-weight: 500;
-  line-height: 2; /* 行间距为文字大小的150% */
-  letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
-}
+
 
 .personal1_container .text_container .content2 {
     position: absolute;
@@ -164,9 +157,9 @@
 /* 分割线的样式 */
 .divider {
   width: 100%;  /* 或者其他你想要的宽度 */
-  height: 4px;  /* 控制分割线的粗细 */
+  height: 0.5vh;  /* 控制分割线的粗细 */
   background-color: rgb(149, 149, 210);  /* 控制分割线的颜色 */
-  margin-top: 0px;  /* 添加一些空间在分割线和标题之间 */
+  margin-top: 0.5vh;  /* 添加一些空间在分割线和标题之间 */
 }
 
 
@@ -195,7 +188,7 @@
   color: white;
   margin-top: 2vh;
   font-weight: 500;
-  line-height: 3; /* 行间距为文字大小的150% */
+  line-height: 2.8; /* 行间距为文字大小的150% */
   letter-spacing: 0.08vw; /* 设置字间距为 2 像素 */
 }
 
@@ -210,13 +203,15 @@
 .personal1_container .text_container .content2 {
     position: absolute;
     right: 5vw;
-    bottom: 5vh;
+    bottom: 3vh;
     align-items: flex-end;
     text-align: right; /* 新增：使文本和行内(块)元素向右对齐 */
     display: flex; /* 新增：使 content2 成为一个 flex 容器 */
     flex-direction: column; /* 新增：将主轴方向设置为垂直 */
     justify-content: flex-end; /* 新增：使块级元素向右对齐 */
   }
+
+
 
   .nextReminder {
     position: absolute;

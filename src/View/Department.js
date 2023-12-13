@@ -9,7 +9,7 @@ import tree from "../img/paraScroll_demo/tree.png";
 import plant from "../img/paraScroll_demo/plant.png";
 import message from "../img/paraScroll_demo/message.png";
 import cat from "../img/paraScroll_demo/cat.png";
-import icon from "../img/paraScroll_demo/ICON.png";
+// import icon from "../img/paraScroll_demo/ICON.png";
 import ufo from "../img/paraScroll_demo/UFO2.png";
 import "../css/ParaScroll.css";
 import IconCount from "../Component/IconCount";
@@ -19,7 +19,7 @@ import popupWindow from "../img/paraScroll_demo/popup_landscape.png";
 import { saveAs } from "file-saver";
 import "../css/SaveButton.css";
 import html2canvas from "html2canvas";
-import { history } from "../utils/history";
+// import { history } from "../utils/history";
 // import messageNotice from "../audio/message.mp3";
 import { useSelector } from "react-redux";
 import { dataFormatter } from "../utils/dataFormat";
@@ -186,7 +186,7 @@ const Department = () => {
   };
 
   return (
-    <div>
+    <div style={{overflow: "hidden"}}>
       {/* <header>
         <h2 className="logo">Logo</h2>
         <nav className="navigation">
