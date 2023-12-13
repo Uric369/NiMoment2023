@@ -113,14 +113,16 @@
   
   .animated-text-2 {
       position: absolute;
-      font-size: 2.3vh;
+      font-size: 2.6vh;
       color: white;
       font-weight: 600;
       text-align: center;
       animation: glow 3s infinite;
       text-align: left;
-      top: 35vh;
+      line-height: 1.5;
+      top: 33vh;
       left: 10vw;
+      right: 10vw;
   }
   
   @keyframes glow {

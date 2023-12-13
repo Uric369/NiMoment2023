@@ -18,6 +18,7 @@ import planet3_m from "../img/mobile_cover/planet3.png";
 import planet4_m from "../img/mobile_cover/planet4.png";
 import rocket_m from "../img/mobile_cover/rocket.png";
 import NiMoment_m from "../img/mobile_cover/NiMoment.png";
+import planet2_m from "../img/mobile_cover/planet2.png";
 
 import Typewriter from "../Component/TypeWriter";
 import { useSelector, useDispatch } from "react-redux";
@@ -181,9 +182,16 @@ function Entry() {
       // 用 onload 而不是 addEventListener 的原因是 onload 可以被覆盖
       // 当 handleResize 再次被调用的时候，旧的 onload 事件会被新的覆盖
       image.onload = () => {
-        const widthRatio = windowWidth / image.naturalWidth;
-        const heightRatio = windowHeight / image.naturalHeight;
-        const scaleRatio = Math.max(widthRatio, heightRatio);
+        let scaleRatio;
+        if (image.src.includes('NiMoment')) {
+            // 如果图像是NiMoment，仅根据宽度计算缩放比例
+            scaleRatio = windowWidth / image.naturalWidth;
+        } else {
+            // 否则，根据宽度和高度计算缩放比例
+            const widthRatio = windowWidth / image.naturalWidth;
+            const heightRatio = windowHeight / image.naturalHeight;
+            scaleRatio = Math.max(widthRatio, heightRatio);
+        }
         const newWidth = image.naturalWidth * scaleRatio;
         const newHeight = image.naturalHeight * scaleRatio;
         image.style.width = `${newWidth}px`;
@@ -204,6 +212,9 @@ function Entry() {
             <ul ref={sceneRef}>
               <li className="layer" data-depth=".2">
                 <img src={planet1_m} alt="" />
+              </li>
+              <li className="layer" data-depth=".3">
+                <img src={planet2_m} alt="" />
               </li>
               <li className="layer" data-depth=".2">
                 <img src={man_m} alt="" />
