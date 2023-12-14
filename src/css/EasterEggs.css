@@ -1,0 +1,44 @@
+@media (min-width: 768px) {
+    .eastereggs_container {
+      /* background-image: url('../img/personal1/BG_stars.png'); 
+      background-size: 100vw 100vh;  */
+      background-image: url('../img/personal1/BG.png');
+      background-size: cover;
+      width: 100vw;
+      height: 100vh;
+      max-height: 100vh; /* 设置最大高度为视窗高度 */
+      overflow: hidden;  /* 隐藏超出部分 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image_style {
+        max-width: 100%; 
+        max-height: 100vh; 
+        display: block; 
+    }
+}
+
+@media (max-width: 768px) {
+    .eastereggs_container {
+      /* background-image: url('../img/personal1/BG_stars.png'); 
+      background-size: 100vw 100vh;  */
+      background-image: url('../img/personal1/BG.png');
+      background-size: cover;
+      width: 100vw;
+      height: 150vh;
+      max-height: 150vh; /* 设置最大高度为视窗高度 */
+      overflow: hidden;  /* 隐藏超出部分 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .image_style {
+        max-width: 100%; 
+        max-height: 150vh; 
+        display: block; 
+    }
+}

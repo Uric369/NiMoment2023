@@ -34,6 +34,9 @@ import saveButton from "../img/icon/saveButton.png";
 // import wordcloud from "../img/achievement/wordcloud.png";
 import notice from "../img/achievement/notice.png";
 import notice_mobile from "../img/achievement/notice_potrait.png";
+import nextReminder from "../img/personal1/cat_next.png";
+import { useNavigate } from "react-router-dom";
+import next from "../img/personal2/next.PNG";
 
 
 const achievements = [
@@ -104,6 +107,7 @@ const achvmtInfo = [
 
 export default function Achievement(props) {
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const navigate = useNavigate();
 
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
@@ -141,8 +145,8 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
-      // const test=[]
-      // setAchievementList(test);
+      const test=[1]
+      setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
     getBlob(wordcloudApi, (res) => {
@@ -164,8 +168,12 @@ export default function Achievement(props) {
     });
   };
 
+  const handleClick = () => {
+    navigate("/EasterEggs");
+  };
+
   return (
-    <div>
+    <div style={{position: "relative", overflow:"hidden"}}>
       
       <img src={saveButton} onClick={onClick} className="savebutton"/>
       {achievementList.length !== 0 && !isMobile && <img src={notice} className="notice"/>}
@@ -174,7 +182,7 @@ export default function Achievement(props) {
         <div className="border" />
         <div className="achievement-text">
           <img style={{ height: isMobile?"5vh":"10vh" }} src={achiveIcon} />
-          年度成就
+          <span>年度成就</span>
         </div>
         <div className="id_card">
           <div
@@ -195,6 +203,9 @@ export default function Achievement(props) {
             <h style={{ fontSize: "2vh" }}>
               入职时间：{signInDate}
             </h>
+            {isRetired && <h style={{ fontSize: "2vh" }}>
+              退休时间：{signInDate}
+            </h>}
           </div>
           {/* <div
             style={{
@@ -214,7 +225,7 @@ export default function Achievement(props) {
           
         </div>
         <div  className="wordCloud" >
-        <h4>QQ群词云</h4>
+        <h4><span style={{writingMode: "initial", transform: "rotate(90deg)", marginBottom: "0.5em", lineHeight: "1em"}}>QQ</span>群词云</h4>
         <img style={{height:isMobile?"15vh":"35vh"}} ref={imageRef} />
         {/* <img style={{height:"35vh"}} src={wordcloud} /> */}
         </div>
@@ -229,7 +240,7 @@ export default function Achievement(props) {
         <div className="shell">
           
           {achievementList.map((index) => (
-            <div>
+            <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
               <div className="card" key={index}>
                 <div className="wrapper">
                   <img
@@ -245,7 +256,7 @@ export default function Achievement(props) {
                   className="character"
                 />
               </div>
-              {index !== 2 && (
+              {index != 2 && (
                 <div className="card-subtitle">
                   {achvmtInfo[index].text1 +
                     achievementInfo[index] +
@@ -261,7 +272,12 @@ export default function Achievement(props) {
          </div>
         )}
         
-          
+        {!isMobile && <div onClick={handleClick} className="next_reminder">
+          <img src={nextReminder} style={{ width:"100%", height:"100%", objectFit: "contain", cursor: "pointer" }}/>
+        </div>}
+        {isMobile && <div onClick={handleClick} className="next_reminder">
+          <img src={next} style={{ width:"100%", height:"100%", objectFit: "contain", cursor: "pointer" }}/>
+        </div>}
       </div>
 
     </div>

@@ -1,213 +1,4 @@
 @media (min-width: 768px) {
-/* body {
-    margin: 0;
-    padding: 0;
-} */
- 
-.achievement {
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../img/personal1/BG.png');
-    background-size: cover;
-}
-
-.border {
-    position: absolute;
-    top:5vh;
-    left: 10vw;
-    height: 44vw;
-    width: 83vw;
-    background-image: url('../img/achievement/boarder.png');
-    background-size: cover;
-}
-
-.shell {
-    position: absolute;
-    left: 10vw;
-    width: 80vw;
-    height: 40vh;
-    bottom: 0vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    height: 25vh;
-    aspect-ratio: 1 / 1; /* 设置宽高比为1:2 */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 0 1px;
-    perspective: 2500px;
-    transition: all 0.4s;
-    margin: 0 30px;
-}
-
-.cover-image {
-    width: 100%;
-    height: 100%;
-}
-
-.wrapper {
-    transition: all 0.3s;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-}
-
-.card:hover .wrapper {
-    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
-    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
-}
-
-.wrapper::before,
-.wrapper::after {
-    content: "";
-    opacity: 0;
-    width: 100%;
-    height: 80px;
-    transition: all 0.3s;
-    position: absolute;
-    left: 0;
-}
-
-.wrapper::before {
-    top: 0;
-    height: 100%;
-    background-image: linear-gradient(to top,
-            transparent 46%,
-            rgba(12, 13, 19, 0.5) 68%,
-            rgba(12, 13, 19) 97%);
-}
-
-.wrapper::after {
-    bottom: 0;
-    opacity: 1;
-    background-image: linear-gradient(to bottom,
-            transparent 46%,
-            rgba(12, 13, 19, 0.5) 68%,
-            rgba(12, 13, 19) 97%);
-}
-
-.card:hover .wrapper::before,
-.wrapper::after {
-    opacity: 1;
-}
-
-.card:hover .wrapper::after {
-    height: 120px;
-}
-
-.title {
-    width: 100%;
-    transition: transform 0.3s;
-}
-
-.card:hover .title {
-    transform: translate3d(0%, -50px, 100px);
-}
-
-.character {
-    width: 100%;
-    opacity: 1;
-    transition: all 0.3s;
-    position: absolute;
-    /* z-index: -1; */
-}
-
-.card:hover .character {
-    opacity: 1;
-    transform: translate3d(0%, -20%, 100px);
-}
-
-.card:hover {
-    transform: translateY(40px);
-}
-
-
-.achievement-text {
-    font-size: 5vh;
-    color: white;
-    font-weight: 600;
-    /* text-align: center; */
-    animation: glow 3s infinite;
-    position: absolute;
-    top: 10%;
-    left: 5%;
-      /* 添加竖排文字样式 */
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-}
-
-.id_card {
-    position: absolute;
-    top: 10vh;
-    left: 20vw;
-    width: auto;
-    height: 30vh;
-    display: flex;
-    color: white;
-
-}
-
-
-
-.wordCloud {
-    position: absolute;
-    top: 10vh;
-    left: 45vw;
-    width: auto;
-    height: 30vh;
-    color: white;
-    font-size: 3vh;
-    writing-mode: vertical-lr; /* 或者 'vertical-rl' 根据您的需求 */
-}
-
-.wordCloud h4 {
-    margin-right: 2vw;
-}
-
-
-
-
-.card-subtitle {
-    /* height: 6vh;
-    aspect-ratio: 5 / 1;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 0 25px;
-    perspective: 2500px;
-    margin: 0 100px; */
-    font-size: 1.5vh;
-    margin-top:1vh;
-    margin-left: 30px;
-    color: white;
-}
-
-.no-achievements{
-    position: absolute;
-    font-size: 4vh;
-    color: white;
-    top: 65vh;
-    left: 35vw;
-}
-
-.notice{
-    position: absolute;
-    top: 5vh;
-    right: 0vh;
-    width: 20vw;
-    height: auto;
-    z-index: 2;
-}
-}
-
-
-@media (max-width: 768px) {
     /* body {
         margin: 0;
         padding: 0;
@@ -226,7 +17,7 @@
         left: 10vw;
         height: 44vw;
         width: 83vw;
-        background-image: url('../img/personal2/panel_mobile.png'); 
+        background-image: url('../img/achievement/boarder.png');
         background-size: cover;
     }
     
@@ -237,21 +28,12 @@
         height: 40vh;
         bottom: 0vh;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
-        overflow-x: auto; /* Enable horizontal scrolling */
-        scroll-snap-type: x mandatory; /* Enable snap effect on scroll */
-        scrollbar-width: none; /* Hide scrollbar for browsers that support it */
-        -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-    }
-
-    .shell::-webkit-scrollbar {
-        display: none; /* Hide scrollbar in Webkit browsers */
     }
     
     .card {
-        scroll-snap-align: start;
-        height: 15vh;
+        height: 25vh;
         aspect-ratio: 1 / 1; /* 设置宽高比为1:2 */
         position: relative;
         display: flex;
@@ -260,7 +42,7 @@
         padding: 0 1px;
         perspective: 2500px;
         transition: all 0.4s;
-        margin: 0 15px;
+        margin: 0 30px;
     }
     
     .cover-image {
@@ -346,23 +128,31 @@
     
     
     .achievement-text {
-        font-size: 3vh;
+        font-size: 5vh;
         color: white;
         font-weight: 600;
-        text-align: center;
+        /* text-align: center; */
         animation: glow 3s infinite;
         position: absolute;
         top: 10%;
         left: 5%;
           /* 添加竖排文字样式 */
-      writing-mode: vertical-rl;
-      text-orientation: upright;
+        /* writing-mode: vertical-rl;
+        text-orientation: upright; */
+    }
+    
+    .achievement-text span {
+        width: 1em;
+        line-height: 1em;
+        text-wrap: break-word;
+        display: flex;
+        flex-direction: column;
     }
     
     .id_card {
         position: absolute;
         top: 10vh;
-        left: 25vw;
+        left: 20vw;
         width: auto;
         height: 30vh;
         display: flex;
@@ -374,17 +164,17 @@
     
     .wordCloud {
         position: absolute;
-        top: 35vh;
-        left: 15vw;
+        top: 10vh;
+        left: 45vw;
         width: auto;
         height: 30vh;
         color: white;
-        font-size: 2vh;
+        font-size: 3vh;
         writing-mode: vertical-lr; /* 或者 'vertical-rl' 根据您的需求 */
     }
     
     .wordCloud h4 {
-        margin-right: 4vw;
+        margin-right: 2vw;
     }
     
     
@@ -402,32 +192,277 @@
         margin: 0 100px; */
         font-size: 1.5vh;
         margin-top:1vh;
-        margin-left: 15px;
+        margin-left: 30px;
         color: white;
     }
     
     .no-achievements{
         position: absolute;
-        font-size: 3vh;
+        font-size: 4vh;
         color: white;
-        top: 70vh;
-        left: 15vw;
+        top: 65vh;
+        left: 35vw;
     }
     
     .notice{
         position: absolute;
-        top: 91vh;
+        top: 5vh;
         right: 0vh;
-        width: 82vw;
+        width: 20vw;
         height: auto;
         z-index: 2;
     }
 
-    h6 {
-        position: absolute;
-        top:55vh;
-        left: 33vw;
-        font-size: 2vh;
-        color: white;
+    
+  .next_reminder {
+    position: absolute;
+    bottom: -3vh;
+    right: -2vw;
+    height: 35vh;
+    width: auto;
+  }
     }
-    }
+    
+    
+    @media (max-width: 768px) {
+        /* body {
+            margin: 0;
+            padding: 0;
+        } */
+         
+        .achievement {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('../img/personal1/BG.png');
+            background-size: cover;
+        }
+        
+        .border {
+            position: absolute;
+            top:5vh;
+            left: 10vw;
+            height: 44vw;
+            width: 83vw;
+            background-image: url('../img/personal2/panel_mobile.png'); 
+            background-size: cover;
+        }
+        
+        .shell {
+            position: absolute;
+            left: 10vw;
+            width: 80vw;
+            height: 40vh;
+            top: 60vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            scroll-snap-type: x mandatory; /* Enable snap effect on scroll */
+            scrollbar-width: none; /* Hide scrollbar for browsers that support it */
+            -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+        }
+    
+        .shell::-webkit-scrollbar {
+            display: none; /* Hide scrollbar in Webkit browsers */
+        }
+        
+        .card {
+            scroll-snap-align: start;
+            height: 15vh;
+            aspect-ratio: 1 / 1; /* 设置宽高比为1:2 */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0 1px;
+            perspective: 2500px;
+            transition: all 0.4s;
+            margin: 0 15px;
+        }
+        
+        .cover-image {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .wrapper {
+            transition: all 0.3s;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        
+        .card:hover .wrapper {
+            transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+            box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+        }
+        
+        .wrapper::before,
+        .wrapper::after {
+            content: "";
+            opacity: 0;
+            width: 100%;
+            height: 80px;
+            transition: all 0.3s;
+            position: absolute;
+            left: 0;
+        }
+        
+        .wrapper::before {
+            top: 0;
+            height: 100%;
+            background-image: linear-gradient(to top,
+                    transparent 46%,
+                    rgba(12, 13, 19, 0.5) 68%,
+                    rgba(12, 13, 19) 97%);
+        }
+        
+        .wrapper::after {
+            bottom: 0;
+            opacity: 1;
+            background-image: linear-gradient(to bottom,
+                    transparent 46%,
+                    rgba(12, 13, 19, 0.5) 68%,
+                    rgba(12, 13, 19) 97%);
+        }
+        
+        .card:hover .wrapper::before,
+        .wrapper::after {
+            opacity: 1;
+        }
+        
+        .card:hover .wrapper::after {
+            height: 120px;
+        }
+        
+        .title {
+            width: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover .title {
+            transform: translate3d(0%, -50px, 100px);
+        }
+        
+        .character {
+            width: 100%;
+            opacity: 1;
+            transition: all 0.3s;
+            position: absolute;
+            /* z-index: -1; */
+        }
+        
+        .card:hover .character {
+            opacity: 1;
+            transform: translate3d(0%, -20%, 100px);
+        }
+        
+        .card:hover {
+            transform: translateY(40px);
+        }
+        
+        
+        .achievement-text {
+            font-size: 3vh;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            animation: glow 3s infinite;
+            position: absolute;
+            top: 10%;
+            left: 5%;
+              /* 添加竖排文字样式 */
+          /* writing-mode: vertical-rl;
+          text-orientation: upright; */
+        }
+    
+        .achievement-text span {
+            width: 1em;
+            line-height: 1em;
+            text-wrap: break-word;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .id_card {
+            position: absolute;
+            top: 10vh;
+            left: 25vw;
+            width: auto;
+            height: 30vh;
+            display: flex;
+            color: white;
+        
+        }
+        
+        
+        
+        .wordCloud {
+            position: absolute;
+            top: 35vh;
+            left: 15vw;
+            width: auto;
+            height: 30vh;
+            color: white;
+            font-size: 2vh;
+            writing-mode: vertical-lr; /* 或者 'vertical-rl' 根据您的需求 */
+        }
+        
+        .wordCloud h4 {
+            margin-right: 4vw;
+        }
+        
+        
+        
+        
+        .card-subtitle {
+            /* height: 6vh;
+            aspect-ratio: 5 / 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0 25px;
+            perspective: 2500px;
+            margin: 0 100px; */
+            font-size: 1.5vh;
+            margin-top:1vh;
+            margin-right: 15px;
+            text-align: center;
+            color: white;
+        }
+        
+        .no-achievements{
+            position: absolute;
+            font-size: 3vh;
+            color: white;
+            top: 70vh;
+            left: 15vw;
+        }
+        
+        .notice{
+            position: absolute;
+            top: 91vh;
+            right: -10vw;
+            width: 82vw;
+            height: auto;
+            z-index: 2;
+        }
+    
+        h6 {
+            position: absolute;
+            top:55vh;
+            left: 33vw;
+            font-size: 2vh;
+            color: white;
+        }
+        
+  .next_reminder {
+    position: absolute;
+    bottom: 5vh;
+    left: 0vw;
+    width: 25vw;
+    max-height: 30vh;
+    overflow: hidden
+  }
+        }

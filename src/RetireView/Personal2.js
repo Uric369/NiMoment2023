@@ -27,6 +27,7 @@ import crystal from "../img/paraScroll_demo/crystal.png";
 import module from "../img/paraScroll_demo/module.png";
 import saveButton from "../img/icon/saveButton.png";
 import next from "../img/personal2/next.PNG";
+import { useNavigate } from "react-router-dom";
 
 import { dataFormatter } from "../utils/dataFormat";
 import {
@@ -83,9 +84,9 @@ function formatStatistics(stats) {
 
 const Personal2Special = () => {
   const containerRef = useRef();
+  const navigate = useNavigate();
   const handleRouter = () => {
-    // history.push("/Achievement");
-    // window.location.reload();
+    navigate("/EasterEggs");
   };
 
   const onClick = () => {

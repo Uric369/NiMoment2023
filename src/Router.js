@@ -15,6 +15,7 @@ import DepartmentSpecial from "./RetireView/Department";
 import Personal1Special from "./RetireView/Personal1";
 import Personal2Special from "./RetireView/Personal2";
 import Login from "./View/Login";
+import EasterEggs from "./View/EasterEggs";
 
 class MyRouter extends React.Component {
   constructor(props) {
@@ -39,6 +40,8 @@ class MyRouter extends React.Component {
             <Route path="/DepartmentSpecial" element={<DepartmentSpecial />} />
             <Route path="/Personal1Special" element={<Personal1Special />} />
             <Route path="/Personal2Special" element={<Personal2Special />} />
+            {/* <Route path="/AchievementSpecial" element={<AchievementSpecial />} /> */}
+            <Route path="/EasterEggs" element={<EasterEggs />} />
             {/* <Route path="/*" element={<Navigate to="/Department" />} /> */}
             <Route path="/auth/login" element={<Login />} />
           </Routes>
