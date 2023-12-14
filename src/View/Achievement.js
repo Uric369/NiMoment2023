@@ -145,8 +145,8 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
-      const test=[1]
-      setAchievementList(test);
+      // const test=[1]
+      // setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
     getBlob(wordcloudApi, (res) => {
