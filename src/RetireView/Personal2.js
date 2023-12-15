@@ -31,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 
 import { dataFormatter } from "../utils/dataFormat";
 import RoundedButton from "../Component/RoundedButton";
+import WordCloudModal from "../Component/WordCloudModal";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -82,6 +83,8 @@ const Personal2Special = () => {
     navigate("/EasterEggs");
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {
       canvas.toBlob((blob) => {
@@ -113,6 +116,17 @@ const Personal2Special = () => {
 
   return (
     <div>
+      <div>
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <WordCloudModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            ></WordCloudModal>
+          </div>
+        )}
+      </div>
+
       <div
         className="personal2special_container"
         style={{
@@ -156,7 +170,7 @@ const Personal2Special = () => {
               <div className="rounded-button-wordcloud-container">
                 <RoundedButton
                   buttonText="点击查看 QQ 群词云 ☁"
-                  onClick={() => console.log(10374)}
+                  onClick={() => setIsModalOpen(true)}
                   extraClassName="rounded-button-wordcloud"
                 ></RoundedButton>
               </div>

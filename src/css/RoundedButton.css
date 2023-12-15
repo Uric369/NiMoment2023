@@ -8,6 +8,8 @@
 .rounded-button:hover {
   background: #ccc;
   text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
   cursor: pointer;
 }
 
@@ -16,15 +18,26 @@
 }
 
 .rounded-button-wordcloud {
-  color: #4f6ba7;
-  font-weight: bold;
+  color: #4664a3;
+  font-weight: 700;
   font-size: 1rem;
+  font-family: Inter;
+
   width: 15vw;
-  height: 5vh;
+  height: 5.5vh;
 }
 
 .rounded-button-wordcloud-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.rounded-button-save {
+  color: #4664a3;
+  font-weight: 700;
+  font-family: Inter;
+
+  width: 15vw;
+  height: 5vh;
 }

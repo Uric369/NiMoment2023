@@ -1,0 +1,70 @@
+.modal-skeleton {
+  height: 500px;
+  width: 500px;
+
+  border-radius: 30px;
+
+  background: linear-gradient(180deg, #271557 14.77%, #82cdbb 100%),
+    rgba(255, 255, 255, 0.25);
+}
+
+.modal-container {
+  height: 100%;
+  width: 100%;
+
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.wordcloud-container {
+  height: 35vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1em;
+}
+
+.modal-close-click {
+  color: #fff;
+  width: 50%;
+  text-align: center;
+  font-size: 0.8rem;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+.modal-close-click:hover {
+  color: #82cdbb;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed; /* Full screen and above other content */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent white */
+  display: flex; /* Center the child div */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1000; /* Make sure it's on top of everything else */
+}
