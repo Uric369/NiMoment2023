@@ -84,6 +84,8 @@ const Personal2Special = () => {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const hasWordCloud = useSelector((state) => state.stats.hasWordCloud);
+  // const hasWordCloud = false;
 
   const onClick = () => {
     html2canvas(containerRef.current).then((canvas) => {
@@ -168,11 +170,13 @@ const Personal2Special = () => {
                 />
               ))}
               <div className="rounded-button-wordcloud-container">
-                <RoundedButton
-                  buttonText="点击查看 QQ 群词云 ☁"
-                  onClick={() => setIsModalOpen(true)}
-                  extraClassName="rounded-button-wordcloud"
-                ></RoundedButton>
+                {hasWordCloud && (
+                  <RoundedButton
+                    buttonText="点击查看 QQ 群词云 ☁"
+                    onClick={() => setIsModalOpen(true)}
+                    extraClassName="rounded-button-wordcloud"
+                  ></RoundedButton>
+                )}
               </div>
             </div>
             {!isMobile && (

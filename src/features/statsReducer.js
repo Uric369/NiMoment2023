@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const statsSlice = createSlice({
   name: "stats",
   initialState: {
+    hasWordCloud: false,
     departmentStats: {
       numRequests: 0,
       numAuditions: 0,
@@ -41,6 +42,9 @@ export const statsSlice = createSlice({
     },
   },
   reducers: {
+    setHasWordCloud: (state, action) => {
+      state.hasWordCloud = action.payload;
+    },
     setDepartmentStats: (state, action) => {
       state.departmentStats = action.payload;
     },
@@ -63,6 +67,7 @@ export const statsSlice = createSlice({
 });
 
 export const {
+  setHasWordCloud,
   setDepartmentStats,
   setPersonalStatsGeneral,
   setPersonalStatsOffice,

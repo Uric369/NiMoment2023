@@ -30,6 +30,7 @@ import {
   setSignInOut,
 } from "../features/nimoerReducer";
 import {
+  setHasWordCloud,
   setDepartmentStats,
   setPersonalStatsGeneral,
   setPersonalStatsOffice,
@@ -46,6 +47,7 @@ import {
   personalStatsProgressApi,
   personalStatsFieldApi,
   signinApi,
+  hasWordcloudApi,
 } from "../apis";
 
 function Entry() {
@@ -60,6 +62,13 @@ function Entry() {
 
   function prefetchEverything() {
     // prefetch all data
+    getRequest(
+      hasWordcloudApi,
+      (res) => {
+        dispatch(setHasWordCloud(res.data.has_wordcloud));
+      },
+      console.error
+    );
     getRequest(
       nimoerApi,
       (data) => {
@@ -149,24 +158,23 @@ function Entry() {
       const parallaxInstance = new Parallax(sceneRef.current, {
         relativeInput: true,
       });
-  
+
       // 立即调整图片大小以适应屏幕
       handleResize();
-  
+
       // 添加 resize 事件监听器
-      window.addEventListener('resize', handleResize);
-  
+      window.addEventListener("resize", handleResize);
+
       // 组件卸载时清理事件监听器和parallax实例
       return () => {
         parallaxInstance.destroy();
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener("resize", handleResize);
       };
       handleResize();
     }
   }, []);
-  
+
   // 现在，无论是页面加载还是大小改变，handleResize 都会被调用
-  
 
   const handleResize = () => {
     // 获取窗口的宽度和高度
@@ -183,20 +191,20 @@ function Entry() {
       // 当 handleResize 再次被调用的时候，旧的 onload 事件会被新的覆盖
       image.onload = () => {
         let scaleRatio;
-        if (image.src.includes('NiMoment')) {
-            // 如果图像是NiMoment，仅根据宽度计算缩放比例
-            scaleRatio = windowWidth / image.naturalWidth;
+        if (image.src.includes("NiMoment")) {
+          // 如果图像是NiMoment，仅根据宽度计算缩放比例
+          scaleRatio = windowWidth / image.naturalWidth;
         } else {
-            // 否则，根据宽度和高度计算缩放比例
-            const widthRatio = windowWidth / image.naturalWidth;
-            const heightRatio = windowHeight / image.naturalHeight;
-            scaleRatio = Math.max(widthRatio, heightRatio);
+          // 否则，根据宽度和高度计算缩放比例
+          const widthRatio = windowWidth / image.naturalWidth;
+          const heightRatio = windowHeight / image.naturalHeight;
+          scaleRatio = Math.max(widthRatio, heightRatio);
         }
         const newWidth = image.naturalWidth * scaleRatio;
         const newHeight = image.naturalHeight * scaleRatio;
         image.style.width = `${newWidth}px`;
         image.style.height = `${newHeight}px`;
-      }
+      };
     }
   };
 
@@ -205,7 +213,7 @@ function Entry() {
   };
 
   return (
-    <div style={{position: "relative", overflow:"hidden"}}>
+    <div style={{ position: "relative", overflow: "hidden" }}>
       {isMobile ? (
         <div>
           <div className="container">

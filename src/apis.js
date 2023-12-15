@@ -8,6 +8,7 @@ export const personalStatsFieldApi = `${nimomentUrlBase}/stats_field`;
 export const signinApi = `${nimomentUrlBase}/retired_dates`;
 export const achievementApi = `${nimomentUrlBase}/achievements`;
 export const wordcloudApi = `${nimomentUrlBase}/wordcloud`;
+export const hasWordcloudApi = `${nimomentUrlBase}/has_wordcloud`;
 
 function getDefaultHeaders() {
   return {
