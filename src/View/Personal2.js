@@ -220,26 +220,26 @@ const Personal2 = () => {
 
               <IconTitle icon={titleIcon} text={"报修最常去的楼栋"} />
 
-              {isMobile && 
+               
               <div>
                 <div className="baoxiu_cat1">
                 <h4>{hifrequencies.building}</h4>
                 </div>
-                <IconTitle
+                {isMobile && <IconTitle
                   icon={titleIcon}
                   text={"最常一起出报（郊）修（游）的人"}
-                />
+                />}
                 <div className="baoxiu_cat2">
                 <h5>{hifrequencies.colleague}</h5>
                 </div>
                 </div>
-              }
-              {!isMobile && 
+              
+              {/* {!isMobile && 
                 <div>
                   <h4>{hifrequencies.building}</h4>
                   <h5>{hifrequencies.colleague}</h5>
                 </div>
-              }
+              } */}
               
             </div>
           </div>

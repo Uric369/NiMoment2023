@@ -64,20 +64,19 @@
   }
 
 
-
   .personal2_container .outer_container .inner_container h4{
-    position: absolute;
-    top: 46vh; /* 相对于容器顶部的距离 */
-    left: 10vw;
-    font-size: 4vh;
+    position: relative;
+    top: 31%; /* 相对于容器顶部的距离 */
+    left: 30%;
+    font-size: 190%;
     color: white;
   }
 
   .personal2_container .outer_container .inner_container  h5{
-    position: absolute;
-    top: 19vh; /* 相对于容器顶部的距离 */
-    left: 45vw;
-    font-size: 4vh;
+    position: relative;
+    top: 30%; /* 相对于容器顶部的距离 */
+    left: 60%;
+    font-size: 170%;
     color: white;
   }
 
@@ -88,6 +87,26 @@
     left: 81vw; /* 相对于容器左侧的距离 */
     width: 20vw;
     cursor: pointer;
+  }
+
+  .personal2_container .outer_container .inner_container  .baoxiu_cat1{
+    position: absolute;
+    top: 40vh;
+    left: 0vw;
+    width: 40vw;
+    height: 13vw;
+    background-image: url('../img/personal2/cat2.png'); 
+    background-size: cover; 
+  }
+
+  .personal2_container .outer_container .inner_container  .baoxiu_cat2{
+    position: absolute;
+    top: 20vh;
+    left: 35vw;
+    width: 36vw;
+    height: 13vw;
+    background-image: url('../img/personal2/baoxiu_cat2.png'); 
+    background-size: cover; 
   }
 }
 

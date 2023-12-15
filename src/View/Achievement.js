@@ -240,7 +240,7 @@ export default function Achievement(props) {
         <div className="shell">
           
           {achievementList.map((index) => (
-            <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+            <div>
               <div className="card" key={index}>
                 <div className="wrapper">
                   <img

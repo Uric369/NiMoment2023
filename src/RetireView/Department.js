@@ -199,7 +199,7 @@ const DepartmentSpecial = () => {
         <img src={tree} id="tree" alt="tree" />
         <img src={ufo} id="spaceShip" ref={spaceShipRef} alt="ufo" />
         <h2 id="text" ref={textRef}>
-              NiMoment飞船正在降落🢃
+              NiMoment飞船正在降落⏬
             </h2>
         <img src={leaf} id="leaf" ref={leafRef} alt="leaf" />
         <img src={plant} id="plant" alt="plant" />
