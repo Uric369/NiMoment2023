@@ -30,13 +30,7 @@ import next from "../img/personal2/next.PNG";
 import { useNavigate } from "react-router-dom";
 
 import { dataFormatter } from "../utils/dataFormat";
-import {
-  nimoerApi,
-  personalStatsFieldApi,
-  personalStatsOfficeApi,
-  personalStatsGeneralApi,
-  getRequest,
-} from "../apis";
+import RoundedButton from "../Component/RoundedButton";
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -150,7 +144,7 @@ const Personal2Special = () => {
               }}
               src={profileImg}
             />
-            <div>
+            <div style={{ zIndex: 2 }}>
               <p>&gt;&gt;&gt; </p>
               {formatProfileInfo(profileInfo).map((info, index) => (
                 <Combination4
@@ -159,6 +153,13 @@ const Personal2Special = () => {
                   content={info.content}
                 />
               ))}
+              <div>
+                <RoundedButton
+                  buttonText="点击查看 QQ 群词云 ☁"
+                  onClick={() => console.log(10374)}
+                  extraClassName="rounded-button-wordcloud"
+                ></RoundedButton>
+              </div>
             </div>
             {!isMobile && (
               <div style={{ marginLeft: "10vw" }}>
