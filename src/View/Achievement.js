@@ -112,7 +112,7 @@ export default function Achievement(props) {
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
   const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
-  const [achievementList, setAchievementList] = useState([]);
+  const [achievementList, setAchievementList] = useState([1]);
   const [achievementInfo, setAchievementDetails] = useState([
     null,
     null,
@@ -240,7 +240,7 @@ export default function Achievement(props) {
         <div className="shell">
           
           {achievementList.map((index) => (
-            <div>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
               <div className="card" key={index}>
                 <div className="wrapper">
                   <img
