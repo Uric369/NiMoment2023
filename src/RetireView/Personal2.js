@@ -153,7 +153,7 @@ const Personal2Special = () => {
                   content={info.content}
                 />
               ))}
-              <div>
+              <div className="rounded-button-wordcloud-container">
                 <RoundedButton
                   buttonText="点击查看 QQ 群词云 ☁"
                   onClick={() => console.log(10374)}
