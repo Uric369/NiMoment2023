@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 
 export default function WordCloudModal(props) {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   const { onClose } = props;
   const imageRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +41,7 @@ export default function WordCloudModal(props) {
           {isLoading && <LoadingSpinner />}
           <img
             style={{
-              height: "35vh",
+              width: isMobile ? "60vw" : "30vw",
               display: isLoading ? "none" : "block",
             }}
             ref={imageRef}

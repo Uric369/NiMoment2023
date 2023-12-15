@@ -17,6 +17,12 @@
   background: #e4e4e7;
 }
 
+.rounded-button-wordcloud-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .rounded-button-wordcloud {
   color: #4664a3;
   font-weight: 700;
@@ -27,12 +33,6 @@
   height: 5.5vh;
 }
 
-.rounded-button-wordcloud-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .rounded-button-save {
   color: #4664a3;
   font-weight: 700;
@@ -40,4 +40,25 @@
 
   width: 15vw;
   height: 5vh;
+}
+
+@media (max-width: 768px) {
+  .rounded-button-wordcloud {
+    color: #4664a3;
+    font-weight: 700;
+    font-size: 1.3vh;
+    font-family: Inter;
+
+    width: 40vw;
+    height: 2.5vh;
+  }
+
+  .rounded-button-save {
+    color: #4664a3;
+    font-weight: 700;
+    font-family: Inter;
+
+    width: 40vw;
+    height: 3vh;
+  }
 }

@@ -1,6 +1,6 @@
 .modal-skeleton {
-  height: 500px;
-  width: 500px;
+  height: 35vw;
+  width: 35vw;
 
   border-radius: 30px;
 
@@ -67,4 +67,25 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   z-index: 1000; /* Make sure it's on top of everything else */
+}
+
+@media (max-width: 768px) {
+  .modal-skeleton {
+    height: 75vw;
+    width: 75vw;
+
+    border-radius: 30px;
+
+    background: linear-gradient(180deg, #271557 14.77%, #82cdbb 100%),
+      rgba(255, 255, 255, 0.25);
+  }
+
+  .wordcloud-container {
+    height: 60vw;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

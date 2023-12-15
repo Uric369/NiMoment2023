@@ -4,12 +4,16 @@ const Combination4 = ({ item, content }) => {
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   return (
     <div
-      style={{ display: "flex", alignItems: "flex-end", marginBottom: "1vh" }}
+      style={{
+        display: "flex",
+        alignItems: "flex-end",
+        marginBottom: isMobile ? "0.8vh" : "1vh",
+      }}
     >
       {item && (
         <strong
           style={{
-            fontSize: isMobile ? "1.5vh" : "3vh",
+            fontSize: isMobile ? "1.3vh" : "3vh",
             verticalAlign: "bottom",
             color: "#00ffff",
           }}
@@ -20,7 +24,7 @@ const Combination4 = ({ item, content }) => {
       {content && (
         <span
           style={{
-            fontSize: isMobile ? "1.5vh" : "3vh",
+            fontSize: isMobile ? "1.3vh" : "3vh",
             verticalAlign: "bottom",
             color: "#fff",
           }}
