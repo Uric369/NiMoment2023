@@ -113,7 +113,7 @@ export default function Achievement(props) {
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
   const isRetired = useSelector((state) => state.nimoer.isRetired);
   const signInDate = useSelector((state) => state.nimoer.signInOut.signIn);
-  const [achievementList, setAchievementList] = useState([1]);
+  const [achievementList, setAchievementList] = useState([]);
   const [achievementInfo, setAchievementDetails] = useState([
     null,
     null,
@@ -146,8 +146,6 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
-      // const test=[1]
-      // setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
     getBlob(wordcloudApi, (res) => {
@@ -241,7 +239,7 @@ export default function Achievement(props) {
         <div className="shell">
           
           {achievementList.map((index) => (
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%"}}>
               <div className="card" key={index}>
                 <div className="wrapper">
                   <img
