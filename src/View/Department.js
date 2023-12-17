@@ -214,7 +214,7 @@ const Department = () => {
           </section>
         )}
 
-        <section class="sec">
+        <section className="sec">
           <h2>2023年度，NIMO......</h2>
           <img className="cat box-2" ref={catRef} src={cat} alt="cat" />
           <div className="fixed-box1" style={{ zIndex: 3 }}>

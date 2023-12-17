@@ -5,9 +5,10 @@ import { getBlob, wordcloudApi } from "../apis";
 
 import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
+import { useIsMobile } from "../hooks";
 
 export default function WordCloudModal(props) {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
 
   const { onClose } = props;
   const imageRef = useRef();

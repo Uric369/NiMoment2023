@@ -1,7 +1,8 @@
 import React from "react";
+import { useIsMobile } from "../hooks";
 
 const Combination4 = ({ item, content }) => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   return (
     <div
       style={{

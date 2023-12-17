@@ -1,8 +1,9 @@
 import React from "react";
 import Counter from "./Counter";
+import { useIsMobile } from "../hooks";
 
 const Combination5 = ({ text1, count, text2 }) => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   return (
     <div
       style={{ display: "flex", alignItems: "flex-end", marginBottom: "1vh" }}

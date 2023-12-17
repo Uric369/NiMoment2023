@@ -32,8 +32,7 @@ import { useNavigate } from "react-router-dom";
 import { dataFormatter } from "../utils/dataFormat";
 import RoundedButton from "../Component/RoundedButton";
 import WordCloudModal from "../Component/WordCloudModal";
-
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
+import { useIsMobile } from "../hooks";
 
 function formatProfileInfo(profile) {
   return dataFormatter(
@@ -83,6 +82,7 @@ const Personal2Special = () => {
     navigate("/EasterEggs");
   };
 
+  const [isMobile] = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const hasWordCloud = useSelector((state) => state.stats.hasWordCloud);
   // const hasWordCloud = false;

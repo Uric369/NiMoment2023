@@ -18,8 +18,11 @@ import { useSelector } from "react-redux";
 import nextReminder from "../img/personal1/cat_next.png";
 import saveButton from "../img/icon/saveButton.png";
 import { useNavigate } from "react-router-dom";
+import { useIsMobile } from "../hooks";
 
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+const Personal1Special = () => {
+const [isMobile] = useIsMobile();
 
 const rotatingObjects = isMobile
   ? [
@@ -66,8 +69,6 @@ const dashedLine = [
   { x: 85, y: 70 },
 ];
 
-
-const Personal1Special = () => {
   const lastDay = useSelector((state) => state.nimoer.signInOut.signOut);
   // const lastDay = useSelector((state) => 1);
   const navigate = useNavigate();

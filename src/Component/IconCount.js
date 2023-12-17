@@ -1,7 +1,8 @@
 import React from "react";
+import { useIsMobile } from "../hooks";
 
 const IconCount = ({ icon, count, height }) => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   return (
     <div
       style={{ display: "flex", alignItems: "flex-end", marginBottom: "10px" }}

@@ -31,6 +31,7 @@ import requestIcon from "../img/paraScroll_demo/request.png";
 import applicationIcon from "../img/paraScroll_demo/application.png";
 import saveButton from "../img/icon/saveButton.png";
 import popupWindow_mobile from "../img/paraScroll_demo/popup_potrait.png";
+import { useIsMobile } from "../hooks";
 
 
 function formatConsumables(consumables) {
@@ -55,7 +56,7 @@ const DepartmentSpecial = () => {
   const [isSlideEnd, setIsSlideEnd] = useState(false);
   const containerRef = useRef();
   const navigate = useNavigate();
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   const textRef = React.useRef(null);
   const leafRef = React.useRef(null);
   const hill1Ref = React.useRef(null);
@@ -205,7 +206,7 @@ const DepartmentSpecial = () => {
         <img src={plant} id="plant" alt="plant" />
       </section>
     )}
-      <section class="sec" ref={containerRef}>
+      <section className="sec" ref={containerRef}>
         <h3>看看后辈们吧！</h3>
         <h3>2023年度，NIMO......</h3>
         <img className="cat box-2" ref={catRef} src={cat} alt="cat" />

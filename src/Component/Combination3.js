@@ -1,8 +1,9 @@
 import React from "react";
 import Counter from "./Counter"; // adjust the path according to your project structure
+import { useIsMobile } from "../hooks";
 
 const Combination3 = ({ text1, count, text2 }) => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   return (
     <div>
       <h1 style={{ fontSize: isMobile ? "5vw" : "2vw" }}>{text1}</h1>
