@@ -23,6 +23,7 @@ export function formatDateTimeHHMM(date) {
   if (typeof date === "string") {
     date = new Date(date);
   }
+  date = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Beijing" }));
 
   const year = date.getFullYear();
   const month = zeroPadToTwoDigits(date.getMonth() + 1);

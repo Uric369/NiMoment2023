@@ -37,6 +37,7 @@ import notice_mobile from "../img/achievement/notice_potrait.png";
 import nextReminder from "../img/personal1/cat_next.png";
 import { useNavigate } from "react-router-dom";
 import next from "../img/personal2/next.PNG";
+import { useIsMobile } from "../hooks";
 
 
 const achievements = [
@@ -106,7 +107,7 @@ const achvmtInfo = [
 ];
 
 export default function Achievement(props) {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   const navigate = useNavigate();
 
   const nimoerInfo = useSelector((state) => state.nimoer.nimoerInfo);
@@ -145,8 +146,6 @@ export default function Achievement(props) {
   useEffect(() => {
     getRequest(achievementApi, (res) => {
       setAchievementList(res.data.achievementList);
-      // const test=[1]
-      // setAchievementList(test);
       setAchievementInfo(res.data.achievementList, res.data.info);
     });
     getBlob(wordcloudApi, (res) => {
@@ -240,7 +239,7 @@ export default function Achievement(props) {
         <div className="shell">
           
           {achievementList.map((index) => (
-            <div>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%"}}>
               <div className="card" key={index}>
                 <div className="wrapper">
                   <img

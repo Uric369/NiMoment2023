@@ -1,7 +1,8 @@
 import React from "react";
+import { useIsMobile } from "../hooks";
 
 const IconTitle = ({ icon, text, isMargin = true }) => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   const style = isMargin
     ? {
         display: "flex",

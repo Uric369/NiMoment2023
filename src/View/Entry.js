@@ -170,8 +170,8 @@ function Entry() {
         parallaxInstance.destroy();
         window.removeEventListener("resize", handleResize);
       };
-      handleResize();
     }
+    window.handleResize = handleResize;
   }, []);
 
   // 现在，无论是页面加载还是大小改变，handleResize 都会被调用
@@ -189,7 +189,7 @@ function Entry() {
     for (const image of images) {
       // 用 onload 而不是 addEventListener 的原因是 onload 可以被覆盖
       // 当 handleResize 再次被调用的时候，旧的 onload 事件会被新的覆盖
-      image.onload = () => {
+      const handler = () => {
         let scaleRatio;
         if (image.src.includes("NiMoment")) {
           // 如果图像是NiMoment，仅根据宽度计算缩放比例
@@ -205,6 +205,9 @@ function Entry() {
         image.style.width = `${newWidth}px`;
         image.style.height = `${newHeight}px`;
       };
+      image.onload = handler;
+      // manually call handler for handling resizing after loaded
+      handler();
     }
   };
 
