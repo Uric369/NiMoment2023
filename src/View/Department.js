@@ -31,6 +31,7 @@ import module from "../img/paraScroll_demo/module.png";
 import cross from "../img/paraScroll_demo/cross.png";
 import saveButton from "../img/icon/saveButton.png";
 import popupWindow_mobile from "../img/paraScroll_demo/popup_potrait.png";
+import { useIsMobile } from "../hooks";
 
 function formatConsumables(consumables) {
   return dataFormatter(
@@ -55,7 +56,7 @@ const Department = () => {
   const departmentStats = useSelector((state) => state.stats.departmentStats);
   const navigate = useNavigate();
   const containerRef = useRef();
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
 
   useEffect(() => {
     let timeoutId;

@@ -49,9 +49,10 @@ import {
   signinApi,
   hasWordcloudApi,
 } from "../apis";
+import { useIsMobile } from "../hooks";
 
 function Entry() {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   const sceneRef = useRef(null);
   const [animateText, setAnimateText] = useState(false);
   const navigate = useNavigate();
