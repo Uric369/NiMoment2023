@@ -2,9 +2,10 @@ import React from 'react';
 import team from "../img/EasterEggs/team_landscape_png.png";
 import team_mobile from "../img/EasterEggs/team_potrait_png.png";
 import "../css/EasterEggs.css";
+import { useIsMobile } from '../hooks';
 
 const EasterEggs = () => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
 
   return (
     <div className='eastereggs_container'>

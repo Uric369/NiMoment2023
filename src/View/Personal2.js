@@ -31,6 +31,7 @@ import crystal from "../img/paraScroll_demo/crystal.png";
 import module from "../img/paraScroll_demo/module.png";
 import next from "../img/personal2/next.PNG";
 import saveButton from "../img/icon/saveButton.png";
+import { useIsMobile } from "../hooks";
 
 function formatPersonalConsumables(consumables) {
   return dataFormatter(
@@ -42,7 +43,7 @@ function formatPersonalConsumables(consumables) {
 }
 
 const Personal2 = () => {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const [isMobile] = useIsMobile();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [catMode, setCatMode] = useState(0);
   const containerRef = useRef();
