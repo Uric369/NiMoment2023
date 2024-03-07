@@ -1,4 +1,7 @@
-# Features
+# NiMoment2023
+上海交通大学网络信息管理部（NIMO）2023年度业务报告（首次发布）
+
+## Features
 - 展示年度业务数据
 - 展示个人业务数据
 - 展示个人年度成就
@@ -42,3 +45,37 @@
 ![image](https://github.com/Uric369/NiMoment2023/blob/40e50ca751209d74f0b697b527cefe3fcfb6f697/GIF%20display/5.gif)
 
 5. 尾页
+
+## 安装与运行程序
+
+克隆项目
+
+```
+> $ git clone https://github.com/Uric369/NiMoment2023.git
+```
+
+分别进入react目录和server目录下安装依赖包
+
+```
+> $ npm install
+```
+
+在server目录下启动后台服务
+
+```
+> $ npm run start
+```
+
+在react目录下启动webpack服务
+
+```
+> $ npm run dev
+```
+
+发布项目文件命令
+
+```
+> $ npm run build
+```
+
+执行完`npm run dev`命令后，打开浏览器 `http://localhost:3000/`运行项目
