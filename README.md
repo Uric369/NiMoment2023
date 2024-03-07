@@ -21,6 +21,7 @@
    - 视觉冲击卡片
 
 ## 效果展示
+详见 [视频展示](https://github.com/Uric369/NiMoment2023/blob/acd2093da9b8a167a8d26e838adcad47616c2f08/Video%20Display.mp4)
 
 1. 首页
 
